@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://crkjpacfx7i28"]
+
+[ext_resource type="Script" path="res://SubmarineController.gd" id="1_bl0r7"]
+[ext_resource type="Script" path="res://GameManager.gd" id="2_0mg8o"]
+[ext_resource type="Script" path="res://MouseFlightController.gd" id="2_kw7hd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i3r77"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uw4vv"]
+
+[sub_resource type="Sky" id="Sky_0b6a0"]
+sky_material = SubResource("ProceduralSkyMaterial_uw4vv")
+
+[sub_resource type="Environment" id="Environment_r0w22"]
+background_mode = 2
+sky = SubResource("Sky_0b6a0")
+
+[node name="SCENE" type="Node3D"]
+
+[node name="submarine" type="RigidBody3D" parent="."]
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("1_bl0r7")
+thrust = 20.0
+vertical_thrust = 10.0
+horizontal_thrust = 10.0
+max_thrust = 39.0
+turn_torque = Vector3(200, 200, 40)
+force_mult = 100.0
+aggressive_turn_angle = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="submarine"]
+shape = SubResource("SphereShape3D_i3r77")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="submarine"]
+use_collision = true
+
+[node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
+script = ExtResource("2_kw7hd")
+aircraft = NodePath("..")
+mouse_aim = NodePath("Mouseaim")
+camera_rig = NodePath("Camrig")
+cam = NodePath("Camrig/Camera3D")
+aim_distance = 200.0
+
+[node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
+
+[node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
+
+[node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
+
+[node name="SKY" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SKY"]
+environment = SubResource("Environment_r0w22")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58437, -4.76837e-07, -8.24579)
+radius = 1.99175
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58846, 2.22509, -3.48537)
+radius = 1.99175
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8546, 4.20594, -1.23461)
+radius = 5.16001
+
+[node name="GameManager" type="Node3D" parent="."]
+script = ExtResource("2_0mg8o")

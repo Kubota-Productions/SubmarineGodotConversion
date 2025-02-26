@@ -1,3 +1,4 @@
+class_name SubmarineController
 extends RigidBody3D
 
 @export var thrust: float = 100.0
@@ -8,6 +9,7 @@ extends RigidBody3D
 @export var force_mult: float = 1000.0
 @export var sensitivity: float = 5.0
 @export var aggressive_turn_angle: float = 10.0
+@export var controller: MouseFlightController
 
 var pitch: float = 0.0
 var yaw: float = 0.0
@@ -39,7 +41,8 @@ func _process(delta):
 	var auto_pitch = 0.0
 	var auto_roll = 0.0
 
-	run_autopilot(auto_yaw, auto_pitch, auto_roll)
+	if controller: 
+		run_autopilot(controller.MouseAimPos, auto_yaw, auto_pitch, auto_roll)
 
 	yaw = auto_yaw
 	pitch = auto_pitch
@@ -52,8 +55,7 @@ func change_speed(speed: float, delta: float):
 
 	current_thrust = lerp(current_thrust, speed, (speed_interpolator + delta) * 5)
 
-func run_autopilot(out_yaw: float, out_pitch: float, out_roll: float):
-	var fly_target = Vector3.ZERO  # Replace with actual target logic
+func run_autopilot(fly_target: Vector3, out_yaw: float, out_pitch: float, out_roll: float):
 	var local_fly_target = global_transform.basis.inverse() * (fly_target - global_position).normalized() * sensitivity
 	var angle_off_target = rad_to_deg(acos(Vector3.FORWARD.dot((fly_target - global_position).normalized())))
 

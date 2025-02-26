@@ -1,4 +1,4 @@
-extends Node3D
+class_name MouseFlightController extends Node3D
 
 @export var aircraft: Node3D = null
 @export var mouse_aim: Node3D = null
@@ -10,6 +10,7 @@ extends Node3D
 @export var mouse_sensitivity: float = 3.0
 @export var aim_distance: float = 500.0
 @export var show_debug_info: bool = false
+
 
 var frozen_direction: Vector3 = Vector3.FORWARD
 var is_mouse_aim_frozen: bool = false

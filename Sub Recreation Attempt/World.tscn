@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://7tgfweixkh2m"]
+
+[ext_resource type="Texture2D" uid="uid://cbhtlt6456l0u" path="res://icon.svg" id="1_3het2"]
+[ext_resource type="Script" path="res://sub_rotation.gd" id="2_3kf2g"]
+[ext_resource type="Script" path="res://rigid_body_3d.gd" id="3_h0emh"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="4_u0y5e"]
+[ext_resource type="PackedScene" uid="uid://diblcfxb42xfr" path="res://Coins.tscn" id="5_oi2x6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lanlr"]
+albedo_texture = ExtResource("1_3het2")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4imcj"]
+material = SubResource("StandardMaterial3D_lanlr")
+size = Vector2(200, 200)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qpn0i"]
+
+[sub_resource type="Sky" id="Sky_a6nh6"]
+sky_material = SubResource("ProceduralSkyMaterial_qpn0i")
+
+[sub_resource type="Environment" id="Environment_gxcru"]
+background_mode = 2
+sky = SubResource("Sky_a6nh6")
+ambient_light_color = Color(0.385558, 0.577629, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_artkj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5cq3q"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00108457, -2.6195, -0.00427437)
+mesh = SubResource("PlaneMesh_4imcj")
+skeleton = NodePath("../Camera3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gxcru")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -0.000308042, -0.000137129, 0.000337181, 0.915678, 0.401912, 1.75954e-06, -0.401912, 0.915678, 0, 2.24525, 3.47004)
+
+[node name="Sub Rotation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030055, 0.00504839, -0.000362158)
+script = ExtResource("2_3kf2g")
+
+[node name="Sub" type="RigidBody3D" parent="." node_paths=PackedStringArray("camera", "camera_target", "rotation_node")]
+linear_damp = 5.556
+script = ExtResource("3_h0emh")
+camera = NodePath("../Camera3D")
+camera_target = NodePath("Camera target")
+rotation_node = NodePath("../Sub Rotation")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sub"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_artkj")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sub"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_5cq3q")
+
+[node name="Camera mount" type="Marker3D" parent="Sub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48909, 2.06935)
+
+[node name="Camera target" type="Marker3D" parent="Sub"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00314188, 1.46914, 0.228337)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00108457, 0.183916, -0.00427437)
+fov = 92.7
+near = 0.001
+script = ExtResource("4_u0y5e")
+follow_target = NodePath("../Sub/Camera mount")
+look_at_target = NodePath("../Sub/Camera target")
+
+[node name="Area3D" parent="." instance=ExtResource("5_oi2x6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16647, 0, -2.27705)

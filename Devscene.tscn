@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=9 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Script" path="res://MouseFlightController.gd" id="2_kw7hd"]
+
+[sub_resource type="Curve" id="Curve_474vp"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i3r77"]
 
@@ -17,20 +21,21 @@ sky = SubResource("Sky_0b6a0")
 
 [node name="SCENE" type="Node3D"]
 
-[node name="submarine" type="RigidBody3D" parent="."]
+[node name="submarine" type="RigidBody3D" parent="." node_paths=PackedStringArray("controller")]
+gravity_scale = 0.0
 can_sleep = false
 freeze_mode = 1
+continuous_cd = true
+linear_damp = 3.5
 script = ExtResource("1_bl0r7")
-thrust = 20.0
-vertical_thrust = 10.0
-horizontal_thrust = 10.0
-max_thrust = 39.0
+curve = SubResource("Curve_474vp")
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
-sensitivity = null
 aggressive_turn_angle = 90.0
+controller = NodePath("Submarinecamerarig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="submarine"]
+transform = Transform3D(1, 0, 0, 0, 0.539462, -0.84201, 0, 0.84201, 0.539462, 0, 0, 0)
 shape = SubResource("SphereShape3D_i3r77")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="submarine"]
@@ -57,15 +62,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
 environment = SubResource("Environment_r0w22")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58437, -4.76837e-07, -8.24579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05203, -2.69418, -8.24579)
 radius = 1.99175
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58846, 2.22509, -3.48537)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1421, 2.22509, -459.884)
 radius = 1.99175
 
 [node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8546, 4.20594, -1.23461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -74.4843)
 radius = 5.16001
 
 [node name="GameManager" type="Node3D" parent="."]

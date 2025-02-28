@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SubmarineGodotConversion"
-run/main_scene="res://Devscene.tscn"
+run/main_scene="res://World.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

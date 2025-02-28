@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://7tgfweixkh2m"]
+[gd_scene load_steps=13 format=3 uid="uid://dnsneexwsqu11"]
 
 [ext_resource type="Texture2D" uid="uid://cbhtlt6456l0u" path="res://icon.svg" id="1_3het2"]
 [ext_resource type="Script" path="res://sub_rotation.gd" id="2_3kf2g"]
 [ext_resource type="Script" path="res://rigid_body_3d.gd" id="3_h0emh"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="4_u0y5e"]
-[ext_resource type="PackedScene" uid="uid://diblcfxb42xfr" path="res://Coins.tscn" id="5_oi2x6"]
+[ext_resource type="PackedScene" path="res://Coins.tscn" id="5_oi2x6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lanlr"]
 albedo_texture = ExtResource("1_3het2")

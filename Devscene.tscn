@@ -73,5 +73,45 @@ radius = 1.99175
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -74.4843)
 radius = 5.16001
 
+[node name="CSGSphere3D12" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -35.3349)
+radius = 5.16001
+
+[node name="CSGSphere3D13" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.7339, 4.20594, -35.3349)
+radius = 5.16001
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -74.4843)
+radius = 5.16001
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -36.1169)
+radius = 5.16001
+
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.5373, 4.20594, 14.2144)
+radius = 5.16001
+
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7241, 4.20594, 14.2144)
+radius = 5.16001
+
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7241, 4.20594, 90.5965)
+radius = 5.16001
+
+[node name="CSGSphere3D11" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283508, 4.20594, 90.5965)
+radius = 5.16001
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -106.26)
+radius = 5.16001
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -131.809)
+radius = 5.16001
+
 [node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("2_0mg8o")

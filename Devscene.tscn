@@ -50,6 +50,7 @@ cam = NodePath("Camrig/Camera3D")
 aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.124091)
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
 

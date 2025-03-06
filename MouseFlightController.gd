@@ -1,7 +1,7 @@
 class_name MouseFlightController extends Node3D
 
 @export var aircraft: Node3D = null
-@export var mouse_aim: Node3D = null
+@export var mouse_aim: Node3D 
 @export var camera_rig: Node3D = null
 @export var cam: Camera3D = null
 

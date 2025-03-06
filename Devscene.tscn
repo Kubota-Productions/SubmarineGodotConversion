@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://crkjpacfx7i28"]
 
-[ext_resource type="Script" path="res://SubmarineController.gd" id="1_bl0r7"]
-[ext_resource type="Script" path="res://GameManager.gd" id="2_0mg8o"]
-[ext_resource type="Script" path="res://MouseFlightController.gd" id="2_kw7hd"]
+[ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
+[ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
+[ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="2_kw7hd"]
 
 [sub_resource type="Curve" id="Curve_474vp"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

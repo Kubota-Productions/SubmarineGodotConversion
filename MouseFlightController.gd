@@ -66,10 +66,11 @@ func rotate_rig(delta):
 	# Get mouse movement
 	#var mouse_x = Input.get_axis("mouse_left", "mouse_right") * mouse_sensitivity
 	#var mouse_y = -Input.get_axis("mouse_up", "mouse_down") * mouse_sensitivity
-
+	var mouse_x = mouse_x_global
+	var mouse_y = mouse_y_global
 	# Rotate mouse aim target
-	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y_global))
-	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x_global))
+	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y))
+	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x))
 
 	# Determine up vector based on pitch angle
 	var up_vec = camera_rig.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP

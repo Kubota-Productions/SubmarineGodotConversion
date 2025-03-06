@@ -10,6 +10,8 @@ class_name MouseFlightController extends Node3D
 @export var mouse_sensitivity: float = 3.0
 @export var aim_distance: float = 500.0
 @export var show_debug_info: bool = false
+var mouse_x_global
+var mouse_y_global
 
 
 var frozen_direction: Vector3 = Vector3.FORWARD
@@ -26,8 +28,8 @@ func _ready():
 		push_error("MouseFlightController: No camera assigned!")
 
 	# The rig should not be parented to anything to avoid unintended rotations
-	get_parent().remove_child(self)
-	get_tree().root.add_child(self)
+	#get_parent().remove_child(self)
+	#get_tree().root.add_child(self)
 
 func _process(delta):
 	if not use_fixed:
@@ -37,6 +39,17 @@ func _process(delta):
 func _physics_process(delta):
 	if use_fixed:
 		update_camera_pos()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var mouse_x = event.relative.x * mouse_sensitivity
+		var mouse_y = -event.relative.y * mouse_sensitivity
+		mouse_x_global = mouse_x
+		mouse_y_global = mouse_y
+		# Now you can use mouse_x and mouse_y for whatever purpose (e.g., rotating the camera)
+		# For example:
+		# camera_rotation.x += mouse_y
+		# camera_rotation.y += mouse_x
 
 func rotate_rig(delta):
 	if not mouse_aim or not cam or not camera_rig:
@@ -51,12 +64,12 @@ func rotate_rig(delta):
 		mouse_aim.look_at(mouse_aim.global_transform.origin + frozen_direction, Vector3.UP)
 
 	# Get mouse movement
-	var mouse_x = Input.get_axis("mouse_left", "mouse_right") * mouse_sensitivity
-	var mouse_y = -Input.get_axis("mouse_up", "mouse_down") * mouse_sensitivity
+	#var mouse_x = Input.get_axis("mouse_left", "mouse_right") * mouse_sensitivity
+	#var mouse_y = -Input.get_axis("mouse_up", "mouse_down") * mouse_sensitivity
 
 	# Rotate mouse aim target
-	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y))
-	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x))
+	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y_global))
+	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x_global))
 
 	# Determine up vector based on pitch angle
 	var up_vec = camera_rig.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP

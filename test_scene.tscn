@@ -20,6 +20,10 @@ sky_material = SubResource("ProceduralSkyMaterial_m60t6")
 [sub_resource type="Environment" id="Environment_j6ys2"]
 background_mode = 2
 sky = SubResource("Sky_qallq")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4877"]
 albedo_texture = ExtResource("3_buypi")
@@ -60,4 +64,7 @@ target_parent = NodePath("../Platform")
 set_free = false
 
 [node name="pillholder" parent="." instance=ExtResource("5_2nij2")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -17.9009, -1.97894, -3.06994)
+transform = Transform3D(-3.27835e-09, -0.075, 0, 0.075, -3.27835e-09, 0, 0, 0, 0.075, -17.9009, -1.57716, -3.06994)
+
+[node name="pillholder2" parent="." instance=ExtResource("5_2nij2")]
+transform = Transform3D(0.0649519, 1.92296e-16, 0.0375, -2.22045e-16, 0.075, 0, -0.0375, -1.11022e-16, 0.0649519, -17.4998, -2.00401, -4.07904)

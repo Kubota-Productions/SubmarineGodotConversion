@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rtv7gkjjqqcp"
 path.s3tc="res://.godot/imported/orange_check.png-eb16fd8ecb1e5650c3c8e0b561cd099d.s3tc.ctex"
+path.etc2="res://.godot/imported/orange_check.png-eb16fd8ecb1e5650c3c8e0b561cd099d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://builder/textures/prototype/orange_check.png"
-dest_files=["res://.godot/imported/orange_check.png-eb16fd8ecb1e5650c3c8e0b561cd099d.s3tc.ctex"]
+dest_files=["res://.godot/imported/orange_check.png-eb16fd8ecb1e5650c3c8e0b561cd099d.s3tc.ctex", "res://.godot/imported/orange_check.png-eb16fd8ecb1e5650c3c8e0b561cd099d.etc2.ctex"]
 
 [params]
 

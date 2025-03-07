@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpraelijxnw84"
 path.s3tc="res://.godot/imported/pillholder_pillholder_Normal_OpenGL.png-171e1cc10f55d3ec0125b66648893321.s3tc.ctex"
+path.etc2="res://.godot/imported/pillholder_pillholder_Normal_OpenGL.png-171e1cc10f55d3ec0125b66648893321.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/pillholder_pillholder_Normal_OpenGL.png"
-dest_files=["res://.godot/imported/pillholder_pillholder_Normal_OpenGL.png-171e1cc10f55d3ec0125b66648893321.s3tc.ctex"]
+dest_files=["res://.godot/imported/pillholder_pillholder_Normal_OpenGL.png-171e1cc10f55d3ec0125b66648893321.s3tc.ctex", "res://.godot/imported/pillholder_pillholder_Normal_OpenGL.png-171e1cc10f55d3ec0125b66648893321.etc2.ctex"]
 
 [params]
 

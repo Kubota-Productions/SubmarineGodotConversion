@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cf8jjfus4r2s0"
 path.s3tc="res://.godot/imported/pillholder_pillholder_Metallic.png-pillholder_Roughness.png-346d4a3425a21d429ee96bc68ee6dfb9.s3tc.ctex"
+path.etc2="res://.godot/imported/pillholder_pillholder_Metallic.png-pillholder_Roughness.png-346d4a3425a21d429ee96bc68ee6dfb9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/pillholder_pillholder_Metallic.png-pillholder_Roughness.png"
-dest_files=["res://.godot/imported/pillholder_pillholder_Metallic.png-pillholder_Roughness.png-346d4a3425a21d429ee96bc68ee6dfb9.s3tc.ctex"]
+dest_files=["res://.godot/imported/pillholder_pillholder_Metallic.png-pillholder_Roughness.png-346d4a3425a21d429ee96bc68ee6dfb9.s3tc.ctex", "res://.godot/imported/pillholder_pillholder_Metallic.png-pillholder_Roughness.png-346d4a3425a21d429ee96bc68ee6dfb9.etc2.ctex"]
 
 [params]
 

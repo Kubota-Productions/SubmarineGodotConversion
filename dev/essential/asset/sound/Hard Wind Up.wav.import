@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce4jpcmw8fuf8"
+path="res://.godot/imported/Hard Wind Up.wav-7fe6797e1da49c254409d76ee2d36e53.sample"
+
+[deps]
+
+source_file="res://dev/essential/asset/sound/Hard Wind Up.wav"
+dest_files=["res://.godot/imported/Hard Wind Up.wav-7fe6797e1da49c254409d76ee2d36e53.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

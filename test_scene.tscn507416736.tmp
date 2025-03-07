@@ -1,0 +1,69 @@
+[gd_scene load_steps=14 format=3 uid="uid://0h30xquvwmr5"]
+
+[ext_resource type="Script" uid="uid://dvecx31ncs2v0" path="res://mechanics/dev/level_build/essential/level_build_saver.gd" id="1_2nij2"]
+[ext_resource type="Resource" uid="uid://bu1bjhphej2eu" path="res://mechanics/dev/level_build/saves/swag_save.tres" id="2_7cbxl"]
+[ext_resource type="Script" uid="uid://jlqdvu25bp7j" path="res://stages/scenes/water/world_environment.gd" id="3_8pr8v"]
+[ext_resource type="Texture2D" uid="uid://dge5e08d0jf0t" path="res://textures/prototype/black_grid.png" id="4_buypi"]
+[ext_resource type="PackedScene" uid="uid://be8wynol64aqq" path="res://sanctum/builder/essential/builder_controller.tscn" id="5_njel3"]
+[ext_resource type="Script" uid="uid://b878g70020tkd" path="res://mechanics/dev/level_build/essential/level_build_inventory.gd" id="6_njel3"]
+[ext_resource type="Resource" uid="uid://buod55t2dc3hx" path="res://sanctum/builder/inventories/InvCogs.tres" id="7_vr1i5"]
+[ext_resource type="Resource" uid="uid://neijykqys5w0" path="res://sanctum/builder/inventories/InvSeaFlora.tres" id="8_rpuu0"]
+[ext_resource type="Resource" uid="uid://cvsparuyxmo8h" path="res://sanctum/builder/inventories/InvWooden.tres" id="9_oo8pe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m60t6"]
+sky_top_color = Color(0.703, 0.892367, 0.95, 1)
+sky_horizon_color = Color(0.231309, 0.276744, 0.376138, 1)
+sky_curve = 0.121838
+ground_bottom_color = Color(0.0509776, 0.211052, 0.293949, 1)
+ground_horizon_color = Color(0.231373, 0.278431, 0.376471, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_qallq"]
+sky_material = SubResource("ProceduralSkyMaterial_m60t6")
+
+[sub_resource type="Environment" id="Environment_j6ys2"]
+background_mode = 2
+sky = SubResource("Sky_qallq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4877"]
+albedo_texture = ExtResource("4_buypi")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[node name="TestSceneVillage" type="Node3D" node_paths=PackedStringArray("target_parent")]
+script = ExtResource("1_2nij2")
+target_parent = NodePath("Platform")
+current_build = ExtResource("2_7cbxl")
+inventory_name = "SeaFlora"
+inventory_path = "res://sanctum/builder/building/environment/sea"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j6ys2")
+script = ExtResource("3_8pr8v")
+
+[node name="Platform" type="Node3D" parent="." groups=["Level"]]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.51678, 0)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_y4877")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -425.464, 0)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(1000, 1, 1000)
+material = SubResource("StandardMaterial3D_y4877")
+
+[node name="BuilderController" parent="." node_paths=PackedStringArray("target_parent") instance=ExtResource("5_njel3")]
+inventory = Array[ExtResource("6_njel3")]([ExtResource("7_vr1i5"), ExtResource("8_rpuu0"), ExtResource("9_oo8pe")])
+target_parent = NodePath("../Platform")

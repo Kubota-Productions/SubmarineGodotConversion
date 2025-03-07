@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kugjnyd2frp3"
+path="res://.godot/imported/Upgrade Building B.wav-fc837b411c475ed6cdbfa70a5e0d0238.sample"
+
+[deps]
+
+source_file="res://dev/essential/asset/sound/Upgrade Building B.wav"
+dest_files=["res://.godot/imported/Upgrade Building B.wav-fc837b411c475ed6cdbfa70a5e0d0238.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

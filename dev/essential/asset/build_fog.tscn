@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpx4htd6irfgr"]
+
+[ext_resource type="Texture2D" uid="uid://c6jsb0kj6fmxf" path="res://dev/essential/asset/smoke.png" id="1_qam05"]
+
+[sub_resource type="Curve" id="Curve_qam05"]
+_data = [Vector2(0, 0.442514), 0.0, 0.0, 0, 0, Vector2(0.16886, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0868762), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wwb47"]
+curve = SubResource("Curve_qam05")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qam05"]
+direction = Vector3(0, 1, 0)
+spread = 100.305
+flatness = 0.351
+initial_velocity_min = 8.95
+initial_velocity_max = 14.0
+angular_velocity_min = -30.35
+angular_velocity_max = 14.0
+gravity = Vector3(0, 14, 0)
+scale_curve = SubResource("CurveTexture_wwb47")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wwb47"]
+transparency = 1
+albedo_texture = ExtResource("1_qam05")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_c5104"]
+material = SubResource("StandardMaterial3D_wwb47")
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_wwb47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qam05"]
+resource_name = "fog"
+length = 1.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwb47"]
+_data = {
+&"RESET": SubResource("Animation_wwb47"),
+&"fog": SubResource("Animation_qam05")
+}
+
+[node name="BuildFog" type="GPUParticles3D"]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qam05")
+draw_pass_1 = SubResource("QuadMesh_c5104")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wwb47")
+}

@@ -1,0 +1,1006 @@
+[gd_resource type="Resource" script_class="LevelBuildData" load_steps=133 format=3 uid="uid://dt7g5qlkaf63b"]
+
+[ext_resource type="Script" uid="uid://c0c4wb1s1m1mo" path="res://dev/level_build/build_instance_data.gd" id="1_3khdb"]
+[ext_resource type="Resource" uid="uid://dv8e8s02p1clj" path="res://builder/basic/TowerRoof.tres" id="2_oibn0"]
+[ext_resource type="Resource" uid="uid://bb5gve8gutltp" path="res://builder/basic/TowerSquare.tres" id="3_nbxpq"]
+[ext_resource type="Resource" uid="uid://dg0bks5oy318t" path="res://builder/basic/Tree.tres" id="4_ejwpw"]
+[ext_resource type="Resource" uid="uid://cv3w716j3b4jw" path="res://builder/basic/Flag.tres" id="5_r4q8k"]
+[ext_resource type="Resource" uid="uid://diwac0bd5qba7" path="res://builder/basic/Rocks.tres" id="6_2x5ko"]
+[ext_resource type="Resource" uid="uid://8hn0ua8051d" path="res://builder/basic/TowerArch.tres" id="7_fyr7s"]
+[ext_resource type="Script" uid="uid://cvopnq15xwe76" path="res://dev/level_build/level_build_data.gd" id="8_5jp01"]
+
+[sub_resource type="Resource" id="Resource_3khdb"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-0.143318, -2.01678, -6.99308)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(1, 1, 1)
+build_mesh_rotation = Vector3(0, -1.0472, 0)
+
+[sub_resource type="Resource" id="Resource_oibn0"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(4.98138, -2.01524, -4.06113)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(1, 1, 1)
+build_mesh_rotation = Vector3(0, -1.0472, 0)
+
+[sub_resource type="Resource" id="Resource_nbxpq"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(5.60928, -2.01678, 7.70354)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(1, 1, 1)
+build_mesh_rotation = Vector3(0, -6.24157, 0)
+
+[sub_resource type="Resource" id="Resource_ejwpw"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(1.57037, -2.01493, 8.45183)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(1, 1, 1)
+build_mesh_rotation = Vector3(0, -12.5664, 0)
+
+[sub_resource type="Resource" id="Resource_r4q8k"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(7.66847, -2.01678, 10.4299)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(1, 1, 1)
+build_mesh_rotation = Vector3(0, -28.3956, 0)
+
+[sub_resource type="Resource" id="Resource_2x5ko"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(8.63773, -2.01678, 12.6718)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(9.29298, 9.29298, 9.29298)
+build_mesh_rotation = Vector3(0, -48.1707, 0)
+
+[sub_resource type="Resource" id="Resource_fyr7s"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-0.126792, -2.01672, 30.1037)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_5jp01"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-11.6224, -2.01678, 29.6116)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_dbc3d"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-20.7951, -2.01678, 17.8342)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_dnmx6"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-29.5929, -2.01678, 6.45234)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_pf3jx"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-37.7319, -2.01678, -2.25274)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_pa553"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-45.0521, -2.01678, -0.862358)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_5l1y4"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-45.6211, -2.01678, 11.3562)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_ipob7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-35.6528, -2.01678, 20.9969)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_6rhnp"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-24.0741, 0.435663, 25.2049)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_0yebb"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-14.5052, 7.54839, 28.4341)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_5x82a"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(4.66165, -1.65024, 5.24847)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_4808i"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(5.85334, -2.00695, -6.61719)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_b0k2l"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-1.74378, -2.01648, -13.6752)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_87yjn"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-10.8119, -2.01677, -21.3852)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_1rsck"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-8.26179, -2.01678, -31.394)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(12.8, 12.8, 12.8)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_5c3qm"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-6.05865, -2.01678, 11.2875)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_i77mr"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-7.44085, -2.01416, 0.750265)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_y3oli"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-17.9035, -2.01678, -6.1045)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_76e8b"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-24.7005, -2.01678, -14.3943)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_ifa5u"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-27.5349, -2.01678, -20.7504)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_n031n"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-30.8483, -2.01678, -26.8153)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_q7mkf"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-34.8354, -2.01678, -34.3899)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_80p6n"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-38.1679, -2.01678, -41.2749)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_fmr60"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-41.243, -2.01678, -47.7927)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_2lrif"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-37.1492, 2.33194, -31.7952)
+build_rotation = Vector3(0.216155, 0.418565, 1.28537)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_tq1mk"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-38.1126, 7.62242, -4.82132)
+build_rotation = Vector3(-0.674894, 0.0782901, 0.38409)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_8ue62"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-9.45681, 0.48125, -6.52225)
+build_rotation = Vector3(-0.448167, -0.243202, 0.601745)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_tdl3j"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-6.95023, 4.41313, -15.1752)
+build_rotation = Vector3(-0.0629479, -0.00562725, 0.587357)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_05sxw"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-12.1789, 7.17108, -23.2722)
+build_rotation = Vector3(-0.216466, -0.104406, 0.541824)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_unbtu"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-13.3316, 2.51311, -27.8622)
+build_rotation = Vector3(0.185817, 0.207782, 0.743852)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_jwv6r"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-15.1761, 3.20131, -17.8615)
+build_rotation = Vector3(0.108265, 0.162094, 0.636377)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_8vb8f"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-8.97388, 5.72206, -2.27686)
+build_rotation = Vector3(0.0311494, -0.202677, 0.12861)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_knlfb"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(0.807579, 4.4668, 8.88538)
+build_rotation = Vector3(0.184471, 0.164192, 0.610053)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_qwprq"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-3.56776, 6.04068, 20.2665)
+build_rotation = Vector3(-0.013303, -0.0554277, 0.659653)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_o7jps"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("3_nbxpq")
+build_position = Vector3(-17.1232, 15.219, 29.8107)
+build_rotation = Vector3(-0.0213312, 0.114979, 0.574387)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_sonvl"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-24.2017, 12.4554, 25.726)
+build_rotation = Vector3(0.716273, -0.319854, 0.665726)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_aurv7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-30.3041, 7.67415, 9.37584)
+build_rotation = Vector3(0.524397, -0.324937, 0.00981899)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_d5q2q"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-35.0299, 3.90414, 3.63156)
+build_rotation = Vector3(0.211426, 0.00299478, 0.459031)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_40gdu"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-46.8227, 6.82693, 0.567346)
+build_rotation = Vector3(0.692162, -0.150655, 0.195802)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_64mne"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-49.0166, 7.25809, 11.1338)
+build_rotation = Vector3(0, 0.275339, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_xbcmn"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-40.7851, 5.45817, 18.9543)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_pcuq0"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-31.5079, 16.0356, 28.2505)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_xa0ac"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-30.3303, 15.9155, 14.2158)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_xu0mf"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-32.8281, 16.8801, 13.9619)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -48.1711, 0)
+
+[sub_resource type="Resource" id="Resource_a5u55"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-29.2059, -2.01678, 44.0653)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(6.6, 6.6, 6.6)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_5csud"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-31.1988, 4.84038, 43.7054)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(11.1682, 11.1682, 11.1682)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_ovd4p"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-33.2017, -2.01678, 43.2092)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_mva48"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-35.4417, -2.01678, 44.9751)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_7xkk8"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-36.781, -2.01678, 46.0102)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_mw6x7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("4_ejwpw")
+build_position = Vector3(-39.8265, -2.01678, 40.9754)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -42.4115, 0)
+
+[sub_resource type="Resource" id="Resource_505uk"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-29.509, 6.69181, 25.624)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_l64kj"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-39.3093, 5.65309, 22.0747)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_v8xme"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-45.5936, 5.11427, 15.921)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_adijq"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-50.5693, 4.27098, 12.5731)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_54w1v"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-46.4955, 5.84992, -3.38756)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_nkihd"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-46.3869, 5.13945, -5.04898)
+build_rotation = Vector3(-0.643535, -0.340688, 0.621282)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_4dhcv"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-29.8071, -0.420258, -17.0703)
+build_rotation = Vector3(-0.309769, 0.000707967, 1.02438)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_w2fab"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-32.4718, 4.00585, -22.9955)
+build_rotation = Vector3(0.219055, 0.302445, 1.24818)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_87myq"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-37.3077, 7.05672, -27.6921)
+build_rotation = Vector3(-0.0123103, 0.0287844, 0.750277)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_queo7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-31.1188, 6.01978, -30.4858)
+build_rotation = Vector3(-0.466398, -0.695356, 1.08648)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_7wirf"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-19.1863, 0.0852881, -30.3035)
+build_rotation = Vector3(-0.21851, -0.437763, 0.433902)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_pjnb4"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-20.5411, 6.69097, -27.7613)
+build_rotation = Vector3(-0.152754, -0.480441, 0.980153)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_qfk15"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-14.3291, 6.30134, -31.8309)
+build_rotation = Vector3(-0.0664224, -0.365055, 0.853728)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_qd5ob"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-9.46431, 6.43525, -34.6212)
+build_rotation = Vector3(-0.529939, -0.247068, 0.476814)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_6djvm"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(1.68518, -0.287681, -23.2433)
+build_rotation = Vector3(-0.0191003, 0.0397351, 0.196825)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_vjw4m"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-5.04663, 7.0619, -17.51)
+build_rotation = Vector3(-0.573323, 0.0780079, -0.313317)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_gv0wx"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(-2.39936, 8.33753, -15.8256)
+build_rotation = Vector3(-0.607223, 0.0879045, 0.0575981)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_1vb6m"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(5.25428, 7.07456, -10.2267)
+build_rotation = Vector3(-0.576446, -0.0707194, 0.242334)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_xd7e6"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("5_r4q8k")
+build_position = Vector3(8.00952, 5.57002, -10.5385)
+build_rotation = Vector3(-0.39667, 0.0950911, -0.516646)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_fibq5"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-7.90761, 14.1111, -0.746958)
+build_rotation = Vector3(-0.691757, 0.11677, 0.0789245)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_ekwqy"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-9.0221, 12.3201, 17.3924)
+build_rotation = Vector3(0.000875701, -0.953234, 1.32512)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_4o6nu"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-16.3766, 15.9962, 25.2578)
+build_rotation = Vector3(-0.642216, -0.307493, 0.332688)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_psrv7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-19.0962, 7.93136, 16.3857)
+build_rotation = Vector3(-0.95549, -0.29561, -0.284785)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_f5dfk"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-26.8608, 7.31248, 6.36887)
+build_rotation = Vector3(0, 0.135532, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_6ocil"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-31.7778, 4.34395, 1.39119)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_fiq3v"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-25.7187, 3.43929, 2.22387)
+build_rotation = Vector3(-0.320655, 0.253569, -0.858693)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_bxf10"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-21.0257, 1.15312, -3.11112)
+build_rotation = Vector3(-0.0138743, 0.0872159, -0.0501352)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_qs8xu"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-24.5427, -1.98234, -7.11453)
+build_rotation = Vector3(-0.0621631, -0.110398, 0.0549937)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_8lxk8"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-30.0233, -1.98881, -8.46982)
+build_rotation = Vector3(-0.0106214, -0.0462324, 0.130377)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_tuj3n"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-33.5925, -1.45688, -12.2041)
+build_rotation = Vector3(-0.254001, 0.0578035, -0.0238313)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_eo82y"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-45.3391, -2.01562, -13.653)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_bnw61"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-45.9121, 0.413444, -16.6946)
+build_rotation = Vector3(-0.428079, 0.0271229, -0.0344645)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_2exwa"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-41.1155, -1.72018, -17.8673)
+build_rotation = Vector3(-0.495017, -0.150884, -0.0162262)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_hdksw"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-32.8475, 0.912333, -11.5348)
+build_rotation = Vector3(-0.0687917, -0.113202, 0.16612)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_p5ipp"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-24.9462, 1.43517, -4.19331)
+build_rotation = Vector3(0.12962, -0.0700993, 0.309625)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_nppc3"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-18.6357, -1.30065, 3.83542)
+build_rotation = Vector3(0.141351, 0.00668545, 0.016943)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_8fyvc"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-14.0919, -2.00252, 11.5376)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_wmr7x"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-13.1594, -2.01634, 17.3279)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_7gaai"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-38.2779, 0.692055, -9.34267)
+build_rotation = Vector3(-0.0673641, -0.750088, 1.39473)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_y4p2k"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-48.7066, 0.53902, -6.13351)
+build_rotation = Vector3(-0.517013, -0.861419, 1.30197)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_yrkoj"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-51.6086, -1.80091, -7.09599)
+build_rotation = Vector3(-0.216356, -0.541921, 0.568952)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_c3o8a"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-50.0871, -2.01265, -19.5091)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_y3ps8"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("6_2x5ko")
+build_position = Vector3(-49.464, -2.01672, -29.7916)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_4bgp8"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-26.4802, -1.40132, -47.1424)
+build_rotation = Vector3(0.000700662, -0.246022, 0.000422647)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_6mjju"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-36.2329, 5.21761, -45.8427)
+build_rotation = Vector3(-0.0883783, 0.249523, 0.0250077)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_hdviu"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-43.242, 6.59491, -50.0507)
+build_rotation = Vector3(-0.24852, -0.27908, 0.467135)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_gwu80"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-39.1932, 6.45998, -36.923)
+build_rotation = Vector3(-0.108324, -0.753448, 0.635591)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_cyyic"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-39.5938, 7.47444, -43.1087)
+build_rotation = Vector3(-0.551564, -0.36306, 1.50208)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_88tk6"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-33.4187, 6.63031, -27.8029)
+build_rotation = Vector3(0.121056, -0.357548, 0.415281)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_actbn"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-24.5628, 6.64133, -13.6422)
+build_rotation = Vector3(-0.0710169, 0.0226652, 0.132522)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_8s5c4"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-21.7264, 9.14192, -14.2242)
+build_rotation = Vector3(-0.202852, -0.237532, 0.241285)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_ud2lf"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-13.0612, 10.6247, -15.463)
+build_rotation = Vector3(-0.134519, -0.0301731, 0.453373)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_66qko"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("2_oibn0")
+build_position = Vector3(-16.9795, 14.9627, -21.4701)
+build_rotation = Vector3(-0.162123, -0.0689472, 0.424943)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_ny0b7"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(14.2285, -1.36726, -9.91696)
+build_rotation = Vector3(-0.342075, -0.261778, 0.0496302)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_tjelt"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(23.6641, -2.01632, 6.15251)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_gkm6m"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(11.1118, -2.01678, 22.3858)
+build_rotation = Vector3(0, 0, 0)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_5fc6r"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-1.86633, -0.248723, 24.1809)
+build_rotation = Vector3(-0.291746, 0.116054, -0.238665)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_gr4uk"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-5.2306, 6.74641, 26.7364)
+build_rotation = Vector3(-0.180615, 0.395035, -0.788123)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_aeojd"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-10.4379, -1.98767, 49.1353)
+build_rotation = Vector3(-0.0139447, 0.0526425, -0.0322543)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_rh03a"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-0.976108, -1.96883, 47.9961)
+build_rotation = Vector3(-0.00638827, 0.0220552, -0.325348)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_uxdgv"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-44.9273, 11.4946, 2.11647)
+build_rotation = Vector3(-0.152121, 0.135954, -1.09507)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_ne1ei"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-32.4423, 11.5685, -10.7271)
+build_rotation = Vector3(0.122519, 0.422074, -1.16147)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_6r217"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-14.5741, 17.1757, -21.9409)
+build_rotation = Vector3(-0.192499, -0.0287042, -0.909364)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_nvii2"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-13.4771, 15.1834, -22.3015)
+build_rotation = Vector3(-0.0779943, 0.222936, -1.27133)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_34ixk"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-21.5509, 7.80739, -3.87565)
+build_rotation = Vector3(-0.49928, 0.054454, -0.466896)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_tqp6i"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-6.60902, 15.7836, -1.15963)
+build_rotation = Vector3(-0.428745, -0.23241, -0.185538)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_b7olo"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-18.0129, 13.935, 20.3833)
+build_rotation = Vector3(-0.207523, 0.419448, -0.949184)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[sub_resource type="Resource" id="Resource_axy6p"]
+script = ExtResource("1_3khdb")
+build_data = ExtResource("7_fyr7s")
+build_position = Vector3(-14.9072, 13.4074, 19.1566)
+build_rotation = Vector3(-0.576842, 0.558102, -0.982712)
+build_scale = Vector3(7, 7, 7)
+build_mesh_rotation = Vector3(0, -39.2699, 0)
+
+[resource]
+script = ExtResource("8_5jp01")
+build_instances = Array[ExtResource("1_3khdb")]([SubResource("Resource_3khdb"), SubResource("Resource_oibn0"), SubResource("Resource_nbxpq"), SubResource("Resource_ejwpw"), SubResource("Resource_r4q8k"), SubResource("Resource_2x5ko"), SubResource("Resource_fyr7s"), SubResource("Resource_5jp01"), SubResource("Resource_dbc3d"), SubResource("Resource_dnmx6"), SubResource("Resource_pf3jx"), SubResource("Resource_pa553"), SubResource("Resource_5l1y4"), SubResource("Resource_ipob7"), SubResource("Resource_6rhnp"), SubResource("Resource_0yebb"), SubResource("Resource_5x82a"), SubResource("Resource_4808i"), SubResource("Resource_b0k2l"), SubResource("Resource_87yjn"), SubResource("Resource_1rsck"), SubResource("Resource_5c3qm"), SubResource("Resource_i77mr"), SubResource("Resource_y3oli"), SubResource("Resource_76e8b"), SubResource("Resource_ifa5u"), SubResource("Resource_n031n"), SubResource("Resource_q7mkf"), SubResource("Resource_80p6n"), SubResource("Resource_fmr60"), SubResource("Resource_2lrif"), SubResource("Resource_tq1mk"), SubResource("Resource_8ue62"), SubResource("Resource_tdl3j"), SubResource("Resource_05sxw"), SubResource("Resource_unbtu"), SubResource("Resource_jwv6r"), SubResource("Resource_8vb8f"), SubResource("Resource_knlfb"), SubResource("Resource_qwprq"), SubResource("Resource_o7jps"), SubResource("Resource_sonvl"), SubResource("Resource_aurv7"), SubResource("Resource_d5q2q"), SubResource("Resource_40gdu"), SubResource("Resource_64mne"), SubResource("Resource_xbcmn"), SubResource("Resource_pcuq0"), SubResource("Resource_xa0ac"), SubResource("Resource_xu0mf"), SubResource("Resource_a5u55"), SubResource("Resource_5csud"), SubResource("Resource_ovd4p"), SubResource("Resource_mva48"), SubResource("Resource_7xkk8"), SubResource("Resource_mw6x7"), SubResource("Resource_505uk"), SubResource("Resource_l64kj"), SubResource("Resource_v8xme"), SubResource("Resource_adijq"), SubResource("Resource_54w1v"), SubResource("Resource_nkihd"), SubResource("Resource_4dhcv"), SubResource("Resource_w2fab"), SubResource("Resource_87myq"), SubResource("Resource_queo7"), SubResource("Resource_7wirf"), SubResource("Resource_pjnb4"), SubResource("Resource_qfk15"), SubResource("Resource_qd5ob"), SubResource("Resource_6djvm"), SubResource("Resource_vjw4m"), SubResource("Resource_gv0wx"), SubResource("Resource_1vb6m"), SubResource("Resource_xd7e6"), SubResource("Resource_fibq5"), SubResource("Resource_ekwqy"), SubResource("Resource_4o6nu"), SubResource("Resource_psrv7"), SubResource("Resource_f5dfk"), SubResource("Resource_6ocil"), SubResource("Resource_fiq3v"), SubResource("Resource_bxf10"), SubResource("Resource_qs8xu"), SubResource("Resource_8lxk8"), SubResource("Resource_tuj3n"), SubResource("Resource_eo82y"), SubResource("Resource_bnw61"), SubResource("Resource_2exwa"), SubResource("Resource_hdksw"), SubResource("Resource_p5ipp"), SubResource("Resource_nppc3"), SubResource("Resource_8fyvc"), SubResource("Resource_wmr7x"), SubResource("Resource_7gaai"), SubResource("Resource_y4p2k"), SubResource("Resource_yrkoj"), SubResource("Resource_c3o8a"), SubResource("Resource_y3ps8"), SubResource("Resource_4bgp8"), SubResource("Resource_6mjju"), SubResource("Resource_hdviu"), SubResource("Resource_gwu80"), SubResource("Resource_cyyic"), SubResource("Resource_88tk6"), SubResource("Resource_actbn"), SubResource("Resource_8s5c4"), SubResource("Resource_ud2lf"), SubResource("Resource_66qko"), SubResource("Resource_ny0b7"), SubResource("Resource_tjelt"), SubResource("Resource_gkm6m"), SubResource("Resource_5fc6r"), SubResource("Resource_gr4uk"), SubResource("Resource_aeojd"), SubResource("Resource_rh03a"), SubResource("Resource_uxdgv"), SubResource("Resource_ne1ei"), SubResource("Resource_6r217"), SubResource("Resource_nvii2"), SubResource("Resource_34ixk"), SubResource("Resource_tqp6i"), SubResource("Resource_b7olo"), SubResource("Resource_axy6p")])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelBuildInventory" load_steps=9 format=3 uid="uid://c6mipibhga4ex"]
+
+[ext_resource type="Script" uid="uid://cffhqlm6ilia0" path="res://dev/essential/components/build_component_data.gd" id="1_mkrbb"]
+[ext_resource type="Script" uid="uid://b878g70020tkd" path="res://dev/level_build/level_build_inventory.gd" id="2_ainv2"]
+[ext_resource type="Resource" uid="uid://cv3w716j3b4jw" path="res://builder/basic/Flag.tres" id="3_3ijvu"]
+[ext_resource type="Resource" uid="uid://diwac0bd5qba7" path="res://builder/basic/Rocks.tres" id="4_ywnll"]
+[ext_resource type="Resource" uid="uid://8hn0ua8051d" path="res://builder/basic/TowerArch.tres" id="5_vmudo"]
+[ext_resource type="Resource" uid="uid://dv8e8s02p1clj" path="res://builder/basic/TowerRoof.tres" id="6_0sk7i"]
+[ext_resource type="Resource" uid="uid://bb5gve8gutltp" path="res://builder/basic/TowerSquare.tres" id="7_h4v6c"]
+[ext_resource type="Resource" uid="uid://dg0bks5oy318t" path="res://builder/basic/Tree.tres" id="8_3ijvu"]
+
+[resource]
+script = ExtResource("2_ainv2")
+build_data = Array[ExtResource("1_mkrbb")]([ExtResource("3_3ijvu"), ExtResource("4_ywnll"), ExtResource("5_vmudo"), ExtResource("6_0sk7i"), ExtResource("7_h4v6c"), ExtResource("8_3ijvu"), null])

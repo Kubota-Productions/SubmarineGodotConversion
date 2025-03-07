@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://be8wynol64aqq"]
+
+[ext_resource type="Script" uid="uid://clk6e6nqdk10c" path="res://dev/essential/builder_controller.gd" id="1_f0s80"]
+[ext_resource type="PackedScene" uid="uid://qr6wnt3jpv4t" path="res://dev/essential/builder_point.tscn" id="2_24qqb"]
+[ext_resource type="Script" uid="uid://b878g70020tkd" path="res://dev/level_build/level_build_inventory.gd" id="2_862bj"]
+[ext_resource type="Resource" uid="uid://c6mipibhga4ex" path="res://builder/inventories/InvBasic.tres" id="3_7qjh8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_umi83"]
+radius = 1.0
+
+[node name="BuilderController" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 64
+wall_min_slide_angle = 0.0
+script = ExtResource("1_f0s80")
+inventory = Array[ExtResource("2_862bj")]([ExtResource("3_7qjh8")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_umi83")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="CameraRotation" type="Node3D" parent="CameraPivot"]
+
+[node name="FarmBuilder" parent="CameraPivot/CameraRotation" instance=ExtResource("2_24qqb")]
+free_place = false
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/CameraRotation"]
+
+[node name="Crosshair" type="TextureRect" parent="CameraPivot/CameraRotation"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(64, 64)
+expand_mode = 2

@@ -1,0 +1,61 @@
+[gd_scene load_steps=16 format=3 uid="uid://disdu4mj68vlj"]
+
+[ext_resource type="Script" uid="uid://c6r605tohy601" path="res://dev/essential/components/build_component.gd" id="1_1w1b3"]
+[ext_resource type="Material" uid="uid://dqn6rg35cclts" path="res://dev/essential/asset/preview_material.tres" id="2_8k2ga"]
+[ext_resource type="PackedScene" uid="uid://dpx4htd6irfgr" path="res://dev/essential/asset/build_fog.tscn" id="4_4kkf1"]
+[ext_resource type="AudioStream" uid="uid://cj561sufgf6ef" path="res://dev/essential/asset/sound/Upgrade Building D.wav" id="4_t5de7"]
+[ext_resource type="AudioStream" uid="uid://x1i62582kguv" path="res://dev/essential/asset/sound/Upgrade Building C.wav" id="5_vsy5r"]
+[ext_resource type="AudioStream" uid="uid://kugjnyd2frp3" path="res://dev/essential/asset/sound/Upgrade Building B.wav" id="6_a65a4"]
+[ext_resource type="AudioStream" uid="uid://dldl0hdux2xqw" path="res://dev/essential/asset/sound/Upgrade Building A.wav" id="7_6474f"]
+[ext_resource type="AudioStream" uid="uid://ce4jpcmw8fuf8" path="res://dev/essential/asset/sound/Hard Wind Up.wav" id="8_105w4"]
+[ext_resource type="AudioStream" uid="uid://cj0e53at88bu0" path="res://dev/essential/asset/sound/Hammer Wood A.wav" id="9_a65a4"]
+[ext_resource type="AudioStream" uid="uid://buawrqam4tw1m" path="res://dev/essential/asset/sound/Hammer Wood B.wav" id="10_6474f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nbem1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1w1b3"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kuqum"]
+random_pitch = 1.2
+streams_count = 4
+stream_0/stream = ExtResource("4_t5de7")
+stream_1/stream = ExtResource("5_vsy5r")
+stream_2/stream = ExtResource("6_a65a4")
+stream_3/stream = ExtResource("7_6474f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_105w4"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("9_a65a4")
+stream_1/stream = ExtResource("10_6474f")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_t5de7"]
+stream_count = 3
+stream_0/stream = SubResource("AudioStreamRandomizer_kuqum")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("8_105w4")
+stream_1/volume = -7.16
+stream_2/stream = SubResource("AudioStreamRandomizer_105w4")
+stream_2/volume = -7.16
+
+[node name="BuildComponent" type="Node3D" groups=["BuildComponent"]]
+script = ExtResource("1_1w1b3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 8
+material_override = ExtResource("2_8k2ga")
+mesh = SubResource("BoxMesh_nbem1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+process_mode = 4
+collision_layer = 513
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_1w1b3")
+
+[node name="BuildFog" parent="." instance=ExtResource("4_4kkf1")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
+stream = SubResource("AudioStreamSynchronized_t5de7")

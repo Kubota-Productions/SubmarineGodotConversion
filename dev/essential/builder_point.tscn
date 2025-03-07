@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://qr6wnt3jpv4t"]
+
+[ext_resource type="Script" uid="uid://bwu1ivu8lieda" path="res://dev/essential/builder_point.gd" id="1_cv0v5"]
+[ext_resource type="FontFile" uid="uid://bjf1dpw0c8p3r" path="res://dev/essential/asset/FantasqueSansMono-Regular.ttf" id="2_esys3"]
+[ext_resource type="Script" uid="uid://bdpown3untwyf" path="res://dev/essential/builder_panel.gd" id="3_r7qnt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_upfis"]
+font = ExtResource("2_esys3")
+font_size = 30
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 26
+shadow_color = Color(0, 0, 0, 0.403922)
+shadow_offset = Vector2(2.26, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_627l6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 2
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_esys3"]
+font = ExtResource("2_esys3")
+font_size = 12
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.470588)
+
+[node name="BuilderPoint" type="RayCast3D"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 65
+script = ExtResource("1_cv0v5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -775.0
+offset_top = -200.0
+offset_right = 775.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = -10
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "WHAT THE FUCK AM I DOING"
+label_settings = SubResource("LabelSettings_upfis")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(1500, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_627l6")
+script = ExtResource("3_r7qnt")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 11
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Controls:
+WASD: Move
+Space: Up
+Ctrl: Down
+Shift: Speed Up
+
+
+Tab: Inventory
+M1: Place
+M2: Remove
+M3: Toggle Transform
+Scroll: Scale / Rotate
+E: Toggle Pivot
+
+M: Save
+I: Load"
+label_settings = SubResource("LabelSettings_esys3")
+
+[connection signal="inventory_opened" from="VBoxContainer/MarginContainer/Panel" to="." method="_on_panel_inventory_opened"]
+[connection signal="new_build_data" from="VBoxContainer/MarginContainer/Panel" to="." method="_on_panel_new_build_data"]

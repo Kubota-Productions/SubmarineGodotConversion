@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn15ovj6dpjmb"]
+
+[ext_resource type="Script" uid="uid://cl5aoe01yp78n" path="res://dev/essential/components/build_slot.gd" id="2_ds8jb"]
+
+[node name="BuildSlot" type="TextureRect"]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
+expand_mode = 2
+script = ExtResource("2_ds8jb")

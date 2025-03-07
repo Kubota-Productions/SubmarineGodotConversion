@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
 
-[ext_resource type="Script" uid="uid://dj8xggu1fxjl2" path="res://SubmarineController.gd" id="1_bl0r7"]
-[ext_resource type="Script" uid="uid://bgwj6td8n0tte" path="res://GameManager.gd" id="2_0mg8o"]
+[ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
+[ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="2_kw7hd"]
-[ext_resource type="Script" uid="uid://bf28nf1qc0dy3" path="res://mouseaim.gd" id="3_ie6cn"]
-[ext_resource type="Script" uid="uid://d3fa8cinq06tt" path="res://camrig.gd" id="4_6smkg"]
+[ext_resource type="Script" path="res://mouseaim.gd" id="3_ie6cn"]
+[ext_resource type="Script" path="res://camrig.gd" id="4_6smkg"]
+[ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="6_ugqrj"]
 
 [sub_resource type="Curve" id="Curve_474vp"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -20,6 +21,13 @@ sky_material = SubResource("ProceduralSkyMaterial_uw4vv")
 [sub_resource type="Environment" id="Environment_r0w22"]
 background_mode = 2
 sky = SubResource("Sky_0b6a0")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
 
 [node name="SCENE" type="Node3D"]
 
@@ -120,3 +128,12 @@ radius = 5.16001
 
 [node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("2_0mg8o")
+
+[node name="pillholder" parent="." instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -26.0754)
+
+[node name="pillholder2" parent="." instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -22.0754)
+
+[node name="pillholder3" parent="." instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -18.0754)

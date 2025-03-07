@@ -77,7 +77,7 @@ func rotate_rig(delta):
 
 	# Smoothly rotate camera rig towards mouse aim
 	var target_rotation = camera_rig.global_transform.looking_at(mouse_aim.global_transform.origin, up_vec)
-	camera_rig.global_transform_basis = damp(camera_rig.global_transform_basis, target_rotation.basis, cam_smooth_speed, delta)
+	camera_rig.global_transform.basis = damp(camera_rig.global_transform.basis, target_rotation.basis, cam_smooth_speed, delta)
 
 func get_frozen_mouse_aim_pos() -> Vector3:
 	if mouse_aim:

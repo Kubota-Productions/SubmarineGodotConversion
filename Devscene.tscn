@@ -47,7 +47,7 @@ curve = SubResource("Curve_474vp")
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
 aggressive_turn_angle = 90.0
-controller = NodePath("Submarinecamerarig")
+controller = NodePath("Submarinecamerarig/Mouseaim")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="submarine"]
 transform = Transform3D(1, 0, 0, 0, 0.539462, -0.84201, 0, 0.84201, 0.539462, 0, 0, 0)
@@ -62,17 +62,11 @@ aircraft = NodePath("..")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
+mouse_sensitivity = 0.1
 aim_distance = 200.0
 
-[node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
+[node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368161, 0.624111)
-script = ExtResource("2_kw7hd")
-aircraft = NodePath("../..")
-mouse_aim = NodePath(".")
-camera_rig = NodePath("../Camrig")
-cam = NodePath("../Camrig/Camera3D")
-aim_distance = 200.0
-show_debug_info = true
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
 

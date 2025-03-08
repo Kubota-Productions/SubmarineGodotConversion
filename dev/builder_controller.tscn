@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qr6wnt3jpv4t" path="res://dev/essential/builder_point.tscn" id="2_24qqb"]
 [ext_resource type="Script" uid="uid://b878g70020tkd" path="res://dev/level_build/level_build_inventory.gd" id="2_862bj"]
 [ext_resource type="Resource" uid="uid://c6mipibhga4ex" path="res://builder/inventories/InvBasic.tres" id="3_7qjh8"]
-[ext_resource type="PackedScene" uid="uid://bnbt1rlkvfsvd" path="res://models/hands.glb" id="5_7qjh8"]
+[ext_resource type="PackedScene" uid="uid://dfyjhqb7bckry" path="res://models/handsprefab.tscn" id="5_7qjh8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_umi83"]
 radius = 1.0
@@ -44,5 +44,5 @@ scale = Vector2(0.2, 0.2)
 pivot_offset = Vector2(64, 64)
 expand_mode = 2
 
-[node name="hands" parent="CameraPivot" instance=ExtResource("5_7qjh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.315, -0.139)
+[node name="hands" parent="CameraPivot/CameraRotation" instance=ExtResource("5_7qjh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.298)

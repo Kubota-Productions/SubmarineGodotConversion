@@ -2,27 +2,27 @@ class_name SubmarineController
 extends RigidBody3D
 
 @export_category("Control Variables")
-@export var curve : Curve														## Unused for now
-@export var thrust : float 										= 0.10			## default "engine on" speed
-@export var max_thrust : float 									= 0.30			## The "boost speed"
-@export_range(-100.0, 100.0) var y_axis_thrust : float 			= 0.0			## Thrust along the vertical axis, locally relative to the sub
-@export_range(-100.0, 100.0) var x_axis_thrust : float 			= 0.0			## Thrust along the left-right axis, locally relative to the sub
-@export var turn_torque: Vector3 			= Vector3(90.0, 25.0, 45.0)			## Don't understand yet
-@export var force_mult: float 									= 1000.0		## Don't understand yet
-@export var sensitivity: float 									= 5.0			## Don't understand yet
-@export var aggressive_turn_angle: float 						= 10.0			## Maybe means maximum turn angle, unsure
-@export var controller: MouseFlightController									## Camera Rig Node
+@export var curve : Curve ## Unused for now
+@export var thrust : float = 0.10 ## default "engine on" speed
+@export var max_thrust : float  = 0.30 ## The "boost speed"
+@export_range(-100.0, 100.0) var y_axis_thrust : float = 0.0 ## Thrust along the vertical axis, locally relative to the sub
+@export_range(-100.0, 100.0) var x_axis_thrust : float = 0.0 ## Thrust along the left-right axis, locally relative to the sub
+@export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0) ## Don't understand yet
+@export var force_mult: float = 1000.0 ## Don't understand yet
+@export var sensitivity: float = 5.0 ## Don't understand yet
+@export var aggressive_turn_angle: float = 10.0	## Maybe means maximum turn angle, unsure
+@export var controller: MouseFlightController ## Camera Rig Node
 
-var pitch: float 												= 0.0 			## Rotation around the x-axis
-var yaw: float 													= 0.0 			## Rotation around the y-axis
-var roll: float 												= 0.0 			## Rotation around the z-axis
-var engine_toggle: bool 										= false 		## The engine being on or off
-var previous_speed: float 										= 0.0 			## necessary for acceleration and deceleration math
-var current_thrust: float 										= 0.0			## Don't understand yet
-var move_direction: Vector3														## May be unintuitive.
+var pitch: float = 0.0 ## Rotation around the x-axis
+var yaw: float = 0.0 ## Rotation around the y-axis
+var roll: float = 0.0 ## Rotation around the z-axis
+var engine_toggle: bool = false ## The engine being on or off
+var previous_speed: float = 0.0 ## necessary for acceleration and deceleration math
+var current_thrust: float = 0.0 ## Don't understand yet
+var move_direction: Vector3 ## May be unintuitive.
 
-func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)		## Disables the mouse from exiting the viewport
+#func _ready():
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)		## Disables the mouse from exiting the viewport
 	## TODO https://docs.godotengine.org/en/4.3/classes/class_input.html#enum-input-mousemode
 	## may want to change the input of the mouse to MOUSE_MODE_CAPTURED, but the way to collect mouse
 	## movement changes to InputEventMouseMotion.relative   // I would just implement this myself 

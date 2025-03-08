@@ -71,7 +71,6 @@ aircraft = NodePath("../..")
 mouse_aim = NodePath(".")
 camera_rig = NodePath("../Camrig")
 cam = NodePath("../Camrig/Camera3D")
-use_fixed = false
 mouse_sensitivity = 0.1
 aim_distance = 200.0
 show_debug_info = true

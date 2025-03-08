@@ -43,8 +43,8 @@ func _physics_process(delta):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		var mouse_x = 1
-		var mouse_y = 1
+		var mouse_x = event.relative.x * mouse_sensitivity
+		var mouse_y = -event.relative.y * mouse_sensitivity
 		mouse_x_global = mouse_x
 		mouse_y_global = mouse_y
 

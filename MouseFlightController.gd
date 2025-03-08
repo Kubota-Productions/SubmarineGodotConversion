@@ -13,7 +13,6 @@ class_name MouseFlightController extends Node3D
 var mouse_x_global
 var mouse_y_global
 
-
 var frozen_direction: Vector3 = Vector3.FORWARD
 var is_mouse_aim_frozen: bool = false
 
@@ -26,7 +25,7 @@ func _ready():
 		push_error("MouseFlightController: No camera rig assigned!")
 	if not cam:
 		push_error("MouseFlightController: No camera assigned!")
-
+	
 	# The rig should not be parented to anything to avoid unintended rotations
 	#get_parent().remove_child(self)
 	#get_tree().root.add_child(self)
@@ -46,10 +45,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		var mouse_y = -event.relative.y * mouse_sensitivity
 		mouse_x_global = mouse_x
 		mouse_y_global = mouse_y
-		# Now you can use mouse_x and mouse_y for whatever purpose (e.g., rotating the camera)
-		# For example:
-		# camera_rotation.x += mouse_y
-		# camera_rotation.y += mouse_x
 
 func rotate_rig(delta):
 	if not mouse_aim or not cam or not camera_rig:
@@ -64,10 +59,9 @@ func rotate_rig(delta):
 		mouse_aim.look_at(mouse_aim.global_transform.origin + frozen_direction, Vector3.UP)
 
 	# Get mouse movement
-	#var mouse_x = Input.get_axis("mouse_left", "mouse_right") * mouse_sensitivity
-	#var mouse_y = -Input.get_axis("mouse_up", "mouse_down") * mouse_sensitivity
 	var mouse_x = mouse_x_global
 	var mouse_y = mouse_y_global
+
 	# Rotate mouse aim target
 	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y))
 	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x))
@@ -75,8 +69,8 @@ func rotate_rig(delta):
 	# Determine up vector based on pitch angle
 	var up_vec = camera_rig.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP
 
-	# Smoothly rotate camera rig towards mouse aim
-	var target_rotation = camera_rig.global_transform.looking_at(mouse_aim.global_transform.origin, up_vec)
+	# Smoothly rotate camera rig towards mouse aim, using the computed aim position
+	var target_rotation = camera_rig.global_transform.looking_at(MouseAimPos(), up_vec)
 	camera_rig.global_transform.basis = damp(camera_rig.global_transform.basis, target_rotation.basis, cam_smooth_speed, delta)
 
 func get_frozen_mouse_aim_pos() -> Vector3:
@@ -90,6 +84,8 @@ func update_camera_pos():
 
 # Frame-rate independent damping function
 func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
+	a = a.orthonormalized()
+	b = b.orthonormalized()
 	return a.slerp(b, 1 - exp(-lambda * dt))
 
 func _draw():

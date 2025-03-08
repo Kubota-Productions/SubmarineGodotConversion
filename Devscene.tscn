@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=14 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="2_kw7hd"]
 [ext_resource type="Script" path="res://mouseaim.gd" id="3_ie6cn"]
 [ext_resource type="Script" path="res://camrig.gd" id="4_6smkg"]
+[ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 [ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="6_ugqrj"]
 
 [sub_resource type="Curve" id="Curve_474vp"]
@@ -28,6 +29,12 @@ ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqoum"]
+albedo_texture = ExtResource("5_r57mt")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
 
 [node name="SCENE" type="Node3D"]
 
@@ -74,66 +81,79 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SKY"]
 environment = SubResource("Environment_r0w22")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="ENV" type="Node3D" parent="."]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05203, -2.69418, -8.24579)
 radius = 1.99175
 
-[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1421, 2.22509, -459.884)
 radius = 1.99175
 
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -74.4843)
 radius = 5.16001
 
-[node name="CSGSphere3D12" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D12" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -35.3349)
 radius = 5.16001
 
-[node name="CSGSphere3D13" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D13" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.7339, 4.20594, -35.3349)
 radius = 5.16001
 
-[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -74.4843)
 radius = 5.16001
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -36.1169)
 radius = 5.16001
 
-[node name="CSGSphere3D8" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.5373, 4.20594, 14.2144)
 radius = 5.16001
 
-[node name="CSGSphere3D9" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7241, 4.20594, 14.2144)
 radius = 5.16001
 
-[node name="CSGSphere3D10" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7241, 4.20594, 90.5965)
 radius = 5.16001
 
-[node name="CSGSphere3D11" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D11" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283508, 4.20594, 90.5965)
 radius = 5.16001
 
-[node name="CSGSphere3D6" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -106.26)
 radius = 5.16001
 
-[node name="CSGSphere3D7" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -131.809)
 radius = 5.16001
 
-[node name="GameManager" type="Node3D" parent="."]
+[node name="GameManager" type="Node3D" parent="ENV"]
 script = ExtResource("2_0mg8o")
 
-[node name="pillholder" parent="." instance=ExtResource("6_ugqrj")]
-transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -26.0754)
+[node name="pillholder" parent="ENV" instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -1.99955, -26.0754)
 
-[node name="pillholder2" parent="." instance=ExtResource("6_ugqrj")]
-transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -22.0754)
+[node name="pillholder2" parent="ENV" instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -1.99955, -22.0754)
 
-[node name="pillholder3" parent="." instance=ExtResource("6_ugqrj")]
-transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -2.64403, -18.0754)
+[node name="pillholder3" parent="ENV" instance=ExtResource("6_ugqrj")]
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -1.99955, -18.0754)
+
+[node name="Platform" type="Node3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
+
+[node name="Box" type="CSGBox3D" parent="ENV/Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.51678, 0)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_wqoum")

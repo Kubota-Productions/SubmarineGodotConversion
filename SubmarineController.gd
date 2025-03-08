@@ -30,8 +30,8 @@ func _ready():
 
 func _process(delta):
 	## captures the input for y axis and x axis movement RELATIVE TO THE SUB'S ROTATION
-	var vertical_movement = Input.get_axis("move_down", "move_up")
-	var horizontal_movement = Input.get_axis("move_left", "move_right")
+	var vertical_movement = Input.get_axis("ui_down", "ui_up")
+	var horizontal_movement = Input.get_axis("ui_left", "ui_right")
 	
 	## captures the input for engaging and disengaging the engine
 	if Input.is_action_just_pressed("toggle_thrust"):

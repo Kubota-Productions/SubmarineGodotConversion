@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccmuvm0ktwbua"
+path="res://.godot/imported/Pillholder.obj-08f17520c44c0515dc1c5b171c2e6ad3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Pillholder.obj-08f17520c44c0515dc1c5b171c2e6ad3.mesh"]
+
+source_file="res://builder/asset/obj/Pillholder.obj"
+dest_files=["res://.godot/imported/Pillholder.obj-08f17520c44c0515dc1c5b171c2e6ad3.mesh", "res://.godot/imported/Pillholder.obj-08f17520c44c0515dc1c5b171c2e6ad3.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=false
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

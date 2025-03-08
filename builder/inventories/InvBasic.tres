@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelBuildInventory" load_steps=9 format=3 uid="uid://c6mipibhga4ex"]
+[gd_resource type="Resource" script_class="LevelBuildInventory" load_steps=13 format=3 uid="uid://c6mipibhga4ex"]
 
 [ext_resource type="Script" uid="uid://cffhqlm6ilia0" path="res://dev/essential/components/build_component_data.gd" id="1_mkrbb"]
 [ext_resource type="Script" uid="uid://b878g70020tkd" path="res://dev/level_build/level_build_inventory.gd" id="2_ainv2"]
@@ -8,7 +8,23 @@
 [ext_resource type="Resource" uid="uid://dv8e8s02p1clj" path="res://builder/basic/TowerRoof.tres" id="6_0sk7i"]
 [ext_resource type="Resource" uid="uid://bb5gve8gutltp" path="res://builder/basic/TowerSquare.tres" id="7_h4v6c"]
 [ext_resource type="Resource" uid="uid://dg0bks5oy318t" path="res://builder/basic/Tree.tres" id="8_3ijvu"]
+[ext_resource type="ArrayMesh" uid="uid://ccmuvm0ktwbua" path="res://builder/asset/obj/Pillholder.obj" id="8_ywnll"]
+[ext_resource type="Texture2D" uid="uid://duuat0a2eghb0" path="res://icon.svg" id="9_vmudo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0sk7i"]
+
+[sub_resource type="Resource" id="Resource_h4v6c"]
+script = ExtResource("1_mkrbb")
+icon = ExtResource("9_vmudo")
+name = "Pillholder"
+color = Color(255, 255, 255, 1)
+description = ""
+build_mesh = ExtResource("8_ywnll")
+mesh_position_offset = Vector3(0, 0, 0)
+build_collision = SubResource("ConvexPolygonShape3D_0sk7i")
+collision_position_offset = Vector3(0, 0, 0)
+metadata/_custom_type_script = ExtResource("1_mkrbb")
 
 [resource]
 script = ExtResource("2_ainv2")
-build_data = Array[ExtResource("1_mkrbb")]([ExtResource("3_3ijvu"), ExtResource("4_ywnll"), ExtResource("5_vmudo"), ExtResource("6_0sk7i"), ExtResource("7_h4v6c"), ExtResource("8_3ijvu"), null])
+build_data = Array[ExtResource("1_mkrbb")]([ExtResource("3_3ijvu"), ExtResource("4_ywnll"), ExtResource("5_vmudo"), ExtResource("6_0sk7i"), ExtResource("7_h4v6c"), ExtResource("8_3ijvu"), SubResource("Resource_h4v6c")])

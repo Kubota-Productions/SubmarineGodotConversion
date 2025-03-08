@@ -65,13 +65,12 @@ cam = NodePath("Camrig/Camera3D")
 aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.124091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368161, 0.624111)
 script = ExtResource("2_kw7hd")
 aircraft = NodePath("../..")
 mouse_aim = NodePath(".")
 camera_rig = NodePath("../Camrig")
 cam = NodePath("../Camrig/Camera3D")
-mouse_sensitivity = 0.1
 aim_distance = 200.0
 show_debug_info = true
 

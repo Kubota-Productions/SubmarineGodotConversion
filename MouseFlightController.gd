@@ -17,6 +17,8 @@ var frozen_direction: Vector3 = Vector3.FORWARD
 var is_mouse_aim_frozen: bool = false
 
 func _ready():
+		# Capture the mouse so it is hidden and relative mouse motion is used
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	if not aircraft:
 		push_error("MouseFlightController: No aircraft assigned!")
 	if not mouse_aim:
@@ -41,8 +43,8 @@ func _physics_process(delta):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		var mouse_x = event.relative.x * mouse_sensitivity
-		var mouse_y = -event.relative.y * mouse_sensitivity
+		var mouse_x = 1
+		var mouse_y = 1
 		mouse_x_global = mouse_x
 		mouse_y_global = mouse_y
 

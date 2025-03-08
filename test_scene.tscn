@@ -68,3 +68,10 @@ transform = Transform3D(-3.27835e-09, -0.075, 0, 0.075, -3.27835e-09, 0, 0, 0, 0
 
 [node name="pillholder2" parent="." instance=ExtResource("5_2nij2")]
 transform = Transform3D(0.0649519, 1.92296e-16, 0.0375, -2.22045e-16, 0.075, 0, -0.0375, -1.11022e-16, 0.0649519, -17.4998, -2.00401, -4.07904)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90874, 3.4493, -6.54321)
+layers = 65
+use_collision = true
+collision_layer = 65
+size = Vector3(6.11121, 15.1023, 1)

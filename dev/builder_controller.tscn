@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://be8wynol64aqq"]
+[gd_scene load_steps=8 format=3 uid="uid://be8wynol64aqq"]
 
 [ext_resource type="Script" uid="uid://clk6e6nqdk10c" path="res://dev/essential/builder_controller.gd" id="1_f0s80"]
 [ext_resource type="PackedScene" uid="uid://qr6wnt3jpv4t" path="res://dev/essential/builder_point.tscn" id="2_24qqb"]
@@ -9,15 +9,18 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_umi83"]
 radius = 1.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_7qjh8"]
+radius = 0.840994
+
 [node name="BuilderController" type="CharacterBody3D"]
-collision_layer = 0
-collision_mask = 64
+collision_mask = 81
 wall_min_slide_angle = 0.0
 script = ExtResource("1_f0s80")
 inventory = Array[ExtResource("2_862bj")]([ExtResource("3_7qjh8")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_umi83")
+debug_fill = false
 
 [node name="CameraPivot" type="Node3D" parent="."]
 
@@ -46,3 +49,6 @@ expand_mode = 2
 
 [node name="hands" parent="CameraPivot/CameraRotation" instance=ExtResource("5_7qjh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -0.298)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7qjh8")

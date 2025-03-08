@@ -47,7 +47,7 @@ curve = SubResource("Curve_474vp")
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
 aggressive_turn_angle = 90.0
-controller = NodePath("Submarinecamerarig/Mouseaim")
+controller = NodePath("Submarinecamerarig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="submarine"]
 transform = Transform3D(1, 0, 0, 0, 0.539462, -0.84201, 0, 0.84201, 0.539462, 0, 0, 0)

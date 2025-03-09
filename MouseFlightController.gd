@@ -61,8 +61,10 @@ func rotate_rig(delta):
 		mouse_aim.look_at(mouse_aim.global_transform.origin + frozen_direction, Vector3.UP)
 
 	# Get mouse movement
-	var mouse_x = mouse_x_global
-	var mouse_y = mouse_y_global
+	var mouse_x = Input.get_axis("mouse_left", "mouse_right") * mouse_sensitivity
+	var mouse_y = -Input.get_axis("mouse_up", "mouse_down") * mouse_sensitivity
+	#var mouse_x = mouse_x_global
+	#var mouse_y = mouse_y_global
 
 	# Rotate mouse aim target
 	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y))
@@ -72,7 +74,7 @@ func rotate_rig(delta):
 	var up_vec = camera_rig.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP
 
 	# Smoothly rotate camera rig towards mouse aim, using the computed aim position
-	var target_rotation = camera_rig.global_transform.looking_at(MouseAimPos(), up_vec)
+	var target_rotation = camera_rig.global_transform.looking_at(mouse_aim.global_transform.origin, up_vec)
 	camera_rig.global_transform.basis = damp(camera_rig.global_transform.basis, target_rotation.basis, cam_smooth_speed, delta)
 
 func get_frozen_mouse_aim_pos() -> Vector3:
@@ -86,8 +88,6 @@ func update_camera_pos():
 
 # Frame-rate independent damping function
 func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
-	a = a.orthonormalized()
-	b = b.orthonormalized()
 	return a.slerp(b, 1 - exp(-lambda * dt))
 
 func _draw():

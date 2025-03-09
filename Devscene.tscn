@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=13 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="2_kw7hd"]
+[ext_resource type="PackedScene" uid="uid://b67n7nwr2o6nv" path="res://models/submarine1.glb" id="3_ugqrj"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 [ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="6_ugqrj"]
 
@@ -53,9 +54,6 @@ controller = NodePath("Submarinecamerarig")
 transform = Transform3D(1, 0, 0, 0, 0.539462, -0.84201, 0, 0.84201, 0.539462, 0, 0, 0)
 shape = SubResource("SphereShape3D_i3r77")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="submarine"]
-use_collision = true
-
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 script = ExtResource("2_kw7hd")
 aircraft = NodePath("..")
@@ -72,6 +70,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368161, 0.624111)
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
+
+[node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -0.350746)
 
 [node name="SKY" type="Node3D" parent="."]
 

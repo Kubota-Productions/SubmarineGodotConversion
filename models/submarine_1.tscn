@@ -7,6 +7,6 @@
 [node name="Cylinder" parent="." index="9"]
 transform = Transform3D(-0.0350995, -1.55929e-08, 0.0152469, -0.0152469, -1.45657e-08, -0.0350995, 1.3464e-08, -0.0571441, 4.78625e-09, 0, 0.357687, -0.969383)
 
-[node name="AnimationPlayer" parent="." index="15"]
+[node name="AnimationPlayer" parent="." index="14"]
 autoplay = "CylinderAction"
 speed_scale = 2.06

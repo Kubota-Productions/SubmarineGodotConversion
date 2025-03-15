@@ -11,7 +11,8 @@
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_i3r77"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ugqrj"]
+points = PackedVector3Array(-0.10133, -3.67295, -0.607589, 0.162386, -0.322652, 0.800674, -0.188831, -0.323969, 0.796054, -0.282683, 1.9346, -2.93512, 1.28772, 0.449976, -1.0486, -1.31437, 0.543126, -0.491172, 0.164814, 1.73837, 0.469102, 0.599272, 1.51178, -2.88638, -0.477907, -3.17298, -1.32712, 0.637201, -2.98726, -0.770077, -0.360658, -3.19479, 0.0805427, -0.675139, 0.721257, -2.70337, 0.667218, -1.10486, 0.482964, -0.803138, 1.60687, -0.0832813, 0.860145, 1.50765, -0.0878582, 0.665549, 0.761743, -2.74601, 0.331533, -3.26613, 0.073242, 0.343957, 2.01098, -0.78064, -1.31437, 0.449976, -1.0486, 0.397547, -2.98794, -1.29505, -0.53354, -0.330748, 0.685304, 1.28772, 0.449976, -0.491172, -0.450634, 1.42365, 0.613262, 0.505719, 1.31287, 0.5957, -0.880012, 1.40302, -2.00189, -0.369208, 1.99788, -0.781867, 0.603771, 1.79422, -2.19423, -0.616307, -1.45283, 0.501833, 0.0737574, -1.72516, 0.614173, -0.516133, -3.02891, -0.294382, 0.826897, -1.60604, -0.124428, -0.621218, 1.23417, -2.87229)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uw4vv"]
 
@@ -54,9 +55,12 @@ force_mult = 100.0
 aggressive_turn_angle = 90.0
 controller = NodePath("Submarinecamerarig")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="submarine"]
-transform = Transform3D(1, 0, 0, 0, 0.539462, -0.84201, 0, 0.84201, 0.539462, 0, 0, 0)
-shape = SubResource("SphereShape3D_i3r77")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]
+transform = Transform3D(0.345, 0, 0, 0, 0.345, 0, 0, 0, 0.345, 0, 0, 0.198901)
+shape = SubResource("ConvexPolygonShape3D_ugqrj")
+
+[node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0.164758)
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 script = ExtResource("2_kw7hd")
@@ -74,9 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0764463, -0.815397)
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
-
-[node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.22278)
 
 [node name="SKY" type="Node3D" parent="."]
 

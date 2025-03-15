@@ -48,6 +48,7 @@ continuous_cd = true
 linear_damp = 3.5
 script = ExtResource("1_bl0r7")
 curve = SubResource("Curve_474vp")
+max_thrust = 2.0
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
 aggressive_turn_angle = 90.0
@@ -67,7 +68,7 @@ mouse_sensitivity = 0.1
 aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.368161, 0.624111)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0764463, -0.815397)
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
 
@@ -146,7 +147,7 @@ transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15,
 transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -1.99955, -22.0754)
 
 [node name="pillholder3" parent="ENV" instance=ExtResource("6_ugqrj")]
-transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -6.15437, -1.99955, -18.0754)
+transform = Transform3D(0.15, 0, 6.19659e-16, 0, 0.15, 0, -6.19659e-16, 0, 0.15, -10.1544, -1.99955, -18.0754)
 
 [node name="Platform" type="Node3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)

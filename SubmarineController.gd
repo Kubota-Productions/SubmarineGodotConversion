@@ -17,7 +17,7 @@ var roll: float = 0.0
 var engine_toggle: bool = false 
 var previous_speed: float = 0.0 
 var current_thrust: float = 0.0 
-var move_direction: Vector3 
+var move_direction: Vector3 = Vector3.ZERO
 
 func _process(delta):
 	## Get input for movement
@@ -27,14 +27,17 @@ func _process(delta):
 	## Engine toggle
 	if Input.is_action_just_pressed("toggle_thrust"):
 		engine_toggle = !engine_toggle 
+		if not engine_toggle:
+			current_thrust = 0.0  ## Ensure thrust is reset when toggling off
 	
 	## Adjust speed based on engine state
 	if engine_toggle:
-		change_speed(thrust, delta)
 		if Input.is_action_pressed("speed_boost"):
 			change_speed(max_thrust, delta)
+		else:
+			change_speed(thrust, delta)
 	else:
-		change_speed(0.0, delta)
+		current_thrust = 0.0
 
 	## Auto-turn behavior
 	var auto_yaw = 0.0
@@ -48,8 +51,12 @@ func _process(delta):
 	pitch = auto_pitch
 	roll = auto_roll if not Input.is_action_pressed("manual_roll") else horizontal_movement
 	
-	## Ensure submarine moves forward when thrust is toggled
-	move_direction = (transform.basis * Vector3(0, vertical_movement, 1)).normalized() * current_thrust * force_mult
+	## Ensure submarine moves in all directions properly only when input is given
+	move_direction = Vector3.ZERO
+	if horizontal_movement != 0.0 or vertical_movement != 0.0:
+		move_direction = (transform.basis * Vector3(horizontal_movement, vertical_movement, 0)).normalized() * force_mult
+	if engine_toggle:
+		move_direction += transform.basis.z * current_thrust * force_mult
 
 func change_speed(speed: float, delta: float):
 	if !is_equal_approx(previous_speed, speed):

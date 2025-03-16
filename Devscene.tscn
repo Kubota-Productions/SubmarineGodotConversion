@@ -55,11 +55,11 @@ aggressive_turn_angle = 90.0
 controller = NodePath("Submarinecamerarig")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]
-transform = Transform3D(-0.345, 0, -3.01609e-08, 0, 0.345, 0, 3.01609e-08, 0, -0.345, -1.49244e-09, 0, -0.261683)
+transform = Transform3D(0.345, 0, 6.03217e-08, 0, 0.345, 0, -6.03217e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
 shape = SubResource("ConvexPolygonShape3D_ugqrj")
 
 [node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
-transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 1.49244e-09, 0, -0.22754)
+transform = Transform3D(1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -2.98488e-09, 0, 0.120562)
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 script = ExtResource("2_kw7hd")

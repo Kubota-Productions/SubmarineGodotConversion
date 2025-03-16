@@ -44,8 +44,12 @@ func _process(delta):
 	var auto_pitch = 0.0
 	var auto_roll = 0.0
 
+	print("test 0")
+	print(controller)
+
 	if controller:
 		run_autopilot(controller.MouseAimPos(), auto_yaw, auto_pitch, auto_roll)
+
 
 	yaw = auto_yaw
 	pitch = auto_pitch

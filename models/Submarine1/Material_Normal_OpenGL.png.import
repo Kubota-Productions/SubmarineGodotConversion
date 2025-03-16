@@ -3,11 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fxulc3bt0x7s"
-valid=false
+path="res://.godot/imported/Material_Normal_OpenGL.png-fd79b786c3e11bcee3525f00276d99d9.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://models/Submarine1/Material_Normal_OpenGL.png"
+dest_files=["res://.godot/imported/Material_Normal_OpenGL.png-fd79b786c3e11bcee3525f00276d99d9.ctex"]
 
 [params]
 

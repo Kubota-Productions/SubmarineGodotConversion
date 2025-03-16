@@ -19,7 +19,12 @@ var previous_speed: float = 0.0
 var current_thrust: float = 0.0 
 var move_direction: Vector3 = Vector3.ZERO
 
+var auto_yaw = 0.0
+var auto_pitch = 0.0
+var auto_roll = 0.0
+
 func _process(delta):
+	print(get_tree().get_root())
 	## Get input for movement
 	var vertical_movement = Input.get_axis("Backward", "Forward") ## Now controls vertical movement
 	var horizontal_movement = Input.get_axis("Right", "Left")
@@ -40,10 +45,10 @@ func _process(delta):
 		current_thrust = 0.0
 
 	## Auto-turn behavior
-	var auto_yaw = 0.0
-	var auto_pitch = 0.0
-	var auto_roll = 0.0
-
+	auto_yaw = 0.0
+	auto_pitch = 0.0
+	auto_roll = 0.0
+	
 	if controller:
 		run_autopilot(controller.MouseAimPos(), auto_yaw, auto_pitch, auto_roll)
 
@@ -70,14 +75,14 @@ func run_autopilot(fly_target: Vector3, out_yaw: float, out_pitch: float, out_ro
 	var local_fly_target = global_transform.basis.inverse() * (fly_target - global_position).normalized() * sensitivity
 	var angle_off_target = rad_to_deg(acos(Vector3.FORWARD.dot((fly_target - global_position).normalized())))
 
-	out_yaw = clamp(local_fly_target.x, -1.0, 1.0)
-	out_pitch = -clamp(local_fly_target.y, -1.0, 1.0)
+	auto_yaw = clamp(local_fly_target.x, -1.0, 1.0)
+	auto_pitch = -clamp(local_fly_target.y, -1.0, 1.0)
 
 	var aggressive_roll = clamp(local_fly_target.x, -1.0, 1.0)
 	var wings_level_roll = transform.basis.x.y
 	var wings_level_influence = clamp(angle_off_target / aggressive_turn_angle, 0.0, 1.0)
 
-	out_roll = lerp(wings_level_roll, aggressive_roll, wings_level_influence)
+	auto_roll = lerp(wings_level_roll, aggressive_roll, wings_level_influence)
 
 func _physics_process(delta):
 	## Apply movement forces based on thrust

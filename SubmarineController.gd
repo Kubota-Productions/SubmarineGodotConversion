@@ -54,7 +54,7 @@ func _process(delta):
 	## Ensure submarine moves in all directions properly only when input is given
 	move_direction = Vector3.ZERO
 	if horizontal_movement != 0.0 or vertical_movement != 0.0:
-		move_direction = (transform.basis * Vector3(horizontal_movement, vertical_movement, 0)).normalized() * force_mult
+		move_direction = (transform.basis * Vector3(horizontal_movement, vertical_movement, 0)).normalized() * thrust * force_mult
 	if engine_toggle:
 		move_direction += transform.basis.z * current_thrust * force_mult
 

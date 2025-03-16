@@ -22,7 +22,7 @@ var move_direction: Vector3 = Vector3.ZERO
 func _process(delta):
 	## Get input for movement
 	var vertical_movement = Input.get_axis("Backward", "Forward") ## Now controls vertical movement
-	var horizontal_movement = Input.get_axis("Left", "Right")
+	var horizontal_movement = Input.get_axis("Right", "Left")
 	
 	## Engine toggle
 	if Input.is_action_just_pressed("toggle_thrust"):

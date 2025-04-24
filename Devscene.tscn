@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=15 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
@@ -9,10 +9,6 @@
 [ext_resource type="Script" uid="uid://cax2uypit4r7e" path="res://UI/Hud.gd" id="7_lnxbq"]
 [ext_resource type="Texture2D" uid="uid://c6jh60n6cogcu" path="res://UI/Crosshair.png" id="7_wqoum"]
 [ext_resource type="Texture2D" uid="uid://8b3yvorrevvg" path="res://UI/MouseCrosshair.png" id="8_lnxbq"]
-
-[sub_resource type="Curve" id="Curve_474vp"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ugqrj"]
 points = PackedVector3Array(-0.10133, -3.67295, -0.607589, 0.162386, -0.322652, 0.800674, -0.188831, -0.323969, 0.796054, -0.282683, 1.9346, -2.93512, 1.28772, 0.449976, -1.0486, -1.31437, 0.543126, -0.491172, 0.164814, 1.73837, 0.469102, 0.599272, 1.51178, -2.88638, -0.477907, -3.17298, -1.32712, 0.637201, -2.98726, -0.770077, -0.360658, -3.19479, 0.0805427, -0.675139, 0.721257, -2.70337, 0.667218, -1.10486, 0.482964, -0.803138, 1.60687, -0.0832813, 0.860145, 1.50765, -0.0878582, 0.665549, 0.761743, -2.74601, 0.331533, -3.26613, 0.073242, 0.343957, 2.01098, -0.78064, -1.31437, 0.449976, -1.0486, 0.397547, -2.98794, -1.29505, -0.53354, -0.330748, 0.685304, 1.28772, 0.449976, -0.491172, -0.450634, 1.42365, 0.613262, 0.505719, 1.31287, 0.5957, -0.880012, 1.40302, -2.00189, -0.369208, 1.99788, -0.781867, 0.603771, 1.79422, -2.19423, -0.616307, -1.45283, 0.501833, 0.0737574, -1.72516, 0.614173, -0.516133, -3.02891, -0.294382, 0.826897, -1.60604, -0.124428, -0.621218, 1.23417, -2.87229)
@@ -51,11 +47,8 @@ freeze_mode = 1
 continuous_cd = true
 linear_damp = 3.5
 script = ExtResource("1_bl0r7")
-curve = SubResource("Curve_474vp")
-max_thrust = 2.0
-force_mult = 0.1
-aggressive_turn_angle = 90.0
 controller = NodePath("Submarinecamerarig")
+force_mult = 1.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]
 transform = Transform3D(0.345, 0, 6.03217e-08, 0, 0.345, 0, -6.03217e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
@@ -70,7 +63,7 @@ aircraft = NodePath("../submarine1")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
-mouse_sensitivity = 0.001
+use_fixed = false
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
 
@@ -78,6 +71,7 @@ mouse_sensitivity = 0.001
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.20023)
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
+fov = 90.0
 
 [node name="SKY" type="Node3D" parent="."]
 

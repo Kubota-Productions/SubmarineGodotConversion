@@ -70,16 +70,14 @@ aircraft = NodePath("../submarine1")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
-use_fixed = false
-cam_smooth_speed = 1.0
-aim_distance = 5.0
+mouse_sensitivity = 0.001
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.20023)
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
 
 [node name="SKY" type="Node3D" parent="."]
 
@@ -173,10 +171,10 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_lnxbq")
 mouse_flight = NodePath("../submarine/Submarinecamerarig")
-boresight = NodePath("Boresight")
-mouse_pos = NodePath("MouseAim")
+boresight = NodePath("boresight")
+mouse_pos = NodePath("mousepos")
 
-[node name="Boresight" type="TextureRect" parent="Hud"]
+[node name="boresight" type="Control" parent="Hud"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -189,11 +187,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_wqoum")
-stretch_mode = 3
 
-[node name="MouseAim" type="TextureRect" parent="Hud"]
+[node name="TextureRect" type="TextureRect" parent="Hud/boresight"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -206,6 +201,35 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = ExtResource("8_lnxbq")
+stretch_mode = 3
+
+[node name="mousepos" type="Control" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Hud/mousepos"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_wqoum")
 stretch_mode = 3

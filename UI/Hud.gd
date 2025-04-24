@@ -1,5 +1,5 @@
 # Hud.gd
-extends Node
+extends Control
 
 @export var mouse_flight: Node = null
 @export var boresight: Control = null
@@ -25,6 +25,7 @@ func _process(_delta: float) -> void:
 func update_graphics() -> void:
 	if boresight != null:
 		var screen_pos = player_cam.unproject_position(mouse_flight.boresight_pos)
+		print("MouseAimPos screen position: ", screen_pos)
 		boresight.visible = screen_pos.z > 1.0
 		if boresight.visible:
 			boresight.position = screen_pos.xy
@@ -37,3 +38,4 @@ func update_graphics() -> void:
 
 func set_reference_mouse_flight(controller: Node) -> void:
 	mouse_flight = controller
+	

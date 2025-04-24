@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=16 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dj47o4mxq2pv1" path="res://models/submarine_1.tscn" id="3_ugqrj"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 [ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="6_ugqrj"]
+[ext_resource type="Script" uid="uid://cax2uypit4r7e" path="res://UI/Hud.gd" id="7_lnxbq"]
+[ext_resource type="Texture2D" uid="uid://c6jh60n6cogcu" path="res://UI/Crosshair.png" id="7_wqoum"]
+[ext_resource type="Texture2D" uid="uid://8b3yvorrevvg" path="res://UI/MouseCrosshair.png" id="8_lnxbq"]
 
 [sub_resource type="Curve" id="Curve_474vp"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -50,7 +53,7 @@ linear_damp = 3.5
 script = ExtResource("1_bl0r7")
 curve = SubResource("Curve_474vp")
 max_thrust = 2.0
-force_mult = 0.001
+force_mult = 0.1
 aggressive_turn_angle = 90.0
 controller = NodePath("Submarinecamerarig")
 
@@ -63,11 +66,12 @@ transform = Transform3D(1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -2.98488
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 script = ExtResource("2_kw7hd")
-aircraft = NodePath("..")
+aircraft = NodePath("../submarine1")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
-mouse_sensitivity = 0.1
+use_fixed = false
+cam_smooth_speed = 1.0
 aim_distance = 5.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
@@ -158,3 +162,50 @@ collision_layer = 65
 collision_mask = 0
 size = Vector3(300, 1, 300)
 material = SubResource("StandardMaterial3D_wqoum")
+
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_lnxbq")
+mouse_flight = NodePath("../submarine/Submarinecamerarig")
+boresight = NodePath("Boresight")
+mouse_pos = NodePath("MouseAim")
+
+[node name="Boresight" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_wqoum")
+stretch_mode = 3
+
+[node name="MouseAim" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_lnxbq")
+stretch_mode = 3

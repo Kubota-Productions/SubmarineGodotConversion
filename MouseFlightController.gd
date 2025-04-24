@@ -10,8 +10,8 @@ class_name MouseFlightController extends Node3D
 @export var mouse_sensitivity: float = 3.0
 @export var aim_distance: float = 500.0
 @export var show_debug_info: bool = false
-var mouse_x_global
-var mouse_y_global
+var mouse_x_global := 0.0
+var mouse_y_global := 0.0
 
 var frozen_direction: Vector3 = Vector3.FORWARD
 var is_mouse_aim_frozen: bool = false
@@ -64,7 +64,6 @@ func rotate_rig(delta):
 	var mouse_x = mouse_x_global
 	var mouse_y = mouse_y_global
 
-	# Rotate mouse aim target
 	mouse_aim.rotate_object_local(Vector3.RIGHT, deg_to_rad(mouse_y))
 	mouse_aim.rotate_object_local(Vector3.UP, deg_to_rad(mouse_x))
 

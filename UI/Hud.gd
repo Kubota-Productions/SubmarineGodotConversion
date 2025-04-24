@@ -4,8 +4,7 @@ extends Control
 @export var mouse_flight: Node = null
 @export var boresight: Control = null
 @export var mouse_pos: Control = null
-
-var player_cam: Camera3D = null
+@export var player_cam: Camera3D = null
 
 func _ready():
 	if mouse_flight == null:
@@ -13,7 +12,7 @@ func _ready():
 		return
 
 	player_cam = mouse_flight.get_node_or_null("Camera3D")
-	if player_cam == null:
+	if player_cam != null:
 		push_error("%s: Hud - No camera found on assigned Mouse Flight Controller!" % name)
 
 func _process(_delta: float) -> void:

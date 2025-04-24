@@ -35,9 +35,11 @@ func _ready():
 	# Ensure we're not parented to anything to avoid inherited rotations
 	if get_parent():
 		var original_parent = get_parent()
+		var original_transform = original_parent.global_transform
 		original_parent.remove_child(self)
-		get_tree().root.add_child(self)
-		global_transform = original_parent.global_transform
+		get_parent().call_deferred("remove_child", self)
+		get_tree().root.call_deferred("add_child", self)
+		global_transform = original_transform
 
 func _process(delta):
 	if not use_fixed:
@@ -55,16 +57,14 @@ func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		# Rotate the aim target using camera's axes (like Unity version)
 		var mouse_delta = event.relative * mouse_sensitivity * 0.01
-		mouse_aim.rotate(cam.global_transform.basis.x, -mouse_delta.y)
-		mouse_aim.rotate(cam.global_transform.basis.y, -mouse_delta.x)
+		mouse_aim.rotate(cam.global_transform.basis.x.normalized(), -mouse_delta.y)
+		mouse_aim.rotate(cam.global_transform.basis.y.normalized(), -mouse_delta.x)
 		
 		# Clamp rotation to prevent flipping
-		var forward = mouse_aim.global_transform.basis.z
+		var forward = mouse_aim.global_transform.basis.z.normalized()
 		if abs(forward.y) > 0.98:  # Nearly straight up/down
 			var flat_forward = Vector3(forward.x, 0, forward.z).normalized()
-			mouse_aim.global_transform.basis = mouse_aim.global_transform.basis.orthonormalized()
-			mouse_aim.global_transform.basis.z = flat_forward
-			mouse_aim.global_transform.basis = mouse_aim.global_transform.basis.orthonormalized()
+			mouse_aim.global_transform.basis = Basis.looking_at(flat_forward, Vector3.UP).orthonormalized()
 
 func rotate_rig(delta):
 	if not mouse_aim or not camera_rig:
@@ -73,18 +73,18 @@ func rotate_rig(delta):
 	# Right mouse button to freeze/unfreeze aim direction
 	if Input.is_action_just_pressed("right_click"):
 		is_mouse_aim_frozen = true
-		frozen_direction = mouse_aim.global_transform.basis.z
+		frozen_direction = mouse_aim.global_transform.basis.z.normalized()
 	elif Input.is_action_just_released("right_click"):
 		is_mouse_aim_frozen = false
-		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP)
+		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
 	# Determine up vector based on pitch angle (like Unity version)
 	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP
 
 	# Smoothly rotate camera rig towards mouse aim
-	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z, up_vec)
+	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()
 	camera_rig.global_transform.basis = damp(
-		camera_rig.global_transform.basis,
+		camera_rig.global_transform.basis.orthonormalized(),
 		target_basis,
 		cam_smooth_speed,
 		delta
@@ -95,7 +95,7 @@ func update_camera_pos():
 		global_transform.origin = aircraft.global_transform.origin
 
 func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
-	return a.slerp(b, 1 - exp(-lambda * dt))
+	return a.orthonormalized().slerp(b.orthonormalized(), 1 - exp(-lambda * dt))
 
 ## Debug functions
 func update_debug_draw():

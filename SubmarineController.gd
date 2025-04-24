@@ -3,8 +3,8 @@ extends RigidBody3D
 
 @export_category("Control Variables")
 @export var curve : Curve ## Unused for now
-@export var thrust : float = 0.10 ## default "engine on" speed
-@export var max_thrust : float  = 0.30 ## The "boost speed"
+@export var thrust : float = 100 ## default "engine on" speed
+@export var max_thrust : float  = 30000 ## The "boost speed"
 @export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0) 
 @export var force_mult: float = 1000.0 
 @export var sensitivity: float = 5.0 
@@ -24,7 +24,6 @@ var auto_pitch = 0.0
 var auto_roll = 0.0
 
 func _process(delta):
-	print(get_tree().get_root())
 	## Get input for movement
 	var vertical_movement = Input.get_axis("Backward", "Forward") ## Now controls vertical movement
 	var horizontal_movement = Input.get_axis("Right", "Left")
@@ -89,5 +88,3 @@ func _physics_process(delta):
 	apply_central_force(move_direction)
 	apply_torque(Vector3(turn_torque.x * pitch, turn_torque.y * yaw, -turn_torque.z * roll) * force_mult)
 	
-	print("current pos = " + str(position))
-	print("vel = " + str(linear_velocity))

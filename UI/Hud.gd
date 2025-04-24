@@ -24,17 +24,15 @@ func _process(_delta: float) -> void:
 
 func update_graphics() -> void:
 	if boresight != null:
-		var screen_pos = player_cam.unproject_position(mouse_flight.boresight_pos)
-		print("MouseAimPos screen position: ", screen_pos)
-		boresight.visible = screen_pos.z > 1.0
-		if boresight.visible:
-			boresight.position = screen_pos.xy
+		var boresight_screen: Vector2 = player_cam.unproject_position(mouse_flight.BoresightPos())
+		boresight.visible = true
+		boresight.position = boresight_screen
 
 	if mouse_pos != null:
-		var screen_pos = player_cam.unproject_position(mouse_flight.mouse_aim_pos)
-		mouse_pos.visible = screen_pos.z > 1.0
-		if mouse_pos.visible:
-			mouse_pos.position = screen_pos.xy
+		var mouse_screen: Vector2 = player_cam.unproject_position(mouse_flight.MouseAimPos())
+		mouse_pos.visible = true
+		mouse_pos.position = mouse_screen
+
 
 func set_reference_mouse_flight(controller: Node) -> void:
 	mouse_flight = controller

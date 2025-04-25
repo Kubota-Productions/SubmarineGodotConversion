@@ -100,11 +100,7 @@ func _physics_process(delta):
 	apply_central_force(move_direction)
 	
 	# Apply torque (without delta multiplication for more responsive turning)
-	apply_torque(transform.basis * Vector3(
-		turn_torque.x * pitch,
-		turn_torque.y * yaw,
-		-turn_torque.z * roll
-	) * force_mult)
+	apply_torque(transform.basis * Vector3(turn_torque.y * pitch,turn_torque.x * yaw,turn_torque.z * roll) * force_mult * delta)
 
 # Add this function
 func _draw_debug():

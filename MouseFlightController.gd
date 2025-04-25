@@ -43,12 +43,8 @@ func _ready():
 
 func _process(delta):
 	# fuck this why ! 
-	if not use_fixed :
-		update_camera_pos()
-		
-func update_camera_pos():
-	if aircraft:
-		global_transform.origin = aircraft.global_transform.origin
+	#if not use_fixed :
+		#update_camera_pos()
 
 	rotate_rig(delta)
 	
@@ -56,6 +52,7 @@ func update_camera_pos():
 		update_debug_draw()
 
 func _physics_process(delta):
+	printt(self,self.global_position)
 	if use_fixed:
 		update_camera_pos(delta)
 
@@ -74,14 +71,15 @@ func _input(event: InputEvent):
 
 func rotate_rig(delta):
 	if not mouse_aim or not camera_rig:
+		return
 
-		# Right mouse button to freeze/unfreeze aim direction
-		if Input.is_action_just_pressed("right_click"):
-			is_mouse_aim_frozen = true
-			frozen_direction = mouse_aim.global_transform.basis.z.normalized()
-		elif Input.is_action_just_released("right_click"):
-			is_mouse_aim_frozen = false
-			mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
+	# Right mouse button to freeze/unfreeze aim direction
+	if Input.is_action_just_pressed("right_click"):
+		is_mouse_aim_frozen = true
+		frozen_direction = mouse_aim.global_transform.basis.z.normalized()
+	elif Input.is_action_just_released("right_click"):
+		is_mouse_aim_frozen = false
+		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
 	# Determine up vector based on pitch angle (like Unity version)
 	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP

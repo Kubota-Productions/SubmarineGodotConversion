@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://cw03a26xumpfe"]
 
-[ext_resource type="Script" path="res://rigid_body_3d.gd" id="1_ajcqr"]
-[ext_resource type="Texture2D" uid="uid://cbhtlt6456l0u" path="res://icon.svg" id="1_oihhp"]
-[ext_resource type="Script" path="res://camera_3d.gd" id="2_s7g3x"]
-[ext_resource type="Script" path="res://sub_rotation.gd" id="3_1pbys"]
+[ext_resource type="Script" uid="uid://byxd3xomwl87g" path="res://rigid_body_3d.gd" id="1_ajcqr"]
+[ext_resource type="Texture2D" uid="uid://duuat0a2eghb0" path="res://icon.svg" id="1_oihhp"]
+[ext_resource type="Script" uid="uid://5nih6esiab7f" path="res://camera_3d.gd" id="2_s7g3x"]
+[ext_resource type="Script" uid="uid://csuqmyv3jcw47" path="res://sub_rotation.gd" id="3_1pbys"]
 [ext_resource type="PackedScene" uid="uid://diblcfxb42xfr" path="res://Coins.tscn" id="5_ughdv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lanlr"]

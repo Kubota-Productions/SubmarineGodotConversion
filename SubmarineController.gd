@@ -12,7 +12,7 @@ var debug_lines: Array[MeshInstance3D] = []
 @export var max_thrust: float = 30.0 ## Boost thrust
 @export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0) ## Pitch, Yaw, Roll torque
 @export var force_mult: float = 1.0 ## Force multiplier (reduced from 10.0)
-
+@export var node: Node3D
 ## Autopilot
 @export var sensitivity: float = 0.1 ## Autopilot sensitivity
 @export var aggressive_turn_angle: float = 1.0 ## Angle for aggressive turns
@@ -53,7 +53,7 @@ func _process(delta):
 	roll = 0.0
 	
 	if controller:
-		run_autopilot(controller.get_mouse_aim_pos())
+		run_autopilot(controller.get_mouse_aim_pos(),delta)
 	
 	# Apply manual controls if pressed
 	if Input.is_action_pressed("manual_roll"):
@@ -69,22 +69,28 @@ func change_speed(speed: float, delta: float):
 	if is_zero_approx(current_thrust):
 		current_thrust = 0.0
 
-func run_autopilot(fly_target: Vector3):
-	return
-	# Convert target to local space (matches Unity's InverseTransformPoint)
-	var local_fly_target = global_transform.basis.inverse() * (fly_target - global_position).normalized() * sensitivity
-	var angle_off_target = rad_to_deg(acos(Vector3.FORWARD.dot((fly_target - global_position).normalized())))
+func run_autopilot(fly_target,delta):
+
+
+	# Direction to the target in world space
+	var to_target = (fly_target - global_transform.origin).normalized()
 	
-	# Calculate yaw and pitch to face target
+	# Convert direction to local space
+	var local_fly_target = global_transform.basis.inverse() * to_target * sensitivity
+	
+	# Angle off target (degrees between forward vector and target direction)
+	var angle_off_target = rad_to_deg(acos(Vector3.FORWARD.dot(to_target)))
+	
+	# Calculate yaw (left/right) and pitch (up/down)
 	yaw = clamp(local_fly_target.x, -1.0, 1.0)
 	pitch = -clamp(local_fly_target.y, -1.0, 1.0)
 	
-	# Calculate roll (mix between aggressive and level flight)
+	# Roll calculation (bank into the turn)
 	var aggressive_roll = clamp(local_fly_target.x, -1.0, 1.0)
-	var wings_level_roll = transform.basis.x.y
+	var wings_level_roll = transform.basis.x.y  # How tilted the wings are relative to world up (Y-axis)
 	var wings_level_influence = inverse_lerp(0.0, aggressive_turn_angle, angle_off_target)
-	
 	roll = lerp(wings_level_roll, aggressive_roll, wings_level_influence)
+
 
 func _physics_process(delta):
 		# ... (rest of your physics code)
@@ -102,7 +108,7 @@ func _physics_process(delta):
 
 # Add this function
 func _draw_debug():
-	print(self)
+	#print(self.transform)
 	# Clear old debug lines
 	for line in debug_lines:
 		line.queue_free()
@@ -110,9 +116,10 @@ func _draw_debug():
 	
 	# Create new debug lines
 	if controller:
-		_create_debug_line(global_position, global_position + global_transform.basis.z, Color.RED)
+		#_create_debug_line(global_position, global_transform.basis.z * -120, Color.RED)
 		_create_debug_line(global_position, controller.get_mouse_aim_pos(), Color.GREEN)
 		_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.BLUE)
+		_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.REBECCA_PURPLE)
 
 func _create_debug_line(from: Vector3, to: Vector3, color: Color):
 	var mesh_instance = MeshInstance3D.new()
@@ -123,10 +130,11 @@ func _create_debug_line(from: Vector3, to: Vector3, color: Color):
 	material.albedo_color = color
 	
 	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
-	immediate_mesh.surface_add_vertex(from)
+	immediate_mesh.surface_add_vertex(Vector3.ZERO)
 	immediate_mesh.surface_add_vertex(to)
 	immediate_mesh.surface_end()
 	
 	mesh_instance.mesh = immediate_mesh
 	add_child(mesh_instance)
 	debug_lines.append(mesh_instance)
+	mesh_instance.global_position = from

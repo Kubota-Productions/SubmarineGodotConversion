@@ -42,16 +42,19 @@ func _ready():
 		global_transform = original_transform
 
 func _process(delta):
-	if not use_fixed:
-		update_camera_pos()
+	# fuck this why ! 
+	#if not use_fixed :
+		#update_camera_pos()
+
 	rotate_rig(delta)
 	
 	if show_debug_info:
 		update_debug_draw()
 
 func _physics_process(delta):
+	printt(self,self.global_position)
 	if use_fixed:
-		update_camera_pos()
+		update_camera_pos(delta)
 
 func _input(event: InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -90,9 +93,9 @@ func rotate_rig(delta):
 		delta
 	)
 
-func update_camera_pos():
+func update_camera_pos(delta):
 	if aircraft:
-		global_transform.origin = aircraft.global_transform.origin
+		global_transform.origin = lerp(global_transform.origin , aircraft.global_transform.origin,delta)
 
 func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
 	return a.orthonormalized().slerp(b.orthonormalized(), 1 - exp(-lambda * dt))
@@ -153,6 +156,9 @@ func get_boresight_pos() -> Vector3:
 
 func get_mouse_aim_pos() -> Vector3:
 	if is_mouse_aim_frozen:
-		return mouse_aim.global_position + (frozen_direction * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
+		var x =mouse_aim.global_position + (frozen_direction * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
+		#print(x)
+		return  x
 	else:
-		return mouse_aim.global_position + (mouse_aim.global_transform.basis.z * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
+		var x =  mouse_aim.global_position + (mouse_aim.global_transform.basis.z * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
+		return x

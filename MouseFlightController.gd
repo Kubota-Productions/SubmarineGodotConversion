@@ -36,7 +36,6 @@ func _ready():
 	if get_parent():
 		var original_parent = get_parent()
 		var original_transform = original_parent.global_transform
-		original_parent.remove_child(self)
 		get_parent().call_deferred("remove_child", self)
 		get_tree().root.call_deferred("add_child", self)
 		global_transform = original_transform
@@ -52,7 +51,6 @@ func _process(delta):
 		update_debug_draw()
 
 func _physics_process(delta):
-	printt(self,self.global_position)
 	if use_fixed:
 		update_camera_pos(delta)
 

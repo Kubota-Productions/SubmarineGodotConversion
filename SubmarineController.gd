@@ -11,7 +11,7 @@ var debug_lines: Array[MeshInstance3D] = []
 @export var horizontal_thrust: float = 10.0 ## Left/right thrust
 @export var max_thrust: float = 30.0 ## Boost thrust
 @export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0) ## Pitch, Yaw, Roll torque
-@export var force_mult: float = 1.0 ## Force multiplier (reduced from 10.0)
+@export var force_mult: float = 1.0 ## Force multiplier 
 @export var node: Node3D
 ## Autopilot
 @export var sensitivity: float = 0.1 ## Autopilot sensitivity
@@ -21,7 +21,7 @@ var debug_lines: Array[MeshInstance3D] = []
 var pitch: float = 0.0
 var yaw: float = 0.0
 var roll: float = 0.0
-var engine_toggle: bool = false ## Start with engine on like Unity version
+var engine_toggle: bool = false 
 var current_thrust: float = 0.0
 var move_direction: Vector3 = Vector3.ZERO
 
@@ -100,11 +100,7 @@ func _physics_process(delta):
 	apply_central_force(move_direction)
 	
 	# Apply torque (without delta multiplication for more responsive turning)
-	apply_torque(transform.basis * Vector3(
-		turn_torque.x * pitch,
-		turn_torque.y * yaw,
-		-turn_torque.z * roll
-	) * force_mult)
+	apply_torque(transform.basis * Vector3(turn_torque.x * pitch,turn_torque.y * yaw,turn_torque.z * roll) * force_mult * delta)
 
 # Add this function
 func _draw_debug():
@@ -117,9 +113,9 @@ func _draw_debug():
 	# Create new debug lines
 	if controller:
 		#_create_debug_line(global_position, global_transform.basis.z * -120, Color.RED)
-		_create_debug_line(global_position, controller.get_mouse_aim_pos(), Color.GREEN)
-		_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.BLUE)
-		_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.REBECCA_PURPLE)
+		_create_debug_line(global_position, controller.get_mouse_aim_pos(), Color.WHITE)
+		#_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.BLUE)
+		#_create_debug_line(controller.global_position, controller.get_mouse_aim_pos(), Color.RED)
 
 func _create_debug_line(from: Vector3, to: Vector3, color: Color):
 	var mesh_instance = MeshInstance3D.new()

@@ -101,6 +101,7 @@ func _draw_debug():
 	debug_lines.clear()
 	
 	if controller:
+		print("MFC %s" % controller.get_mouse_aim_pos())
 		# Line to target (white)
 		_create_debug_line(global_position, controller.get_mouse_aim_pos(), Color.WHITE)
 		# Forward vector (blue)

@@ -104,15 +104,6 @@ func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
 ## Debug functions
 func update_debug_draw():
 	clear_debug_draw()
-	
-	if aircraft:
-		draw_sphere(get_boresight_pos(), Color.WHITE, 0.5)
-	
-	if mouse_aim:
-		draw_sphere(get_mouse_aim_pos(), Color.RED, 0.5)
-		draw_ray(mouse_aim.global_position, mouse_aim.global_position + mouse_aim.global_transform.basis.z * 5, Color.BLUE)
-		draw_ray(mouse_aim.global_position, mouse_aim.global_position + mouse_aim.global_transform.basis.y * 5, Color.GREEN)
-		draw_ray(mouse_aim.global_position, mouse_aim.global_position + mouse_aim.global_transform.basis.x * 5, Color.RED)
 
 func clear_debug_draw():
 	for obj in _debug_objects:
@@ -153,12 +144,22 @@ func draw_ray(from: Vector3, to: Vector3, color: Color):
 
 ## Position getters
 func get_boresight_pos() -> Vector3:
-	return (aircraft.global_transform.basis.z * aim_distance) + aircraft.global_position if aircraft else global_transform.basis.z * aim_distance
+	if aircraft:
+		return (aircraft.global_transform.basis.z * aim_distance) + aircraft.global_position
+	else: 
+		return global_transform.basis.z * aim_distance
 
 func get_mouse_aim_pos() -> Vector3:
+	var x: Vector3
 	if is_mouse_aim_frozen:
-		var x =mouse_aim.global_position + (frozen_direction * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
-		return  x
+		if mouse_aim:
+			x = mouse_aim.global_position + (frozen_direction * aim_distance) 
+		else:
+			x = global_position + (global_transform.basis.z * aim_distance)
 	else:
-		var x =  mouse_aim.global_position + (mouse_aim.global_transform.basis.z * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
-		return x
+		if mouse_aim:
+			x = mouse_aim.global_position + (mouse_aim.global_transform.basis.z * aim_distance)
+		else:
+			x = global_position + (global_transform.basis.z * aim_distance)
+			
+	return x

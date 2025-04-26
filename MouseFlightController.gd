@@ -155,7 +155,6 @@ func get_boresight_pos() -> Vector3:
 func get_mouse_aim_pos() -> Vector3:
 	if is_mouse_aim_frozen:
 		var x =mouse_aim.global_position + (frozen_direction * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)
-		#print(x)
 		return  x
 	else:
 		var x =  mouse_aim.global_position + (mouse_aim.global_transform.basis.z * aim_distance) if mouse_aim else global_position + (global_transform.basis.z * aim_distance)

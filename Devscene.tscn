@@ -41,6 +41,7 @@ texture_filter = 2
 [node name="SCENE" type="Node3D"]
 
 [node name="submarine" type="RigidBody3D" parent="." node_paths=PackedStringArray("controller")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mass = 100.0
 gravity_scale = 0.0
 can_sleep = false
@@ -51,30 +52,31 @@ script = ExtResource("1_bl0r7")
 controller = NodePath("Submarinecamerarig")
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
-sensitivity = 5.0
 aggressive_turn_angle = 90.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]
-transform = Transform3D(-0.345, 0, -9.04826e-08, 0, 0.345, 0, 9.04826e-08, 0, -0.345, -4.47732e-09, 0, 0.120562)
+transform = Transform3D(0.345, 0, 6.03218e-08, 0, 0.345, 0, -6.03218e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
 shape = SubResource("ConvexPolygonShape3D_ugqrj")
 
 [node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
-transform = Transform3D(-1, 0, -4.37115e-07, 0, 1, 0, 4.37115e-07, 0, -1, 4.47732e-09, 0, 0.154705)
+transform = Transform3D(1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -2.98488e-09, 0, 0.120562)
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
 script = ExtResource("2_kw7hd")
 aircraft = NodePath("../submarine1")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
+mouse_sensitivity = 1.0
+aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.87388)
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -9.34938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 2.13589, 5.28837)
 fov = 90.0
 
 [node name="SKY" type="Node3D" parent="."]
@@ -84,40 +86,16 @@ environment = SubResource("Environment_r0w22")
 
 [node name="ENV" type="Node3D" parent="."]
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(5.755, 0, 0, 0, 5.755, 0, 0, 0, 5.755, -28.218, -5.34402, -7.22604)
-radius = 1.99175
-
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1421, 2.22509, -459.884)
 radius = 1.99175
-
-[node name="CSGSphere3D3" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -74.4843)
-radius = 5.16001
-
-[node name="CSGSphere3D12" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.79659, 4.20594, -35.3349)
-radius = 5.16001
-
-[node name="CSGSphere3D13" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.7339, 4.20594, -35.3349)
-radius = 5.16001
 
 [node name="CSGSphere3D4" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -74.4843)
 radius = 5.16001
 
-[node name="CSGSphere3D5" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.3755, 4.20594, -36.1169)
-radius = 5.16001
-
 [node name="CSGSphere3D8" type="CSGSphere3D" parent="ENV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.5373, 4.20594, 14.2144)
-radius = 5.16001
-
-[node name="CSGSphere3D9" type="CSGSphere3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.7241, 4.20594, 14.2144)
 radius = 5.16001
 
 [node name="CSGSphere3D10" type="CSGSphere3D" parent="ENV"]
@@ -159,6 +137,57 @@ collision_mask = 0
 size = Vector3(300, 1, 300)
 material = SubResource("StandardMaterial3D_wqoum")
 
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3798, 13.5378, 2.73517)
+use_collision = true
+radius = 3.88037
+height = 34.0377
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866025, -3.78552e-08, -24.2692, 18.5899, -12.6617)
+use_collision = true
+radius = 3.88037
+height = 66.1915
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2469, 11.836, 2.73517)
+use_collision = true
+radius = 3.88037
+height = 30.6339
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2469, 18.7886, 21.3617)
+use_collision = true
+radius = 3.88037
+height = 44.5391
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0908, 26.6447, 21.3617)
+use_collision = true
+radius = 6.90771
+height = 60.2515
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9767, 26.6447, -33.9013)
+use_collision = true
+radius = 6.90771
+height = 60.2515
+metadata/_edit_group_ = true
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.31165, 20.5166, -21.5165)
+use_collision = true
+radius = 3.88037
+height = 47.9952
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="ENV"]
+transform = Transform3D(3.09086e-08, 0.707107, 0.707107, 1, -4.37114e-08, 0, 3.09086e-08, 0.707107, -0.707107, 9.97549, 15.4163, -16.8526)
+use_collision = true
+radius = 3.88037
+height = 43.8253
+
 [node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam")]
 layout_mode = 3
 anchors_preset = 15
@@ -169,8 +198,8 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("7_lnxbq")
 mouse_flight = NodePath("../submarine/Submarinecamerarig")
-boresight = NodePath("Boresight")
-mouse_pos = NodePath("Mouseaim")
+boresight = NodePath("Mouseaim")
+mouse_pos = NodePath("Boresight")
 player_cam = NodePath("../submarine/Submarinecamerarig/Camrig/Camera3D")
 
 [node name="Boresight" type="TextureRect" parent="Hud"]

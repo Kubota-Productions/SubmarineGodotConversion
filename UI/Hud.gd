@@ -37,13 +37,13 @@ func update_graphics(controller: Node) -> void:
 		var boresight_world_pos: Vector3 = controller.get_boresight_pos()
 		var boresight_screen_pos: Vector2 = player_cam.unproject_position(boresight_world_pos)
 		boresight.position = boresight_screen_pos
-		boresight.visible = boresight_world_pos.z > 1.0
+		
 	
 	if mouse_pos:
 		var mouse_aim_world_pos: Vector3 = controller.get_mouse_aim_pos()
 		var mouse_pos_screen_pos: Vector2 = player_cam.unproject_position(mouse_aim_world_pos)
 		mouse_pos.position = mouse_pos_screen_pos
-		mouse_pos.visible = mouse_aim_world_pos.z > 1.0
+		
 
 func set_reference_mouse_flight(controller: Node) -> void:
 	mouse_flight = controller

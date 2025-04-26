@@ -13,6 +13,7 @@ extends Node3D
 @export var mouse_sensitivity: float = 3.0
 @export var aim_distance: float = 500.0
 @export var show_debug_info: bool = false
+@export var position_follow_speed: float = 10.0 
 
 ## Runtime
 var frozen_direction: Vector3 = Vector3.FORWARD
@@ -93,7 +94,9 @@ func rotate_rig(delta):
 
 func update_camera_pos(delta):
 	if aircraft:
-		global_transform.origin = lerp(global_transform.origin , aircraft.global_transform.origin,delta)
+		global_transform.origin = global_transform.origin.lerp(
+			aircraft.global_transform.origin,
+			position_follow_speed * delta)
 
 func damp(a: Basis, b: Basis, lambda: float, dt: float) -> Basis:
 	return a.orthonormalized().slerp(b.orthonormalized(), 1 - exp(-lambda * dt))

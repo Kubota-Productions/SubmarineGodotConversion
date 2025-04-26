@@ -5,10 +5,10 @@ extends RigidBody3D
 @export var controller: MouseFlightController = null
 
 ## Physics
-@export var thrust: float = -10.0
+@export var thrust: float = -20.0
 @export var vertical_thrust: float = 10.0
 @export var horizontal_thrust: float = 10.0
-@export var max_thrust: float = -30.0
+@export var max_thrust: float = -60.0
 @export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0)
 @export var force_mult: float = 1.0
 

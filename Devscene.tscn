@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=16 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_bl0r7"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="2_kw7hd"]
+[ext_resource type="Script" uid="uid://gff0ncm05236" path="res://models/Submarineanimation.gd" id="3_ke40i"]
 [ext_resource type="PackedScene" uid="uid://dj47o4mxq2pv1" path="res://models/submarine_1.tscn" id="3_ugqrj"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 [ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="6_ugqrj"]
@@ -62,6 +63,7 @@ shape = SubResource("ConvexPolygonShape3D_ugqrj")
 
 [node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
 transform = Transform3D(1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -2.98488e-09, 0, 0.120562)
+script = ExtResource("3_ke40i")
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
@@ -217,6 +219,7 @@ offset_right = 32.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_lnxbq")
 stretch_mode = 3
 
@@ -233,5 +236,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("7_wqoum")
 stretch_mode = 3

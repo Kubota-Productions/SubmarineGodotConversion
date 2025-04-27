@@ -44,17 +44,14 @@ func _process(delta):
 	else:
 		change_speed(0.0, delta)
 	
-	yaw = 0.0
-	pitch = 0.0
-	roll = 0.0
-	
+
 	if controller:
 		run_autopilot(controller.get_mouse_aim_pos(), delta)
 	
 	if Input.is_action_pressed("manual_roll"):
 		roll = horizontal_movement
 	
-	move_direction = (Vector3.UP * vertical_thrust * vertical_movement * force_mult) + \
+	move_direction = (Vector3.DOWN * vertical_thrust * vertical_movement * force_mult) + \
 					(Vector3.RIGHT * horizontal_thrust * horizontal_movement * force_mult)
 
 func change_speed(speed: float, delta: float):
@@ -74,7 +71,7 @@ func run_autopilot(fly_target, delta):
 	
 	# Auto-leveling roll calculation (matches Unity version)
 	var aggressive_roll = clamp(local_fly_target.x, -1.0, 1.0)
-	var wings_level_roll = transform.basis.x.y  # Equivalent to transform.right.y in Unity
+	var wings_level_roll = global_transform.basis.y.x  # Equivalent to transform.right.y in Unity
 	var wings_level_influence = inverse_lerp(0.0, aggressive_turn_angle, angle_off_target)
 	roll = lerp(wings_level_roll, aggressive_roll, wings_level_influence)
 
@@ -85,9 +82,9 @@ func _physics_process(delta):
 	
 	# Stabilized torque (scaled by delta, clamped, and with adjusted roll sign)
 	var torque = Vector3(
-		turn_torque.x * clamp(pitch, -1.0, 1.0),
-		turn_torque.y * clamp(yaw, -1.0, 1.0),
-		turn_torque.z * clamp(roll, -1.0, 1.0)  # Removed negative sign to test
+		turn_torque.x * clamp(pitch, -1, 1),
+		turn_torque.y * clamp(yaw, -1, 1),
+		turn_torque.z * clamp(roll, -1, 1)  # Removed negative sign to test
 	) * force_mult * delta  # Critical: Multiply by delta
 	
 	apply_torque(global_transform.basis * torque)
@@ -101,7 +98,7 @@ func _draw_debug():
 	debug_lines.clear()
 	
 	if controller:
-		print("MFC %s" % controller.get_mouse_aim_pos())
+		#print("MFC %s" % controller.get_mouse_aim_pos())
 		# Line to target (white)
 		_create_debug_line(global_position, controller.get_mouse_aim_pos(), Color.WHITE)
 		# Forward vector (blue)
@@ -110,6 +107,7 @@ func _draw_debug():
 		_create_debug_line(global_position, global_position + global_transform.basis.y * 5, Color.GREEN)
 		# Right vector (red)
 		_create_debug_line(global_position, global_position + global_transform.basis.x * 5, Color.RED)
+		_create_debug_line(global_position, global_position + global_transform.basis.x * -5, Color.RED)
 
 var debug_lines: Array[MeshInstance3D] = []
 

@@ -125,22 +125,22 @@ func draw_sphere(pos: Vector3, color: Color, size: float):
 	add_child(instance)
 	_debug_objects.append(instance)
 
-func draw_ray(from: Vector3, to: Vector3, color: Color):
-	var mesh = ImmediateMesh.new()
-	mesh.surface_begin(Mesh.PRIMITIVE_LINES)
-	mesh.surface_add_vertex(from)
-	mesh.surface_add_vertex(to)
-	mesh.surface_end()
-	
-	var mat = StandardMaterial3D.new()
-	mat.albedo_color = color
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	
-	var instance = MeshInstance3D.new()
-	instance.mesh = mesh
-	instance.material_override = mat
-	add_child(instance)
-	_debug_objects.append(instance)
+#func draw_ray(from: Vector3, to: Vector3, color: Color):
+	#var mesh = ImmediateMesh.new()
+	#mesh.surface_begin(Mesh.PRIMITIVE_LINES)
+	#mesh.surface_add_vertex(from)
+	#mesh.surface_add_vertex(to)
+	#mesh.surface_end()
+	#
+	#var mat = StandardMaterial3D.new()
+	#mat.albedo_color = color
+	#mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	#
+	#var instance = MeshInstance3D.new()
+	#instance.mesh = mesh
+	#instance.material_override = mat
+	#add_child(instance)
+	#_debug_objects.append(instance)
 
 ## Position getters
 func get_boresight_pos() -> Vector3:

@@ -34,7 +34,7 @@ func update_graphics(controller: Node) -> void:
 		return
 	
 	if boresight:
-		print("Boresight %s" % controller.get_boresight_pos())
+		#print("Boresight %s" % controller.get_boresight_pos())
 		var boresight_world_pos: Vector3 = controller.get_boresight_pos()
 		#var boresight_world_pos: Vector3 = controller.get_mouse_aim_pos()
 		var boresight_screen_pos: Vector2 = player_cam.unproject_position(boresight_world_pos)

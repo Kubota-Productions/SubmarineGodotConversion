@@ -81,7 +81,7 @@ func rotate_rig(delta):
 		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
 	# Determine up vector based on pitch angle (like Unity version)
-	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else Vector3.UP
+	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.01 else Vector3.UP
 
 	# Smoothly rotate camera rig towards mouse aim
 	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()
@@ -124,23 +124,6 @@ func draw_sphere(pos: Vector3, color: Color, size: float):
 	instance.global_position = pos
 	add_child(instance)
 	_debug_objects.append(instance)
-
-#func draw_ray(from: Vector3, to: Vector3, color: Color):
-	#var mesh = ImmediateMesh.new()
-	#mesh.surface_begin(Mesh.PRIMITIVE_LINES)
-	#mesh.surface_add_vertex(from)
-	#mesh.surface_add_vertex(to)
-	#mesh.surface_end()
-	#
-	#var mat = StandardMaterial3D.new()
-	#mat.albedo_color = color
-	#mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	#
-	#var instance = MeshInstance3D.new()
-	#instance.mesh = mesh
-	#instance.material_override = mat
-	#add_child(instance)
-	#_debug_objects.append(instance)
 
 ## Position getters
 func get_boresight_pos() -> Vector3:

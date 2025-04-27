@@ -73,7 +73,6 @@ mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
 mouse_sensitivity = 1.0
-aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
 

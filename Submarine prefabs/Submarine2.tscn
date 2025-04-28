@@ -45,7 +45,7 @@ mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
 cam_smooth_speed = 10.0
-mouse_sensitivity = 1.0
+mouse_sensitivity = 5.0
 aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="Submarinecamerarig"]
@@ -54,6 +54,7 @@ aim_distance = 200.0
 
 [node name="Camera3D" type="Camera3D" parent="Submarinecamerarig/Camrig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 3.64831, 9.54352)
+current = true
 fov = 90.0
 
 [node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam")]

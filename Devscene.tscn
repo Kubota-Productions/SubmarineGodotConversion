@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
 
-[ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="1_r57mt"]
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="Texture2D" uid="uid://cbcvmw0uu6def" path="res://bubble.png" id="4_ie6cn"]
+[ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://Submarine prefabs/Submarine2.tscn" id="5_6smkg"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
@@ -184,7 +184,7 @@ use_collision = true
 radius = 7.46436
 height = 121.784
 
-[node name="submarine" parent="." instance=ExtResource("1_r57mt")]
+[node name="submarine" parent="." instance=ExtResource("5_6smkg")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="submarine"]
 cast_shadow = 0

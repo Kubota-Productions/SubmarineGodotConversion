@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://j60r80hv5k0e"]
+
+[ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_fgik3"]
+[ext_resource type="PackedScene" uid="uid://60gwfy33gj6m" path="res://models/submarine2.glb" id="2_2v53b"]
+[ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="4_4f7q2"]
+[ext_resource type="Script" uid="uid://cax2uypit4r7e" path="res://UI/Hud.gd" id="5_gebmy"]
+[ext_resource type="Texture2D" uid="uid://8b3yvorrevvg" path="res://UI/MouseCrosshair.png" id="6_07l7d"]
+[ext_resource type="Texture2D" uid="uid://c6jh60n6cogcu" path="res://UI/Crosshair.png" id="7_fs2px"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgik3"]
+radius = 0.894539
+height = 5.61541
+
+[node name="submarine" type="RigidBody3D" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+mass = 100.0
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+continuous_cd = true
+linear_damp = 3.5
+script = ExtResource("1_fgik3")
+controller = NodePath("Submarinecamerarig")
+thrust = -20.0
+vertical_thrust = 20.0
+horizontal_thrust = 20.0
+max_thrust = -40.0
+turn_torque = Vector3(200, 200, 40)
+force_mult = 100.0
+sensitivity = 0.4
+aggressive_turn_angle = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -1.74846e-07, 1.74846e-07, 1.74846e-07, -4.37114e-08, -1, 1.74846e-07, 1, -4.37114e-08, 4.64094e-08, 0.0361062, -0.26543)
+shape = SubResource("CapsuleShape3D_fgik3")
+
+[node name="submarine2" parent="CollisionShape3D" instance=ExtResource("2_2v53b")]
+transform = Transform3D(1, 1.74846e-07, 1.74846e-07, -1.74846e-07, -4.37114e-08, 1, 1.74846e-07, -1, -4.37114e-08, -6.31303e-09, 0.26543, 0.0361062)
+
+[node name="Submarinecamerarig" type="Node3D" parent="." node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("4_4f7q2")
+aircraft = NodePath("..")
+mouse_aim = NodePath("Mouseaim")
+camera_rig = NodePath("Camrig")
+cam = NodePath("Camrig/Camera3D")
+cam_smooth_speed = 10.0
+mouse_sensitivity = 1.0
+aim_distance = 200.0
+
+[node name="Mouseaim" type="Node3D" parent="Submarinecamerarig"]
+
+[node name="Camrig" type="Node3D" parent="Submarinecamerarig"]
+
+[node name="Camera3D" type="Camera3D" parent="Submarinecamerarig/Camrig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 3.64831, 9.54352)
+fov = 90.0
+
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_gebmy")
+mouse_flight = NodePath("../Submarinecamerarig")
+boresight = NodePath("Mouseaim")
+mouse_pos = NodePath("Boresight")
+player_cam = NodePath("../Submarinecamerarig/Camrig/Camera3D")
+
+[node name="Boresight" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_07l7d")
+stretch_mode = 3
+
+[node name="Mouseaim" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_fs2px")
+stretch_mode = 3

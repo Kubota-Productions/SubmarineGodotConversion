@@ -45,13 +45,11 @@ func update_graphics(controller: Node) -> void:
 	if boresight:
 		var boresight_world_pos: Vector3 = controller.get_boresight_pos()
 		var boresight_screen_pos: Vector2 = player_cam.unproject_position(boresight_world_pos)
-		print("Boresight world pos: ", boresight_world_pos, " screen pos: ", boresight_screen_pos)
 		boresight.position = boresight_screen_pos - boresight.size / 2  # Center the node
 	
 	if mouse_pos:
 		var mouse_aim_world_pos: Vector3 = controller.get_mouse_aim_pos()
 		var mouse_pos_screen_pos: Vector2 = player_cam.unproject_position(mouse_aim_world_pos)
-		print("Mouse aim world pos: ", mouse_aim_world_pos, " screen pos: ", mouse_pos_screen_pos)
 		mouse_pos.position = mouse_pos_screen_pos - mouse_pos.size / 2  # Center the node
 
 func set_reference_mouse_flight(controller: Node) -> void:

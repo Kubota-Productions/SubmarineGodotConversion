@@ -5,10 +5,10 @@ extends RigidBody3D
 @export var controller: MouseFlightController = null
 
 ## Physics
-@export var thrust: float = 100.0  # Matched Unity's thrust = 100f
-@export var vertical_thrust: float = 100.0  # Matched Unity's verticalThrust = 100f
-@export var horizontal_thrust: float = 100.0  # Matched Unity's horizontalThrust = 100f
-@export var max_thrust: float = 69.0  # Matched Unity's maxthrust = 69f
+@export var thrust: float = -10  # Matched Unity's thrust = 100f
+@export var vertical_thrust: float = -10 # Matched Unity's verticalThrust = 100f
+@export var horizontal_thrust: float = -10  # Matched Unity's horizontalThrust = 100f
+@export var max_thrust: float = -20  # Matched Unity's maxthrust = 69f
 @export var turn_torque: Vector3 = Vector3(90.0, 25.0, 45.0)  # Matched Unity's turnTorque
 @export var force_mult: float = 1000.0  # Matched Unity's forceMult = 1000 * 100
 
@@ -54,9 +54,9 @@ func _process(delta):
 	if Input.is_action_pressed("manual_roll"):
 		roll = horizontal_movement
 	
-	# Aligned with Unity's moveDirection (Vector3.up instead of Vector3.DOWN)
-	move_direction = (Vector3.UP * vertical_thrust * vertical_movement * force_mult) + \
-					(Vector3.RIGHT * horizontal_thrust * horizontal_movement * force_mult)
+	# Modified to make both vertical and horizontal movement relative to the submarine's local directions
+	move_direction = (global_transform.basis.y * vertical_thrust * vertical_movement * force_mult) + \
+					(global_transform.basis.x * horizontal_thrust * horizontal_movement * force_mult)
 
 func change_speed(speed: float, delta: float):
 	# Matched Unity's speedI and previousSpeed logic

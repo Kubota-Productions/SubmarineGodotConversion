@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://h060i4n0djgw"]
+
+[ext_resource type="Script" uid="uid://odmul8towe2j" path="res://SubmarineController.gd" id="1_gglrs"]
+[ext_resource type="PackedScene" uid="uid://dj47o4mxq2pv1" path="res://models/submarine_1.tscn" id="2_8ajlq"]
+[ext_resource type="Script" uid="uid://gff0ncm05236" path="res://models/Submarineanimation.gd" id="3_fi8rf"]
+[ext_resource type="Script" uid="uid://dfja1pvkmo3nk" path="res://MouseFlightController.gd" id="4_x4e8w"]
+[ext_resource type="Script" uid="uid://cax2uypit4r7e" path="res://UI/Hud.gd" id="5_x4e8w"]
+[ext_resource type="Texture2D" uid="uid://8b3yvorrevvg" path="res://UI/MouseCrosshair.png" id="6_pxdys"]
+[ext_resource type="Texture2D" uid="uid://c6jh60n6cogcu" path="res://UI/Crosshair.png" id="7_e8cms"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ugqrj"]
+points = PackedVector3Array(-0.10133, -3.67295, -0.607589, 0.162386, -0.322652, 0.800674, -0.188831, -0.323969, 0.796054, -0.282683, 1.9346, -2.93512, 1.28772, 0.449976, -1.0486, -1.31437, 0.543126, -0.491172, 0.164814, 1.73837, 0.469102, 0.599272, 1.51178, -2.88638, -0.477907, -3.17298, -1.32712, 0.637201, -2.98726, -0.770077, -0.360658, -3.19479, 0.0805427, -0.675139, 0.721257, -2.70337, 0.667218, -1.10486, 0.482964, -0.803138, 1.60687, -0.0832813, 0.860145, 1.50765, -0.0878582, 0.665549, 0.761743, -2.74601, 0.331533, -3.26613, 0.073242, 0.343957, 2.01098, -0.78064, -1.31437, 0.449976, -1.0486, 0.397547, -2.98794, -1.29505, -0.53354, -0.330748, 0.685304, 1.28772, 0.449976, -0.491172, -0.450634, 1.42365, 0.613262, 0.505719, 1.31287, 0.5957, -0.880012, 1.40302, -2.00189, -0.369208, 1.99788, -0.781867, 0.603771, 1.79422, -2.19423, -0.616307, -1.45283, 0.501833, 0.0737574, -1.72516, 0.614173, -0.516133, -3.02891, -0.294382, 0.826897, -1.60604, -0.124428, -0.621218, 1.23417, -2.87229)
+
+[node name="submarine" type="RigidBody3D" node_paths=PackedStringArray("controller")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+mass = 100.0
+gravity_scale = 0.0
+can_sleep = false
+freeze_mode = 1
+continuous_cd = true
+linear_damp = 3.5
+script = ExtResource("1_gglrs")
+controller = NodePath("Submarinecamerarig")
+thrust = -20.0
+vertical_thrust = 20.0
+horizontal_thrust = 20.0
+max_thrust = -40.0
+turn_torque = Vector3(200, 200, 40)
+force_mult = 100.0
+sensitivity = 0.4
+aggressive_turn_angle = 90.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.345, 0, 6.03218e-08, 0, 0.345, 0, -6.03218e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
+shape = SubResource("ConvexPolygonShape3D_ugqrj")
+
+[node name="submarine1" parent="CollisionShape3D2" instance=ExtResource("2_8ajlq")]
+transform = Transform3D(2.89855, 0, 5.068e-07, 0, 2.89855, 0, -5.068e-07, 0, 2.89855, 7.10543e-15, 0, -0.0989652)
+script = ExtResource("3_fi8rf")
+
+[node name="Submarinecamerarig" type="Node3D" parent="." node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
+script = ExtResource("4_x4e8w")
+aircraft = NodePath("..")
+mouse_aim = NodePath("Mouseaim")
+camera_rig = NodePath("Camrig")
+cam = NodePath("Camrig/Camera3D")
+cam_smooth_speed = 10.0
+mouse_sensitivity = 1.0
+aim_distance = 200.0
+
+[node name="Mouseaim" type="Node3D" parent="Submarinecamerarig"]
+
+[node name="Camrig" type="Node3D" parent="Submarinecamerarig"]
+
+[node name="Camera3D" type="Camera3D" parent="Submarinecamerarig/Camrig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 3.13589, 8.38708)
+fov = 90.0
+
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_x4e8w")
+mouse_flight = NodePath("../Submarinecamerarig")
+boresight = NodePath("Mouseaim")
+mouse_pos = NodePath("Boresight")
+player_cam = NodePath("../Submarinecamerarig/Camrig/Camera3D")
+
+[node name="Boresight" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_pxdys")
+stretch_mode = 3
+
+[node name="Mouseaim" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_e8cms")
+stretch_mode = 3

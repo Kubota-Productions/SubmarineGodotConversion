@@ -81,7 +81,7 @@ func rotate_rig(delta):
 		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
 	# Determine up vector based on pitch angle (like Unity version)
-	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.01 else Vector3.UP
+	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.1 else Vector3.UP
 
 	# Smoothly rotate camera rig towards mouse aim
 	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()

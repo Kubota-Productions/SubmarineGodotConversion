@@ -1,4 +1,3 @@
-# Hud.gd
 extends Control
 
 @export var mouse_flight: Node = null
@@ -7,12 +6,23 @@ extends Control
 @export var player_cam: Camera3D = null
 
 func _ready():
+	# Ensure HUD spans the entire viewport
+	anchor_left = 0
+	anchor_top = 0
+	anchor_right = 1
+	anchor_bottom = 1
+	offset_left = 0
+	offset_top = 0
+	offset_right = 0
+	offset_bottom = 0
+	
 	if mouse_flight == null:
 		push_error("%s: Hud - Mouse Flight Controller not assigned!" % name)
 		return
-
 	if player_cam == null:
 		push_error("%s: Hud - No camera found!" % name)
+		return
+	print("Camera transform: ", player_cam.global_transform)
 
 func _find_camera_in_node(node: Node) -> Camera3D:
 	if node is Camera3D:
@@ -26,7 +36,6 @@ func _find_camera_in_node(node: Node) -> Camera3D:
 func _process(_delta: float) -> void:
 	if mouse_flight == null or player_cam == null:
 		return
-	# Call update_graphics with the mouse_flight controller
 	update_graphics(mouse_flight)
 
 func update_graphics(controller: Node) -> void:
@@ -34,18 +43,16 @@ func update_graphics(controller: Node) -> void:
 		return
 	
 	if boresight:
-		#print("Boresight %s" % controller.get_boresight_pos())
 		var boresight_world_pos: Vector3 = controller.get_boresight_pos()
-		#var boresight_world_pos: Vector3 = controller.get_mouse_aim_pos()
 		var boresight_screen_pos: Vector2 = player_cam.unproject_position(boresight_world_pos)
-		boresight.position = boresight_screen_pos
-		
+		print("Boresight world pos: ", boresight_world_pos, " screen pos: ", boresight_screen_pos)
+		boresight.position = boresight_screen_pos - boresight.size / 2  # Center the node
 	
 	if mouse_pos:
 		var mouse_aim_world_pos: Vector3 = controller.get_mouse_aim_pos()
 		var mouse_pos_screen_pos: Vector2 = player_cam.unproject_position(mouse_aim_world_pos)
-		mouse_pos.position = mouse_pos_screen_pos
-		
+		print("Mouse aim world pos: ", mouse_aim_world_pos, " screen pos: ", mouse_pos_screen_pos)
+		mouse_pos.position = mouse_pos_screen_pos - mouse_pos.size / 2  # Center the node
 
 func set_reference_mouse_flight(controller: Node) -> void:
 	mouse_flight = controller

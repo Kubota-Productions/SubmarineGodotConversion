@@ -42,7 +42,7 @@ texture_filter = 2
 [node name="SCENE" type="Node3D"]
 
 [node name="submarine" type="RigidBody3D" parent="." node_paths=PackedStringArray("controller")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 11.109, 0)
 mass = 100.0
 gravity_scale = 0.0
 can_sleep = false
@@ -51,12 +51,13 @@ continuous_cd = true
 linear_damp = 3.5
 script = ExtResource("1_bl0r7")
 controller = NodePath("Submarinecamerarig")
-thrust = -20.0
+thrust = -10.0
 vertical_thrust = -10.0
 horizontal_thrust = -10.0
-max_thrust = -39.0
+max_thrust = -20.0
 turn_torque = Vector3(90, 25, 90)
 force_mult = 100.0
+sensitivity = 2.0
 aggressive_turn_angle = 99.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]

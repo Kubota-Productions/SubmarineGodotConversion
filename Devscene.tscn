@@ -42,7 +42,7 @@ texture_filter = 2
 [node name="SCENE" type="Node3D"]
 
 [node name="submarine" type="RigidBody3D" parent="." node_paths=PackedStringArray("controller")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
 mass = 100.0
 gravity_scale = 0.0
 can_sleep = false
@@ -51,35 +51,37 @@ continuous_cd = true
 linear_damp = 3.5
 script = ExtResource("1_bl0r7")
 controller = NodePath("Submarinecamerarig")
-vertical_thrust = -20.0
-horizontal_thrust = -20.0
-turn_torque = Vector3(200, 200, 40)
+thrust = -20.0
+vertical_thrust = -10.0
+horizontal_thrust = -10.0
+max_thrust = -39.0
+turn_torque = Vector3(90, 25, 90)
 force_mult = 100.0
-aggressive_turn_angle = 90.0
+aggressive_turn_angle = 99.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="submarine"]
 transform = Transform3D(0.345, 0, 6.03218e-08, 0, 0.345, 0, -6.03218e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
 shape = SubResource("ConvexPolygonShape3D_ugqrj")
 
-[node name="submarine1" parent="submarine" instance=ExtResource("3_ugqrj")]
-transform = Transform3D(1, 0, 3.49692e-07, 0, 1, 0, -3.49692e-07, 0, 1, -2.98488e-09, 0, 0.120562)
+[node name="submarine1" parent="submarine/CollisionShape3D2" instance=ExtResource("3_ugqrj")]
+transform = Transform3D(2.89855, 0, 5.068e-07, 0, 2.89855, 0, -5.068e-07, 0, 2.89855, 7.10543e-15, 0, -0.0989652)
 script = ExtResource("3_ke40i")
 
 [node name="Submarinecamerarig" type="Node3D" parent="submarine" node_paths=PackedStringArray("aircraft", "mouse_aim", "camera_rig", "cam")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0)
 script = ExtResource("2_kw7hd")
-aircraft = NodePath("../submarine1")
+aircraft = NodePath("..")
 mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
-mouse_sensitivity = 1.0
+aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="submarine/Submarinecamerarig"]
 
 [node name="Camrig" type="Node3D" parent="submarine/Submarinecamerarig"]
 
 [node name="Camera3D" type="Camera3D" parent="submarine/Submarinecamerarig/Camrig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 2.13589, 5.28837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 2.13589, 6.38708)
 fov = 90.0
 
 [node name="SKY" type="Node3D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://crkjpacfx7i28"]
 
-[ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
+[ext_resource type="Script" uid="uid://bgwj6td8n0tte" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="3_wd8hm"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 

@@ -64,10 +64,13 @@ func _input(event: InputEvent):
 		
 		# Clamp rotation to prevent flipping
 		var forward = mouse_aim.global_transform.basis.z.normalized()
-		if abs(forward.y) > 0.98:  # Nearly straight up/down
+		if abs(forward.y) > 0.99:  # Nearly straight up/down
 			var flat_forward = Vector3(forward.x, 0, forward.z).normalized()
-			mouse_aim.global_transform.basis = Basis.looking_at(flat_forward, Vector3.UP).orthonormalized()
-
+			var current_transform =global_transform
+			var to_look_towards = global_basis.looking_at(flat_forward, Vector3.UP).orthonormalized().z.z
+			mouse_aim.rotation.x = lerp_angle(mouse_aim.rotation.x,to_look_towards,0.01)
+			mouse_aim.rotation.y = lerp_angle(mouse_aim.rotation.y,to_look_towards,0.01)
+			mouse_aim.rotation.z = lerp_angle(mouse_aim.rotation.z,to_look_towards,0.01)
 func rotate_rig(delta):
 	if not mouse_aim or not camera_rig:
 		return
@@ -81,7 +84,7 @@ func rotate_rig(delta):
 		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
 	# Determine up vector based on pitch angle (like Unity version)
-	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.1 else Vector3.UP
+	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 1.2 else Vector3.UP
 
 	# Smoothly rotate camera rig towards mouse aim
 	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()

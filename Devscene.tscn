@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=8 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
-[ext_resource type="Texture2D" uid="uid://cbcvmw0uu6def" path="res://bubble.png" id="4_ie6cn"]
-[ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://Submarine prefabs/Submarine2.tscn" id="5_6smkg"]
+[ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="3_wd8hm"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
@@ -37,24 +36,6 @@ albedo_texture = ExtResource("5_r57mt")
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 2
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6smkg"]
-emission_shape = 1
-emission_sphere_radius = 16.93
-gravity = Vector3(0, 9.8, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugqrj"]
-transparency = 1
-blend_mode = 1
-albedo_texture = ExtResource("4_ie6cn")
-emission_enabled = true
-emission = Color(0.469502, 0.454571, 0.45433, 1)
-emission_energy_multiplier = 0.13
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_r57mt"]
-material = SubResource("StandardMaterial3D_ugqrj")
-size = Vector2(0.1, 0.1)
 
 [node name="SCENE" type="Node3D"]
 
@@ -184,13 +165,4 @@ use_collision = true
 radius = 7.46436
 height = 121.784
 
-[node name="submarine" parent="." instance=ExtResource("5_6smkg")]
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="submarine"]
-cast_shadow = 0
-amount = 500
-lifetime = 2.0
-preprocess = 10.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_6smkg")
-draw_pass_1 = SubResource("QuadMesh_r57mt")
+[node name="submarine" parent="." instance=ExtResource("3_wd8hm")]

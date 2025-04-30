@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=19 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="3_wd8hm"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
 [ext_resource type="Material" uid="uid://bflc2es5uplwp" path="res://UI/bubblesprocess.tres" id="5_wqoum"]
 [ext_resource type="Texture2D" uid="uid://on21t22xwhgc" path="res://dust.png" id="6_lnxbq"]
+[ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="7_wqoum"]
+[ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="8_lnxbq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -223,3 +225,9 @@ lifetime = 10.0
 preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_bup0v")
 draw_pass_1 = SubResource("PlaneMesh_ugqrj")
+
+[node name="rocks2" parent="." instance=ExtResource("7_wqoum")]
+transform = Transform3D(-0.00246088, 0.999997, 0, -0.999997, -0.00246088, 0, 0, 0, 1, 8.11839, 0.379777, 17.2783)
+
+[node name="rocks3" parent="." instance=ExtResource("8_lnxbq")]
+transform = Transform3D(-1.80999, 0, -1.045, 0, 2.09, 0, 1.045, 0, -1.80999, -31.3166, -3.33711, 0.714149)

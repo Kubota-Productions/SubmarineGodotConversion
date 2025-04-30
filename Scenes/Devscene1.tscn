@@ -1,0 +1,159 @@
+[gd_scene load_steps=12 format=3 uid="uid://ufahymcfawmo"]
+
+[ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_2qmje"]
+[ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_2b066"]
+[ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_2rqda"]
+[ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="4_wj1ym"]
+[ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="5_0bk1h"]
+[ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://Submarine prefabs/Submarine2.tscn" id="6_2qmje"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
+sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+sky_cover_modulate = Color(0, 0.372302, 0.288688, 1)
+ground_bottom_color = Color(3.00817e-07, 0.207784, 0.183232, 1)
+ground_horizon_color = Color(0, 0.312827, 0.241092, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="Sky_0b6a0"]
+sky_material = SubResource("ProceduralSkyMaterial_ie6cn")
+
+[sub_resource type="Environment" id="Environment_r0w22"]
+background_mode = 2
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_0b6a0")
+ambient_light_source = 3
+ambient_light_energy = 16.0
+tonemap_mode = 3
+tonemap_exposure = 1.87
+ssao_enabled = true
+ssao_ao_channel_affect = 1.0
+ssil_radius = 4.75
+ssil_intensity = 26.5
+ssil_sharpness = 0.0
+ssil_normal_rejection = 0.0
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.04
+glow_strength = 1.13
+glow_bloom = 0.28
+glow_blend_mode = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.0132199, 0.165967, 0.156984, 1)
+fog_light_energy = 0.44
+fog_density = 0.8505
+fog_depth_end = 38.0
+volumetric_fog_albedo = Color(0.529067, 0.529067, 0.529067, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_iidbe"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 24.16
+dof_blur_far_transition = 2.65
+dof_blur_near_distance = 22.31
+dof_blur_near_transition = 122.38
+dof_blur_amount = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqoum"]
+albedo_texture = ExtResource("2_2b066")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[node name="SCENE" type="Node3D"]
+
+[node name="SKY" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SKY"]
+environment = SubResource("Environment_r0w22")
+camera_attributes = SubResource("CameraAttributesPractical_iidbe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SKY"]
+transform = Transform3D(-0.932077, -0.25331, 0.25897, 0, 0.714876, 0.699252, -0.362259, 0.651757, -0.666319, 0, 6.38588, 0)
+light_color = Color(0.324442, 0.412524, 0.456305, 1)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+
+[node name="ENV" type="Node3D" parent="."]
+
+[node name="GameManager" type="Node3D" parent="ENV"]
+script = ExtResource("1_2qmje")
+
+[node name="Platform" type="Node3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.07082)
+
+[node name="Box" type="CSGBox3D" parent="ENV/Platform"]
+transform = Transform3D(0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0, 1, -78.4344, -2.51678, 0)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_wqoum")
+
+[node name="Box2" type="CSGBox3D" parent="ENV/Platform"]
+transform = Transform3D(-0.258819, -0.965926, 8.74228e-08, -0.965926, 0.258819, 0, -2.26267e-08, -8.44439e-08, -1, 68.5656, -2.51678, 0)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_wqoum")
+
+[node name="Box3" type="CSGBox3D" parent="ENV/Platform"]
+transform = Transform3D(3.394e-08, 1.26666e-07, 1, -0.998794, 0.0490939, 2.76806e-08, -0.0490939, -0.998794, 1.28179e-07, 16.149, -2.51678, 125.298)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_wqoum")
+
+[node name="Box4" type="CSGBox3D" parent="ENV/Platform"]
+transform = Transform3D(0.000577468, 0.0117489, -0.999931, -0.998794, 0.0490939, 2.76806e-08, 0.0490905, 0.998725, 0.0117631, 16.149, -2.51678, -124.889)
+use_collision = true
+collision_layer = 65
+collision_mask = 0
+size = Vector3(300, 1, 300)
+material = SubResource("StandardMaterial3D_wqoum")
+
+[node name="rocks2" parent="ENV" instance=ExtResource("3_2rqda")]
+transform = Transform3D(7.08406, -3.52856, -8.60357, 2.2249, 11.1447, -2.7388, 9.02895, 0.0222194, 7.4252, 11.8956, -12.8226, 24.8201)
+
+[node name="rocks8" parent="ENV" instance=ExtResource("3_2rqda")]
+transform = Transform3D(7.08406, -3.52856, -8.60357, 2.2249, 11.1447, -2.7388, 9.02895, 0.0222194, 7.4252, -9.60282, -12.8226, -36.3077)
+
+[node name="rocks4" parent="ENV" instance=ExtResource("3_2rqda")]
+transform = Transform3D(3.9838, -1.77118, 10.7171, -5.53405, -10.1536, 0.379081, 9.34712, -5.25664, -4.34328, 65.0305, -1.08993, -1.9475)
+
+[node name="rocks3" parent="ENV" instance=ExtResource("4_wj1ym")]
+transform = Transform3D(3.70804, -1.50402, 4.80764, 2.35106, 5.79634, -1.07359e-07, -4.45511, 1.80704, 4.00145, -73.5323, -5.24365, -11.0305)
+
+[node name="rocks5" parent="ENV" instance=ExtResource("4_wj1ym")]
+transform = Transform3D(6.66, 0, 0, 0, 6.66, 0, 0, 0, 6.66, -27.8923, -24.1273, -113.491)
+
+[node name="rocks7" parent="ENV" instance=ExtResource("4_wj1ym")]
+transform = Transform3D(2.15267, 6.30251, 0, 2.29165, -0.78273, -6.20413, -5.87111, 2.00532, -2.42164, 31.891, -0.334694, -33.4958)
+
+[node name="rocks6" parent="ENV" instance=ExtResource("3_2rqda")]
+transform = Transform3D(2.73999, 5.40105, 5.89984, -5.0518, 6.00367, -3.14996, -6.20152, -2.50432, 5.17268, 57.0837, -34.8127, -54.5677)
+
+[node name="chains" parent="ENV" instance=ExtResource("5_0bk1h")]
+transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -32.882, -12.6425, -39.9126)
+
+[node name="chains2" parent="ENV" instance=ExtResource("5_0bk1h")]
+transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -3.78976, -12.4966, 18.5126)
+
+[node name="rocks9" parent="ENV" instance=ExtResource("3_2rqda")]
+transform = Transform3D(-0.720424, 8.12989, -8.0945, -11.4501, -1.01465, -7.29596e-08, -0.714489, 8.06291, 8.16174, -53.444, 15.0656, 115.511)
+
+[node name="rocks10" parent="ENV" instance=ExtResource("4_wj1ym")]
+transform = Transform3D(5.6198, 0.543312, -3.69022, 0.618208, 6.4451, 1.89038, 3.67842, -1.91325, 5.32013, 9.6517, -48.642, 112.995)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ENV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5492, -5.00887, 93.4724)
+light_energy = 12.342
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_size = 0.797
+light_specular = 7.959
+
+[node name="submarine" parent="." instance=ExtResource("6_2qmje")]

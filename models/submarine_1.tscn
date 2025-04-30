@@ -12,7 +12,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lj0os")
 
 [node name="Cube_001" parent="." index="5"]
-transform = Transform3D(-0.0977356, 0.324014, 1.37564e-08, -0.324014, -0.0977356, 8.4276e-10, 4.77953e-09, -1.29269e-08, 0.338434, 0, 0.357687, -0.969383)
+transform = Transform3D(0.318024, 0.115751, 1.55522e-08, -0.115751, 0.318024, -2.74228e-09, -1.55522e-08, -2.74227e-09, 0.338434, 0, 0.357687, -0.969383)
 
 [node name="AnimationPlayer" parent="." index="6"]
 autoplay = "Cube_001Action"

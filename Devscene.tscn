@@ -1,14 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=17 format=3 uid="uid://crkjpacfx7i28"]
 
-[ext_resource type="Script" uid="uid://bgwj6td8n0tte" path="res://GameManager.gd" id="2_0mg8o"]
+[ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="3_wd8hm"]
+[ext_resource type="Material" uid="uid://jspiqg2jchvk" path="res://UI/bubbles.tres" id="4_ugqrj"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="5_r57mt"]
+[ext_resource type="Material" uid="uid://bflc2es5uplwp" path="res://UI/bubblesprocess.tres" id="5_wqoum"]
+[ext_resource type="Texture2D" uid="uid://on21t22xwhgc" path="res://dust.png" id="6_lnxbq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
-sky_top_color = Color(6.61798e-07, 0.233529, 0.303915, 1)
-sky_horizon_color = Color(2.28621e-07, 0.19266, 0.209502, 1)
-sky_cover_modulate = Color(5.29438e-07, 0.361346, 0.375673, 1)
-ground_horizon_color = Color(0, 0.297012, 0.355205, 1)
+sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
+sky_horizon_color = Color(3.06834e-07, 0.201855, 0.134531, 1)
+sky_cover_modulate = Color(0, 0.372302, 0.288688, 1)
+ground_bottom_color = Color(3.00817e-07, 0.207784, 0.183232, 1)
+ground_horizon_color = Color(0, 0.312827, 0.241092, 1)
 sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_0b6a0"]
@@ -18,8 +22,9 @@ sky_material = SubResource("ProceduralSkyMaterial_ie6cn")
 background_mode = 2
 sky = SubResource("Sky_0b6a0")
 ambient_light_source = 2
+ambient_light_energy = 2.25
 reflected_light_source = 2
-tonemap_mode = 2
+tonemap_mode = 3
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
@@ -36,6 +41,41 @@ albedo_texture = ExtResource("5_r57mt")
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r57mt"]
+size = Vector2(0.2, 0.2)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke40i"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_lnxbq")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.2
+billboard_mode = 1
+
+[sub_resource type="Curve" id="Curve_ie6cn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0441176, 1), 0.0, 0.0, 0, 0, Vector2(0.955882, 1), 0.0, 0.0, 0, 0, Vector2(0.990196, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6smkg"]
+curve = SubResource("Curve_ie6cn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bup0v"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 1, 0.160784)
+alpha_curve = SubResource("CurveTexture_6smkg")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 1.3
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ugqrj"]
+size = Vector2(0.05, 0.05)
+orientation = 2
 
 [node name="SCENE" type="Node3D"]
 
@@ -166,3 +206,19 @@ radius = 7.46436
 height = 121.784
 
 [node name="submarine" parent="." instance=ExtResource("3_wd8hm")]
+
+[node name="Bubbles" type="GPUParticles3D" parent="submarine"]
+material_override = ExtResource("4_ugqrj")
+amount = 1000
+lifetime = 30.0
+preprocess = 10.0
+process_material = ExtResource("5_wqoum")
+draw_pass_1 = SubResource("PlaneMesh_r57mt")
+
+[node name="Dust" type="GPUParticles3D" parent="submarine"]
+material_override = SubResource("StandardMaterial3D_ke40i")
+amount = 50
+lifetime = 10.0
+preprocess = 10.0
+process_material = SubResource("ParticleProcessMaterial_bup0v")
+draw_pass_1 = SubResource("PlaneMesh_ugqrj")

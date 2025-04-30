@@ -9,8 +9,9 @@ curve = SubResource("Curve_ie6cn")
 
 [resource]
 emission_shape = 3
-emission_box_extents = Vector3(5, 5, 5)
+emission_box_extents = Vector3(10, 10, 10)
 gravity = Vector3(0, 9.8, 0)
+scale_min = 0.1
 alpha_curve = SubResource("CurveTexture_6smkg")
 turbulence_enabled = true
 turbulence_noise_strength = 0.1

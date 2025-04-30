@@ -29,10 +29,11 @@ ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.0620565, 0.270143, 0.316007, 1)
-fog_light_energy = 0.41
+fog_light_color = Color(0.10596, 0.274562, 0.250696, 1)
+fog_light_energy = 0.44
 fog_density = 1.0
 volumetric_fog_albedo = Color(0.529067, 0.529067, 0.529067, 1)
 
@@ -65,7 +66,7 @@ curve = SubResource("Curve_ie6cn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bup0v"]
 emission_shape = 3
-emission_box_extents = Vector3(10, 10, 10)
+emission_box_extents = Vector3(20, 20, 20)
 gravity = Vector3(0, 0, 0)
 color = Color(1, 1, 1, 0.160784)
 alpha_curve = SubResource("CurveTexture_6smkg")
@@ -217,7 +218,7 @@ draw_pass_1 = SubResource("PlaneMesh_r57mt")
 
 [node name="Dust" type="GPUParticles3D" parent="submarine"]
 material_override = SubResource("StandardMaterial3D_ke40i")
-amount = 50
+amount = 1000
 lifetime = 10.0
 preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_bup0v")

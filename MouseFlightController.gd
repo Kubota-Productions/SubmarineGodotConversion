@@ -42,9 +42,8 @@ func _ready():
 		global_transform = original_transform
 
 func _process(delta):
-	# fuck this why ! 
-	#if not use_fixed :
-		#update_camera_pos()
+	if not use_fixed:
+		update_camera_pos(delta)
 
 	rotate_rig(delta)
 	
@@ -66,13 +65,11 @@ func _input(event: InputEvent):
 		var forward = mouse_aim.global_transform.basis.z.normalized()
 		if abs(forward.y) > 0.99:  # Nearly straight up/down
 			var flat_forward = Vector3(forward.x, 0, forward.z).normalized()
-			var current_transform =global_transform
-			var to_look_towards = global_basis.looking_at(flat_forward, Vector3.UP).orthonormalized().z.z
-			mouse_aim.rotation.x = lerp_angle(mouse_aim.rotation.x,to_look_towards,0.01)
-			mouse_aim.rotation.y = lerp_angle(mouse_aim.rotation.y,to_look_towards,0.01)
-			mouse_aim.rotation.z = lerp_angle(mouse_aim.rotation.z,to_look_towards,0.01)
+			var target_basis = Basis.looking_at(flat_forward, Vector3.UP).orthonormalized()
+			mouse_aim.global_transform.basis = target_basis
+
 func rotate_rig(delta):
-	if not mouse_aim or not camera_rig or not aircraft:
+	if not mouse_aim or not camera_rig or not cam or not aircraft:
 		return
 
 	# Right mouse button to freeze/unfreeze aim direction
@@ -83,20 +80,12 @@ func rotate_rig(delta):
 		is_mouse_aim_frozen = false
 		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
-	# Determine up vector based on pitch angle
-	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 1.2 else Vector3.UP
+	# Determine up vector: use camera_rig's up when nearly vertical, else aircraft's up
+	var up_vec = camera_rig.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 0.9 else aircraft.global_transform.basis.y
 
-	# Calculate the target basis for pitch and yaw (based on mouse aim)
-	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()
-
-	# Extract the submarine's Z rotation (roll)
-	var aircraft_basis = aircraft.global_transform.basis.orthonormalized()
-	var aircraft_roll = aircraft_basis.get_euler().z
-
-	# Apply the submarine's roll to the target basis
-	var target_euler = target_basis.get_euler()
-	target_euler.z = aircraft_roll
-	target_basis = Basis.from_euler(target_euler).orthonormalized()
+	# Calculate target basis using mouse_aim's forward and aircraft's up vector
+	var target_forward = mouse_aim.global_transform.basis.z.normalized()
+	var target_basis = Basis.looking_at(target_forward, up_vec).orthonormalized()
 
 	# Smoothly rotate camera rig towards the target basis
 	camera_rig.global_transform.basis = damp(

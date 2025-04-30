@@ -27,6 +27,8 @@ var previous_speed: float = 0.0  # Added to match Unity's previousSpeed
 var speed_i: float = 0.0  # Added to match Unity's speedI
 
 func _ready():
+	$CollisionShape3D2/submarine1.particles = $SubmarineBubbles
+	
 	angular_damp = 2.0  # Increased to mimic Unity's Rigidbody angular drag
 	if controller == null:
 		push_error("SubmarineController: Missing reference to MouseFlightController!")

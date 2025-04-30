@@ -72,7 +72,7 @@ func _input(event: InputEvent):
 			mouse_aim.rotation.y = lerp_angle(mouse_aim.rotation.y,to_look_towards,0.01)
 			mouse_aim.rotation.z = lerp_angle(mouse_aim.rotation.z,to_look_towards,0.01)
 func rotate_rig(delta):
-	if not mouse_aim or not camera_rig:
+	if not mouse_aim or not camera_rig or not aircraft:
 		return
 
 	# Right mouse button to freeze/unfreeze aim direction
@@ -83,11 +83,22 @@ func rotate_rig(delta):
 		is_mouse_aim_frozen = false
 		mouse_aim.global_transform.basis = Basis.looking_at(frozen_direction, Vector3.UP).orthonormalized()
 
-	# Determine up vector based on pitch angle (like Unity version)
+	# Determine up vector based on pitch angle
 	var up_vec = aircraft.global_transform.basis.y if abs(mouse_aim.global_transform.basis.z.y) > 1.2 else Vector3.UP
 
-	# Smoothly rotate camera rig towards mouse aim
+	# Calculate the target basis for pitch and yaw (based on mouse aim)
 	var target_basis = Basis.looking_at(mouse_aim.global_transform.basis.z.normalized(), up_vec).orthonormalized()
+
+	# Extract the submarine's Z rotation (roll)
+	var aircraft_basis = aircraft.global_transform.basis.orthonormalized()
+	var aircraft_roll = aircraft_basis.get_euler().z
+
+	# Apply the submarine's roll to the target basis
+	var target_euler = target_basis.get_euler()
+	target_euler.z = aircraft_roll
+	target_basis = Basis.from_euler(target_euler).orthonormalized()
+
+	# Smoothly rotate camera rig towards the target basis
 	camera_rig.global_transform.basis = damp(
 		camera_rig.global_transform.basis.orthonormalized(),
 		target_basis,

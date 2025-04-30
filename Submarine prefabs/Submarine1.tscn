@@ -21,13 +21,12 @@ continuous_cd = true
 linear_damp = 3.5
 script = ExtResource("1_gglrs")
 controller = NodePath("Submarinecamerarig")
-thrust = -20.0
-vertical_thrust = 20.0
-horizontal_thrust = 20.0
-max_thrust = -40.0
+vertical_thrust = 10.0
+horizontal_thrust = 10.0
+max_thrust = -25.0
 turn_torque = Vector3(200, 200, 40)
 force_mult = 100.0
-sensitivity = 0.4
+sensitivity = 1.0
 aggressive_turn_angle = 90.0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]

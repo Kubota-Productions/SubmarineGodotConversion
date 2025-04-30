@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=20 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://GameManager.gd" id="2_0mg8o"]
 [ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="3_wd8hm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://on21t22xwhgc" path="res://dust.png" id="6_lnxbq"]
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="7_wqoum"]
 [ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="8_lnxbq"]
+[ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="9_lnxbq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -34,9 +35,11 @@ sdfgi_enabled = true
 sdfgi_use_occlusion = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.10596, 0.274562, 0.250696, 1)
+fog_light_color = Color(0.0212563, 0.21475, 0.203782, 1)
 fog_light_energy = 0.44
 fog_density = 1.0
+fog_depth_curve = 1.6245
+fog_depth_begin = 0.0
 volumetric_fog_albedo = Color(0.529067, 0.529067, 0.529067, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqoum"]
@@ -133,43 +136,20 @@ collision_mask = 0
 size = Vector3(300, 1, 300)
 material = SubResource("StandardMaterial3D_wqoum")
 
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(0.0706792, 0.997499, 0, -0.997499, 0.0706792, 0, 0, 0, 1, -57.5848, -102.583, 2.73517)
-use_collision = true
-radius = 8.49365
-height = 266.755
+[node name="rocks2" parent="ENV" instance=ExtResource("7_wqoum")]
+transform = Transform3D(7.08406, -3.52856, -8.60357, 2.2249, 11.1447, -2.7388, 9.02895, 0.0222194, 7.4252, 11.8956, -12.8226, 24.8201)
 
-[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(0.0706792, 0.997499, 0, -0.997499, 0.0706792, 0, 0, 0, 1, -57.5848, -102.583, 63.0467)
-use_collision = true
-radius = 8.49365
-height = 266.755
+[node name="rocks4" parent="ENV" instance=ExtResource("7_wqoum")]
+transform = Transform3D(3.9838, -1.77118, 10.7171, -5.53405, -10.1536, 0.379081, 9.34712, -5.25664, -4.34328, 65.0305, -1.08993, -1.9475)
 
-[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(0.0706792, 0.997499, 0, -0.997499, 0.0706792, 0, 0, 0, 1, -57.5848, -48.5499, 63.0467)
-use_collision = true
-radius = 8.49365
-height = 266.755
+[node name="rocks3" parent="ENV" instance=ExtResource("8_lnxbq")]
+transform = Transform3D(3.70804, -1.50402, 4.80764, 2.35106, 5.79634, -1.07359e-07, -4.45511, 1.80704, 4.00145, -73.5323, -5.24365, -11.0305)
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(0.963626, -0.267255, 0, 0.267255, 0.963626, 0, 0, 0, 1, 3.45525, 13.5582, 21.3617)
-use_collision = true
-radius = 3.88037
-height = 347.255
-metadata/_edit_group_ = true
+[node name="rocks5" parent="ENV" instance=ExtResource("8_lnxbq")]
+transform = Transform3D(6.66, 0, 0, 0, 6.66, 0, 0, 0, 6.66, -27.8923, -24.1273, -113.491)
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.0908, 12.1376, 21.3617)
-use_collision = true
-radius = 6.90771
-height = 383.672
-metadata/_edit_group_ = true
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="ENV"]
-transform = Transform3D(0.286608, 0.520724, 0.804178, 2.68659e-09, 0.839392, -0.543526, -0.958048, 0.155779, 0.240577, -7.73829, -0.519533, -25.4205)
-use_collision = true
-radius = 3.88037
-height = 222.493
+[node name="rocks6" parent="ENV" instance=ExtResource("7_wqoum")]
+transform = Transform3D(2.73999, 5.40105, 5.89984, -5.0518, 6.00367, -3.14996, -6.20152, -2.50432, 5.17268, 57.0837, -34.8127, -54.5677)
 
 [node name="submarine" parent="." instance=ExtResource("3_wd8hm")]
 
@@ -189,17 +169,20 @@ preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_bup0v")
 draw_pass_1 = SubResource("PlaneMesh_ugqrj")
 
-[node name="rocks2" parent="." instance=ExtResource("7_wqoum")]
-transform = Transform3D(7.08406, -3.52856, -8.60357, 2.2249, 11.1447, -2.7388, 9.02895, 0.0222194, 7.4252, 11.8956, -12.8226, 24.8201)
+[node name="SpotLight3D" type="SpotLight3D" parent="submarine"]
+transform = Transform3D(1, 1.52855e-14, 3.49692e-07, -1.52855e-14, -1, 8.74228e-08, 3.49692e-07, -8.74228e-08, -1, -8.30551e-08, 0.54063, 0.475019)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_size = 3.48
+spot_range = 23.695
+spot_angle = 72.3
 
-[node name="rocks4" parent="." instance=ExtResource("7_wqoum")]
-transform = Transform3D(3.9838, -1.77118, 10.7171, -5.53405, -10.1536, 0.379081, 9.34712, -5.25664, -4.34328, 65.0305, -1.08993, -1.9475)
+[node name="OmniLight3D" type="OmniLight3D" parent="submarine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.57256e-08, 0.556249, 0.433099)
 
-[node name="rocks3" parent="." instance=ExtResource("8_lnxbq")]
-transform = Transform3D(3.70804, -1.50402, 4.80764, 2.35106, 5.79634, -1.07359e-07, -4.45511, 1.80704, 4.00145, -73.5323, -5.24365, -11.0305)
+[node name="chains" parent="." instance=ExtResource("9_lnxbq")]
+transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -24.2131, -12.6425, -39.9126)
 
-[node name="rocks5" parent="." instance=ExtResource("8_lnxbq")]
-transform = Transform3D(6.66, 0, 0, 0, 6.66, 0, 0, 0, 6.66, -27.8923, -24.1273, -113.491)
-
-[node name="rocks6" parent="." instance=ExtResource("7_wqoum")]
-transform = Transform3D(2.73999, 5.40105, 5.89984, -5.0518, 6.00367, -3.14996, -6.20152, -2.50432, 5.17268, 57.0837, -34.8127, -54.5677)
+[node name="chains2" parent="." instance=ExtResource("9_lnxbq")]
+transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -1.24284, -12.4966, 18.5126)

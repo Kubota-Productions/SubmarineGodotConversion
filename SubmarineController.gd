@@ -52,7 +52,7 @@ func _process(delta):
 		run_autopilot(controller.get_mouse_aim_pos(), delta)
 	
 	if Input.is_action_pressed("manual_roll"):
-		roll = horizontal_movement
+		roll = horizontal_movement 
 	
 	# Modified to make both vertical and horizontal movement relative to the submarine's local directions
 	move_direction = (global_transform.basis.y * vertical_thrust * vertical_movement * force_mult) + \
@@ -68,19 +68,20 @@ func change_speed(speed: float, delta: float):
 	if is_zero_approx(current_thrust):
 		current_thrust = 0.0
 
-func run_autopilot(fly_target, delta):
-	var to_target = (fly_target - global_transform.origin).normalized()
-	var local_fly_target = global_transform.basis.inverse() * to_target * sensitivity
+func run_autopilot(fly_target: Vector3, delta: float):
+	# Convert target position to local space, normalized and scaled by sensitivity
+	var local_fly_target = global_transform.basis.inverse() * (fly_target - global_position).normalized() * sensitivity
 	
-	var angle_off_target = rad_to_deg(acos(Vector3.FORWARD.dot(to_target)))
+	# Calculate angle between submarine's forward direction and target direction
+	var angle_off_target = rad_to_deg(acos(global_transform.basis.z.normalized().dot((fly_target - global_position).normalized())))
 	
-	# Fixed typo: Removed "Pilgrims" to correct clamp syntax
+	# Pitch and Yaw: Align nose with target (proportional inputs)
 	yaw = clamp(local_fly_target.x, -1.0, 1.0)
 	pitch = -clamp(local_fly_target.y, -1.0, 1.0)
 	
-	# Roll calculation (matched Unity's logic)
+	# Roll: Blend between aggressive roll (toward target) and wings-level roll
 	var aggressive_roll = clamp(local_fly_target.x, -1.0, 1.0)
-	var wings_level_roll = global_transform.basis.y.x
+	var wings_level_roll = global_transform.basis.x.y  # Y component of right vector (Unity's transform.right.y)
 	var wings_level_influence = inverse_lerp(0.0, aggressive_turn_angle, angle_off_target)
 	roll = lerp(wings_level_roll, aggressive_roll, wings_level_influence)
 

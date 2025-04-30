@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=13 format=3 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_v7hko"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_iidbe"]
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_14855"]
 [ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="4_hc8cq"]
 [ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="5_52jgo"]
+[ext_resource type="PackedScene" uid="uid://c8kq6q8qmhdpk" path="res://lightanimatedprefab.tscn" id="7_yfpqj"]
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="9_2ux57"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
@@ -149,8 +150,8 @@ transform = Transform3D(-0.720424, 8.12989, -8.0945, -11.4501, -1.01465, -7.2959
 transform = Transform3D(5.6198, 0.543312, -3.69022, 0.618208, 6.4451, 1.89038, 3.67842, -1.91325, 5.32013, 9.6517, -48.642, 112.995)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="ENV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5492, -5.00887, 93.4724)
-light_energy = 12.342
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8802, -2.2881, 93.9691)
+light_energy = 0.627
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_size = 0.797
@@ -158,3 +159,6 @@ light_specular = 7.959
 
 [node name="submarine" parent="." instance=ExtResource("5_52jgo")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 3.92216, -3.44576, 3.49781)
+
+[node name="Light" parent="." instance=ExtResource("7_yfpqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3283, -0.0571818, 93.8778)

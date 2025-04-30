@@ -244,7 +244,7 @@ draw_pass_1 = SubResource("PlaneMesh_6e0f8")
 
 [node name="Bubbles" type="GPUParticles3D" parent="."]
 material_override = ExtResource("11_dpl0c")
-amount = 1000
+amount = 300
 lifetime = 30.0
 preprocess = 10.0
 process_material = ExtResource("12_wbx3j")

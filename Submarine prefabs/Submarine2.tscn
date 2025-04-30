@@ -106,10 +106,10 @@ script = ExtResource("1_fgik3")
 controller = NodePath("Submarinecamerarig")
 sub_particles = NodePath("SubmarineBubbles")
 submarinemodel = NodePath("CollisionShape3D/submarine2")
-thrust = -15.0
-vertical_thrust = 10.0
-horizontal_thrust = 10.0
-max_thrust = -25.0
+thrust = -5.0
+vertical_thrust = 5.0
+horizontal_thrust = 5.0
+max_thrust = -10.0
 turn_torque = Vector3(200, 200, 40)
 force_mult = 400.0
 sensitivity = 0.4
@@ -131,7 +131,6 @@ mouse_aim = NodePath("Mouseaim")
 camera_rig = NodePath("Camrig")
 cam = NodePath("Camrig/Camera3D")
 cam_smooth_speed = 10.0
-mouse_sensitivity = 5.0
 aim_distance = 200.0
 
 [node name="Mouseaim" type="Node3D" parent="Submarinecamerarig"]

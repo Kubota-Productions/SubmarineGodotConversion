@@ -59,3 +59,4 @@ shape = SubResource("BoxShape3D_1w1b3")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 visible = false
 stream = SubResource("AudioStreamSynchronized_t5de7")
+volume_db = -29.81

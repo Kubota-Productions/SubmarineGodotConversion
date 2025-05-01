@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = $CameraPivot/CameraRotation/Camera3D
 
 var mouse_input: Vector2
-var speed: float = 50.0
+var speed: float = 10.0
 
 const builder_inventory: String = 'res://sanctum/builder/inventories/'
 

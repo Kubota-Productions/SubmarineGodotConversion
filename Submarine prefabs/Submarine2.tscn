@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://j60r80hv5k0e"]
+[gd_scene load_steps=26 format=3 uid="uid://j60r80hv5k0e"]
 
 [ext_resource type="Script" uid="uid://bmctii0fxyvqc" path="res://Scripts/SubmarineController.gd" id="1_fgik3"]
 [ext_resource type="PackedScene" uid="uid://60gwfy33gj6m" path="res://models/submarine2.glb" id="2_2v53b"]
@@ -11,6 +11,8 @@
 [ext_resource type="Material" uid="uid://jspiqg2jchvk" path="res://UI/bubbles.tres" id="8_gebmy"]
 [ext_resource type="Material" uid="uid://bflc2es5uplwp" path="res://UI/bubblesprocess.tres" id="9_07l7d"]
 [ext_resource type="Texture2D" uid="uid://on21t22xwhgc" path="res://dust.png" id="10_fs2px"]
+[ext_resource type="Texture2D" uid="uid://dy0ga70v473ny" path="res://UI/Cockpit.png" id="11_fs2px"]
+[ext_resource type="Texture2D" uid="uid://dktchw2o1vb2x" path="res://UI/Cockpitdial.png" id="12_amo44"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgik3"]
 radius = 0.894539
@@ -142,54 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27967e-06, 3.64831, 9.54352
 current = true
 fov = 90.0
 
-[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("5_gebmy")
-mouse_flight = NodePath("../Submarinecamerarig")
-boresight = NodePath("Mouseaim")
-mouse_pos = NodePath("Boresight")
-player_cam = NodePath("../Submarinecamerarig/Camrig/Camera3D")
-
-[node name="Boresight" type="TextureRect" parent="Hud"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("6_07l7d")
-stretch_mode = 3
-
-[node name="Mouseaim" type="TextureRect" parent="Hud"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("7_fs2px")
-stretch_mode = 3
-
 [node name="SubmarineBubbles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.40371e-07, -0.419206, -2.59279)
 material_override = SubResource("StandardMaterial3D_amo44")
@@ -236,3 +190,101 @@ spot_angle = 49.29
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56056e-07, 0.77698, 1.46446)
 light_energy = 0.278
+
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("mouse_flight", "boresight", "mouse_pos", "player_cam", "submarine", "dial")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("5_gebmy")
+mouse_flight = NodePath("../Submarinecamerarig")
+boresight = NodePath("Mouseaim")
+mouse_pos = NodePath("Boresight")
+player_cam = NodePath("../Submarinecamerarig/Camrig/Camera3D")
+submarine = NodePath("..")
+dial = NodePath("Cockpit/cockpitrotation")
+
+[node name="Boresight" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_07l7d")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Cockpit" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -675.0
+offset_top = -700.0
+offset_right = 569.444
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(-1, 1)
+mouse_filter = 2
+texture = ExtResource("11_fs2px")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="cockpitrotation" type="Control" parent="Hud/Cockpit"]
+anchors_preset = 0
+offset_left = 1176.0
+offset_top = 503.0
+offset_right = 1216.0
+offset_bottom = 543.0
+
+[node name="Cockpitdial" type="TextureRect" parent="Hud/Cockpit/cockpitrotation"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 14.0
+offset_bottom = 14.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(54, 54)
+mouse_filter = 2
+texture = ExtResource("12_amo44")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Mouseaim" type="TextureRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_fs2px")
+expand_mode = 3
+stretch_mode = 4

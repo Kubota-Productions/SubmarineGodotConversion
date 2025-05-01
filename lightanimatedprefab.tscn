@@ -4,16 +4,5 @@
 
 [node name="Light" instance=ExtResource("1_e77b7")]
 
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/1/rotation = Quaternion(0.655202, 1.08068e-06, 9.37268e-07, 0.755454)
-bones/2/position = Vector3(-3.19743e-14, 0.4, 0.94)
-bones/4/position = Vector3(-0.94, 0.4, 4.99242e-08)
-bones/5/rotation = Quaternion(0.181686, 0.725828, -0.629507, -0.209486)
-bones/6/position = Vector3(-9.29966e-08, 0.4, -0.94)
-bones/6/rotation = Quaternion(0.328838, 0.670406, -0.489364, -0.450493)
-bones/7/rotation = Quaternion(0.61229, 0.705976, -0.233217, 0.268902)
-bones/8/position = Vector3(0.94, 0.4, -1.81331e-07)
-bones/8/rotation = Quaternion(0.586516, 0.803499, 0.0600923, -0.0823239)
-
 [node name="AnimationPlayer" parent="." index="8"]
 autoplay = "loop"

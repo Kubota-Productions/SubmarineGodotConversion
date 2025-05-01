@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dcysc0165hpjn"]
+
+[ext_resource type="Texture2D" uid="uid://bcwbswkxcxnui" path="res://models/rocks/rocks2_sculptedrock1_Base_color.png" id="1_pcgc6"]
+[ext_resource type="Texture2D" uid="uid://pfageqxelu6m" path="res://models/rocks/rocks2_sculptedrock1_Metallic-sculptedrock1_Roughness.png" id="2_hwjmh"]
+[ext_resource type="Texture2D" uid="uid://dmfby5dd76607" path="res://models/rocks/rocks2_sculptedrock1_Normal_OpenGL.png" id="3_4iiep"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_pcgc6")
+metallic = 1.0
+metallic_texture = ExtResource("2_hwjmh")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_hwjmh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_4iiep")
+distance_fade_mode = 2
+distance_fade_min_distance = 5.0
+distance_fade_max_distance = 15.0

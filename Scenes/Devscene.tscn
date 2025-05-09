@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=20 format=4 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_v7hko"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_iidbe"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="9_2ux57"]
 [ext_resource type="Texture2D" uid="uid://dd4euxuqbmj6a" path="res://models/rocks/rocks3_sculptedrock2_Metallic-sculptedrock2_Roughness.png" id="9_14855"]
 [ext_resource type="Texture2D" uid="uid://3ejq05wdaa4p" path="res://models/rocks/rocks3_sculptedrock2_Normal_OpenGL.png" id="10_hc8cq"]
+[ext_resource type="PackedScene" uid="uid://be52ogsgqsk2l" path="res://Scenes/Pause_Menu.tscn" id="11_14855"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -180,9 +181,6 @@ transform = Transform3D(7.08406, -3.52856, -8.60357, 2.2249, 11.1447, -2.7388, 9
 [node name="rocks4" parent="ENV" instance=ExtResource("3_14855")]
 transform = Transform3D(3.9838, -1.77118, 10.7171, -5.53405, -10.1536, 0.379081, 9.34712, -5.25664, -4.34328, 65.0305, -1.08993, -1.9475)
 
-[node name="rocks3" parent="ENV" instance=ExtResource("4_hc8cq")]
-transform = Transform3D(3.70804, -1.50402, 4.80764, 2.35106, 5.79634, -1.07359e-07, -4.45511, 1.80704, 4.00145, -73.5323, -5.24365, -11.0305)
-
 [node name="rocks5" parent="ENV" instance=ExtResource("4_hc8cq")]
 transform = Transform3D(6.66, 0, 0, 0, 6.66, 0, 0, 0, 6.66, -27.8923, -24.1273, -113.491)
 
@@ -194,6 +192,9 @@ transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -32.882, -12.6425
 
 [node name="chains2" parent="ENV" instance=ExtResource("9_2ux57")]
 transform = Transform3D(2.215, 0, 0, 0, 2.215, 0, 0, 0, 2.215, -3.78976, -12.4966, 18.5126)
+
+[node name="chains2" parent="ENV/chains2" instance=ExtResource("9_2ux57")]
+transform = Transform3D(-0.573284, 2.13953, 0, -2.13953, -0.573284, 0, 0, 0, 2.215, -3.78976, -24.7871, 18.5126)
 
 [node name="rocks9" parent="ENV" instance=ExtResource("3_14855")]
 transform = Transform3D(-0.720424, 8.12989, -8.0945, -11.4501, -1.01465, -7.29596e-08, -0.714489, 8.06291, 8.16174, -53.444, 15.0656, 115.511)
@@ -218,3 +219,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3283, -0.0571818, 93.8778
 [node name="Rocks3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.697527, 6.5921, -2.65278, -1.67636, 2.74295, 6.37539, 6.90528, 0, 1.81569, 24.3125, 34.0056, -69.6147)
 mesh = SubResource("ArrayMesh_8b5pu")
+
+[node name="rocks3" parent="." instance=ExtResource("4_hc8cq")]
+transform = Transform3D(-4.78667, 0, -2.37841, 0, 5.345, 0, 2.37841, 0, -4.78667, -84.2448, 33.7726, 27.9573)
+
+[node name="rocks2" parent="." instance=ExtResource("3_14855")]
+transform = Transform3D(-3.43888, -3.01839, -5.14457, -3.8909, 5.63612, -0.70592, 4.52087, 2.55475, -4.52087, -58.2629, -49.3391, 111.593)
+
+[node name="rocks4" parent="." instance=ExtResource("4_hc8cq")]
+transform = Transform3D(3.66, 0, 0, 0, 3.66, 0, 0, 0, 3.66, 34.6984, -81.4694, -107.894)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_14855")]
+metadata/_edit_use_anchors_ = true

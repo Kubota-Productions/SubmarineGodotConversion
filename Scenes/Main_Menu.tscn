@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://duuvchuvrceu3"]
+
+[ext_resource type="Script" uid="uid://cs36re1t2lgw6" path="res://Scenes/main_menu.gd" id="1_c4tk2"]
+[ext_resource type="Texture2D" uid="uid://bq4rpk58ualkg" path="res://Scenes/Artboard 1.png" id="2_rmbjf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hckgo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4tk2"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0)
+border_width_left = 80
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmbjf"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0)
+border_width_left = 20
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hckgo"]
+bg_color = Color(0.243137, 0.243137, 0.243137, 0)
+border_width_left = 60
+border_color = Color(1, 1, 1, 1)
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4tk2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.151889, 0.223793, 0.426973, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Artboard1" type="Sprite2D" parent="BoxContainer"]
+texture = ExtResource("2_rmbjf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -71.5
+offset_right = 268.0
+offset_bottom = 71.5
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hckgo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4tk2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rmbjf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hckgo")
+text = "Enter hangar bay"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hckgo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4tk2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rmbjf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hckgo")
+text = "Options"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hckgo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c4tk2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rmbjf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hckgo")
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

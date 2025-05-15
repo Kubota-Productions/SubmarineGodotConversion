@@ -28,7 +28,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 config/name="Submarine"
 config/version="0.0.2"
 config/tags=PackedStringArray("main")
-run/main_scene="uid://duuvchuvrceu3"
+run/main_scene="uid://dk6e0crbu771n"
 run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -52,6 +52,8 @@ shapes/collision/shape_color=Color(0, 0.36, 0.222, 0.270588)
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0

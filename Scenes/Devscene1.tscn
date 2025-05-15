@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ufahymcfawmo"]
+[gd_scene load_steps=13 format=3 uid="uid://ufahymcfawmo"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_2qmje"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_2b066"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="5_0bk1h"]
 [ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://Submarine prefabs/Submarine2.tscn" id="6_2qmje"]
 [ext_resource type="PackedScene" uid="uid://c8kq6q8qmhdpk" path="res://lightanimatedprefab.tscn" id="7_2b066"]
-[ext_resource type="PackedScene" uid="uid://be52ogsgqsk2l" path="res://Scenes/Pause_Menu.tscn" id="8_2rqda"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -162,8 +161,3 @@ light_specular = 7.959
 
 [node name="Light" parent="." instance=ExtResource("7_2b066")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3283, -0.0571818, 93.8778)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_2rqda")]
-metadata/_edit_use_anchors_ = true

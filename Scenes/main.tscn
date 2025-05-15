@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk6e0crbu771n"]
+
+[ext_resource type="Script" uid="uid://qj74ti1imbsn" path="res://level_loader.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://duuvchuvrceu3" path="res://Scenes/Main_Menu.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://be52ogsgqsk2l" path="res://Scenes/Pause_Menu.tscn" id="2_8gbba"]
+
+[node name="Main" type="Node3D"]
+
+[node name="MainMenu" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_8gbba")]
+
+[node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("Levelattachment")]
+script = ExtResource("1_ig7tw")
+Levelattachment = NodePath("../Levelattachment")
+
+[node name="Levelattachment" type="Node3D" parent="."]

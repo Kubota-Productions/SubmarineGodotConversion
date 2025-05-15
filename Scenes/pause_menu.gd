@@ -1,14 +1,22 @@
 extends Control
 
+@onready var main_menu: Control = $"../MainMenu"
+const menu_scene = preload("res://Scenes/Main_Menu.tscn")
+
 func _ready():
-	$AnimationPlayer.play_backwards("RESET")
-	get_tree().paused = false
+	hide()
 
 func resume():
+	if main_menu.visible == true:
+		return
+	show()
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	
 func pause():
+	if main_menu.visible == true:
+		return
+	show()
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
 	
@@ -26,7 +34,9 @@ func _on_resume_pressed() -> void:
 
 
 func _on_back_to_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Main_Menu.tscn")
+	var Levelloader_enterwater = get_tree().get_root().get_node("Main/LevelLoader") as Levelloader
+	Levelloader_enterwater._backtomainmenu()
+	hide()
 
 
 func _on_exit_pressed() -> void:

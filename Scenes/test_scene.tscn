@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnh43fnlxp16y"]
+[gd_scene load_steps=14 format=3 uid="uid://dnh43fnlxp16y"]
 
 [ext_resource type="Script" uid="uid://dvecx31ncs2v0" path="res://dev/level_build/level_build_saver.gd" id="1_2nij2"]
 [ext_resource type="Resource" uid="uid://dt7g5qlkaf63b" path="res://builder/saves/save.tres" id="2_fbuy2"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b4f7jsiq2pegv" path="res://models/pillholder.glb" id="5_2nij2"]
 [ext_resource type="PackedScene" uid="uid://be8wynol64aqq" path="res://dev/builder_controller.tscn" id="5_njel3"]
 [ext_resource type="PackedScene" uid="uid://fhp36u1s8vu3" path="res://models/npc/cherub.glb" id="6_x033f"]
+[ext_resource type="PackedScene" uid="uid://b67n7nwr2o6nv" path="res://models/submarine1.glb" id="8_oho3u"]
+[ext_resource type="Script" uid="uid://b22qaadlna68x" path="res://Scenes/enter_water.gd" id="9_d3awe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m60t6"]
 sky_top_color = Color(0.703, 0.892367, 0.95, 1)
@@ -31,6 +33,9 @@ albedo_texture = ExtResource("3_buypi")
 uv1_triplanar = true
 uv1_world_triplanar = true
 texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oho3u"]
+size = Vector3(1, 1.91504, 1.37769)
 
 [node name="BuildScene" type="Node3D" node_paths=PackedStringArray("target_parent")]
 script = ExtResource("1_2nij2")
@@ -79,3 +84,17 @@ size = Vector3(6.11121, 15.1023, 1)
 
 [node name="cherub" parent="." instance=ExtResource("6_x033f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98164, -2.01678, -1.07551)
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("9_d3awe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02209, -1.06127, -6.71764)
+shape = SubResource("BoxShape3D_oho3u")
+debug_color = Color(1, 0, 0.164706, 0.270588)
+
+[node name="submarine1" parent="." instance=ExtResource("8_oho3u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93666, -0.863238, -6.3622)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

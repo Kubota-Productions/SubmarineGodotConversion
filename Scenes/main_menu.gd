@@ -1,7 +1,12 @@
 extends Control
 
+@onready var test_scene: PackedScene = preload("res://Scenes/test_scene.tscn")
+@onready var level_loader: Levelloader = $"../LevelLoader"
+
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Devscene.tscn")
+	level_loader._loadlevel("res://Scenes/test_scene.tscn")
+	hide()
+	
 
 
 func _on_options_pressed() -> void:

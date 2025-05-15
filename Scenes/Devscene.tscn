@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=19 format=4 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_v7hko"]
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_iidbe"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="9_2ux57"]
 [ext_resource type="Texture2D" uid="uid://dd4euxuqbmj6a" path="res://models/rocks/rocks3_sculptedrock2_Metallic-sculptedrock2_Roughness.png" id="9_14855"]
 [ext_resource type="Texture2D" uid="uid://3ejq05wdaa4p" path="res://models/rocks/rocks3_sculptedrock2_Normal_OpenGL.png" id="10_hc8cq"]
-[ext_resource type="PackedScene" uid="uid://be52ogsgqsk2l" path="res://Scenes/Pause_Menu.tscn" id="11_14855"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -228,8 +227,3 @@ transform = Transform3D(-3.43888, -3.01839, -5.14457, -3.8909, 5.63612, -0.70592
 
 [node name="rocks4" parent="." instance=ExtResource("4_hc8cq")]
 transform = Transform3D(3.66, 0, 0, 0, 3.66, 0, 0, 0, 3.66, 34.6984, -81.4694, -107.894)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_14855")]
-metadata/_edit_use_anchors_ = true

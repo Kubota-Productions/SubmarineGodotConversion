@@ -38,7 +38,7 @@ func _ready():
 		var original_parent = get_parent()
 		var original_transform = original_parent.global_transform
 		get_parent().call_deferred("remove_child", self)
-		get_tree().root.call_deferred("add_child", self)
+		Levelloader.level.call_deferred("add_child", self)
 		global_transform = original_transform
 
 func _process(delta):

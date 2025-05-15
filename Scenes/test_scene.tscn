@@ -152,7 +152,7 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Cherub"]
 
 [node name="Cherub2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.847317)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
 speed = 1.0
 run_away_speed = 4.0
@@ -173,7 +173,7 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Cherub2"]
 
 [node name="Cherub3" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.628908)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
 speed = 1.0
 run_away_speed = 4.0
@@ -194,7 +194,7 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Cherub3"]
 
 [node name="Cherub4" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.411938)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
 speed = 1.0
 run_away_speed = 4.0
@@ -215,7 +215,7 @@ debug_enabled = true
 [node name="Timer" type="Timer" parent="Cherub4"]
 
 [node name="Cherub5" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.172083)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
 speed = 1.0
 run_away_speed = 4.0
@@ -234,48 +234,6 @@ use_3d_avoidance = true
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="Cherub5"]
-
-[node name="Cherub6" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, 0.0969144)
-script = ExtResource("8_d3awe")
-speed = 1.0
-run_away_speed = 4.0
-player_detection_radius = 5.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
-shape = SubResource("CapsuleShape3D_yglu3")
-
-[node name="cherub" parent="Cherub6" instance=ExtResource("6_x033f")]
-transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub6"]
-avoidance_enabled = true
-use_3d_avoidance = true
-debug_enabled = true
-
-[node name="Timer" type="Timer" parent="Cherub6"]
-
-[node name="Cherub7" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, 0.385148)
-script = ExtResource("8_d3awe")
-speed = 1.0
-run_away_speed = 4.0
-player_detection_radius = 5.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
-shape = SubResource("CapsuleShape3D_yglu3")
-
-[node name="cherub" parent="Cherub7" instance=ExtResource("6_x033f")]
-transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub7"]
-avoidance_enabled = true
-use_3d_avoidance = true
-debug_enabled = true
-
-[node name="Timer" type="Timer" parent="Cherub7"]
 
 [connection signal="body_entered" from="Environment/Area3D" to="Environment/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Environment/Area3D" to="Environment/Area3D" method="_on_body_exited"]

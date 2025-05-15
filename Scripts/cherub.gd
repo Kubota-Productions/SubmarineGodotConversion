@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var run_away_speed: float = 6.0
 @export var wait_time_range: Vector2 = Vector2(1, 5)
 @export var player_detection_radius: float = 10.0
+@export var flee_distance: float = 10.0
 
 var target_position: Vector3
 var waiting: bool = false
@@ -13,6 +14,7 @@ var fleeing: bool = false
 @onready var wait_timer: Timer = $Timer
 @onready var player: BuilderControl = $"../BuilderController"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var nav_region: NavigationRegion3D = $"../Environment/NavigationRegion3D"
 
 func _ready():
 	wait_timer.timeout.connect(_on_wait_timer_timeout)
@@ -27,26 +29,46 @@ func _physics_process(delta: float) -> void:
 	var distance_to_player = global_position.distance_to(player.global_position)
 
 	if distance_to_player < player_detection_radius:
-		run_away_from_player()
+		if not fleeing:
+			run_away_from_player()
 	else:
 		if fleeing:
 			fleeing = false
 			set_random_target_position()
 
-		if waiting:
-			self.velocity = Vector3.ZERO
-		else:
-			move_toward_path(speed)
+	if waiting and not fleeing:
+		self.velocity = Vector3.ZERO
+	else:
+		var move_speed = run_away_speed if fleeing else speed
+		move_toward_path(move_speed)
 
 	move_and_slide()
 
 func run_away_from_player() -> void:
 	fleeing = true
 	waiting = false
+
 	var flee_direction = (global_position - player.global_position).normalized()
 	flee_direction.y = 0
-	var flee_target = global_position + flee_direction * 10.0  # Run 10 units away
-	nav_agent.set_target_position(flee_target)
+	var flee_target = global_position + flee_direction * flee_distance
+
+	# Use NavigationServer to validate navmesh position
+	var map = nav_region.get_navigation_map()
+	var closest_point = NavigationServer3D.map_get_closest_point(map, flee_target)
+
+	# Only accept flee_target if it's reasonably close to the navmesh
+	if closest_point.distance_to(flee_target) < 1.0:
+		nav_agent.set_target_position(flee_target)
+	else:
+		# Try alternate directions if direct path isn't reachable
+		for i in range(8):
+			var angle = deg_to_rad(i * 45)
+			var alt_direction = flee_direction.rotated(Vector3.UP, angle).normalized()
+			var alt_target = global_position + alt_direction * flee_distance
+			var alt_closest = NavigationServer3D.map_get_closest_point(map, alt_target)
+			if alt_closest.distance_to(alt_target) < 1.0:
+				nav_agent.set_target_position(alt_target)
+				break
 
 func move_toward_path(move_speed: float) -> void:
 	if nav_agent.is_navigation_finished():
@@ -62,6 +84,8 @@ func move_toward_path(move_speed: float) -> void:
 	set_train_rotation(direction)
 
 func set_random_target_position() -> void:
+	if fleeing:
+		return
 	var random_x = randf_range(-wander_area.x / 2, wander_area.x / 2)
 	var random_z = randf_range(-wander_area.z / 2, wander_area.z / 2)
 	var target = global_position + Vector3(random_x, 0, random_z)

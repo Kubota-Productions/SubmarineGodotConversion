@@ -32,9 +32,9 @@ func _input(event: InputEvent) -> void:
 		mouse_input = event.relative
 
 	if Input.is_action_just_pressed('Sprint'):
-		speed = 125.0
+		speed = 25
 	elif Input.is_action_just_released('Sprint'):
-		speed = 50.0
+		speed = 10
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")

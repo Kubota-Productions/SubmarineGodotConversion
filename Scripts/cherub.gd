@@ -1,54 +1,83 @@
 extends CharacterBody3D
 
-@export var wander_area: Vector3 = Vector3(50, 0, 50) # Size of the area to wander within
-@export var speed: float = 3.0 # Speed of the NPC
-@export var wait_time_range: Vector2 = Vector2(1, 5) # Range of wait times
+@export var wander_area: Vector3 = Vector3(50, 0, 50)
+@export var speed: float = 3.0
+@export var run_away_speed: float = 6.0
+@export var wait_time_range: Vector2 = Vector2(1, 5)
+@export var player_detection_radius: float = 10.0
 
 var target_position: Vector3
 var waiting: bool = false
+var fleeing: bool = false
 
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var wait_timer: Timer = $Timer
+@onready var player: BuilderControl = $"../BuilderController"
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
-	wait_timer.connect("timeout", _on_wait_timer_timeout)
+	wait_timer.timeout.connect(_on_wait_timer_timeout)
+	nav_agent.path_desired_distance = 0.5
+	nav_agent.target_desired_distance = 0.5
 	set_random_target_position()
 
-func _process(delta):
-	if waiting:
+func _physics_process(delta: float) -> void:
+	if not player:
 		return
 
-	var direction = (target_position - global_position).normalized()
-	# Move the character
-	global_position += direction * speed * delta
-	
-	# Rotate the character to face the movement direction
-	set_train_rotation(direction)
-	
-	if global_position.distance_to(target_position) < 1:
-		wait_before_next_move()
+	var distance_to_player = global_position.distance_to(player.global_position)
 
-func set_random_target_position():
+	if distance_to_player < player_detection_radius:
+		run_away_from_player()
+	else:
+		if fleeing:
+			fleeing = false
+			set_random_target_position()
+
+		if waiting:
+			self.velocity = Vector3.ZERO
+		else:
+			move_toward_path(speed)
+
+	move_and_slide()
+
+func run_away_from_player() -> void:
+	fleeing = true
+	waiting = false
+	var flee_direction = (global_position - player.global_position).normalized()
+	flee_direction.y = 0
+	var flee_target = global_position + flee_direction * 10.0  # Run 10 units away
+	nav_agent.set_target_position(flee_target)
+
+func move_toward_path(move_speed: float) -> void:
+	if nav_agent.is_navigation_finished():
+		if not fleeing:
+			wait_before_next_move()
+		self.velocity = Vector3.ZERO
+		return
+
+	var next_pos = nav_agent.get_next_path_position()
+	var direction = (next_pos - global_position).normalized()
+	direction.y = 0
+	self.velocity = direction * move_speed
+	set_train_rotation(direction)
+
+func set_random_target_position() -> void:
 	var random_x = randf_range(-wander_area.x / 2, wander_area.x / 2)
 	var random_z = randf_range(-wander_area.z / 2, wander_area.z / 2)
-	target_position = global_position + Vector3(random_x, 0, random_z)
+	var target = global_position + Vector3(random_x, 0, random_z)
+	nav_agent.set_target_position(target)
 
-func set_train_rotation(direction: Vector3):
-	# Skip rotation if direction is zero or nearly zero
+func set_train_rotation(direction: Vector3) -> void:
 	if direction.length_squared() < 0.01:
 		return
-	
-	# Ensure the character faces the direction of movement
-	# Use look_at to align the character's forward vector (-Z in Godot) with the direction
 	var target_pos = global_position + direction
 	look_at(target_pos, Vector3.UP)
 
-func wait_before_next_move():
+func wait_before_next_move() -> void:
 	waiting = true
-	# Use wait_time_range for random wait time
 	var wait_time = randf_range(wait_time_range.x, wait_time_range.y)
 	wait_timer.start(wait_time)
 
-func _on_wait_timer_timeout():
+func _on_wait_timer_timeout() -> void:
 	waiting = false
 	set_random_target_position()

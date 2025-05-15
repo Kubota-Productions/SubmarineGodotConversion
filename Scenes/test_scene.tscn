@@ -33,8 +33,8 @@ sdfgi_enabled = true
 size = Vector3(1, 1.91504, 1.37769)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_d3awe"]
-vertices = PackedVector3Array(-20.5, -1.95185, -4.25, -18.75, -1.95185, -4.5, -18, -1.95185, -5.5, -18, -1.95185, -149.5, -149.5, -1.95185, -149.5, -149.5, -1.95185, -2.75, -20.75, -1.95185, -2.75, -16, -1.95185, -3.75, -11, -1.95185, -5.5, -11.5, -1.95185, -5.75, -17, -1.95185, -5.5, -9.75, -1.95185, -7.75, -10, -1.95185, -149.5, -11.5, -1.95185, -7.5, -6, -1.95185, -7.75, -5.75, -1.95185, -149.5, -4.5, -1.95185, -7.75, -4.25, -1.95185, -6.5, 149.5, -1.95185, -6.5, 149.5, -1.95185, -149.5, -4.5, -1.95185, -5.5, -6.5, -1.95185, 149.5, 149.5, -1.95185, 149.5, -6.5, -1.95185, -5.5, -16, -1.95185, -3, -17.25, -1.95185, -2.5, -17.5, -1.95185, -1.75, -19, -1.95185, 149.5, -19, -1.95185, -1.5, -19.5, -1.05185, -2.75, -18.25, -1.10185, -2.75, -18.5, -1.10185, -3.5, -19.5, -1.10185, -3.25, -20.25, -1.95185, -1.75, -149.5, -1.95185, 149.5)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(0, 6, 5), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(11, 13, 12), PackedInt32Array(12, 13, 3), PackedInt32Array(10, 2, 9), PackedInt32Array(9, 2, 13), PackedInt32Array(13, 2, 3), PackedInt32Array(11, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(16, 14, 15), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 18), PackedInt32Array(18, 15, 19), PackedInt32Array(17, 18, 20), PackedInt32Array(20, 18, 22), PackedInt32Array(20, 22, 21), PackedInt32Array(21, 23, 20), PackedInt32Array(26, 25, 24), PackedInt32Array(24, 7, 8), PackedInt32Array(24, 8, 26), PackedInt32Array(26, 8, 23), PackedInt32Array(26, 23, 21), PackedInt32Array(26, 21, 27), PackedInt32Array(27, 28, 26), PackedInt32Array(32, 31, 29), PackedInt32Array(29, 31, 30), PackedInt32Array(33, 5, 6), PackedInt32Array(33, 28, 5), PackedInt32Array(5, 28, 27), PackedInt32Array(5, 27, 34)]
+vertices = PackedVector3Array(-35, -1.95185, -22.25, -33.5, -1.95185, -22.25, -33.25, -1.95185, -23, -149.5, -1.95185, -21.25, -35.25, -1.95185, -21.25, -32.5, -1.95185, -149.5, -149.5, -1.95185, -149.5, -32.5, -1.95185, -23, -31.5, -1.95185, -23, -31.25, -1.95185, -22.25, 8.25, -1.95185, -22.25, 8.5, -1.95185, -23, 9.5, -1.95185, -149.5, 9.5, -1.95185, -23, 10.5, -1.95185, -22.75, 10.75, -1.95185, -20.5, 149.5, -1.95185, -20.75, 149.5, -1.95185, -149.5, -32.5, 0.598151, 13.75, -32.5, 0.598151, 15.5, -32, 0.598151, 13.5, -32.75, 0.598151, -21.25, -34.25, 0.598151, -21.25, -32.5, 0.598151, -20.75, -32.25, 0.598151, -20.75, -32, 0.598151, -21.25, -32.5, 0.598151, -22, -32.5, 0.598151, 13, -34.25, 0.598151, 13.25, -32, 0.598151, 13.25, 9, 0.598151, -21, 9, 0.598151, -21.25, 9, 0.598151, 13.5, 9.25, 0.598151, 13, 9.75, 0.598151, 13.75, 9.5, 0.598151, -22, 9.25, 0.598151, 15.5, -35, -1.95185, 12.25, -33.5, -1.95185, 12.25, -33.5, -1.95185, -20, -35, -1.95185, -20, -35.25, -1.95185, 13.5, -149.5, -1.95185, 13.5, 10.75, -1.95185, 14, 149.5, -1.95185, 14.25, -20.5, -1.95185, -4.25, -18.75, -1.95185, -4.5, -18, -1.95185, -5.5, -18, -1.95185, -20, -31.25, -1.95185, -20, -31.25, -1.95185, -2.75, -20.75, -1.95185, -2.75, -16, -1.95185, -3.75, -11, -1.95185, -5.5, -11.5, -1.95185, -5.75, -17, -1.95185, -5.5, -11.5, -1.95185, -7.5, -9.75, -1.95185, -7.75, -10, -1.95185, -20, -6, -1.95185, -7.75, -5.75, -1.95185, -20, -4.5, -1.95185, -7.75, -4.25, -1.95185, -6.5, 8.25, -1.95185, -6.5, 8.25, -1.95185, -20, -4.5, -1.95185, -5.5, -5.75, -1.95185, 12.25, 8.25, -1.95185, 12.25, -6, -1.95185, -5.5, -16.5, -1.95185, -2.5, -18.75, -1.95185, -1.5, -18.75, -1.95185, 12.25, -19.5, -1.05185, -2.75, -18.25, -1.10185, -2.75, -18.5, -1.10185, -3.5, -19.5, -1.10185, -3.25, -20.25, -1.95185, -1.75, -31.25, -1.95185, 12.25, -33.5, -1.95185, 16.25, -33.5, -1.95185, 14.5, -35, -1.95185, 14.5, -32.5, -1.95185, 16.5, -149.5, -1.95185, 149.5, -32.5, -1.95185, 149.5, 10.5, -1.95185, 16.25, 9.5, -1.95185, 16.5, 9.5, -1.95185, 149.5, 149.5, -1.95185, 149.5, 8.25, -1.95185, 16.25, 8.25, -1.95185, 14.5, -31.25, -1.95185, 14.5, -31.25, -1.95185, 16.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(0, 4, 3), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 6), PackedInt32Array(2, 6, 5), PackedInt32Array(5, 7, 2), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 5), PackedInt32Array(11, 5, 12), PackedInt32Array(8, 7, 5), PackedInt32Array(12, 13, 11), PackedInt32Array(12, 14, 13), PackedInt32Array(14, 12, 15), PackedInt32Array(15, 12, 16), PackedInt32Array(16, 12, 17), PackedInt32Array(20, 19, 18), PackedInt32Array(22, 21, 23), PackedInt32Array(23, 21, 24), PackedInt32Array(24, 21, 25), PackedInt32Array(25, 21, 26), PackedInt32Array(29, 20, 27), PackedInt32Array(27, 20, 18), PackedInt32Array(27, 18, 28), PackedInt32Array(31, 30, 25), PackedInt32Array(25, 30, 24), PackedInt32Array(20, 29, 32), PackedInt32Array(32, 29, 33), PackedInt32Array(31, 35, 30), PackedInt32Array(30, 35, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(33, 34, 32), PackedInt32Array(32, 34, 36), PackedInt32Array(23, 24, 27), PackedInt32Array(27, 24, 29), PackedInt32Array(40, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(37, 41, 40), PackedInt32Array(40, 41, 4), PackedInt32Array(4, 41, 42), PackedInt32Array(4, 42, 3), PackedInt32Array(15, 16, 43), PackedInt32Array(43, 16, 44), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 50), PackedInt32Array(47, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(45, 51, 50), PackedInt32Array(54, 53, 52), PackedInt32Array(52, 55, 54), PackedInt32Array(54, 55, 56), PackedInt32Array(58, 57, 56), PackedInt32Array(55, 47, 56), PackedInt32Array(56, 47, 48), PackedInt32Array(56, 48, 58), PackedInt32Array(57, 58, 59), PackedInt32Array(59, 58, 60), PackedInt32Array(61, 59, 60), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(64, 61, 60), PackedInt32Array(62, 63, 65), PackedInt32Array(65, 63, 67), PackedInt32Array(65, 67, 66), PackedInt32Array(66, 68, 65), PackedInt32Array(52, 53, 69), PackedInt32Array(69, 53, 68), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(71, 68, 66), PackedInt32Array(75, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(50, 51, 76), PackedInt32Array(76, 70, 50), PackedInt32Array(50, 70, 71), PackedInt32Array(50, 71, 77), PackedInt32Array(80, 79, 78), PackedInt32Array(42, 41, 80), PackedInt32Array(42, 80, 78), PackedInt32Array(78, 81, 42), PackedInt32Array(42, 81, 83), PackedInt32Array(42, 83, 82), PackedInt32Array(86, 85, 84), PackedInt32Array(84, 43, 86), PackedInt32Array(86, 43, 44), PackedInt32Array(86, 44, 87), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89), PackedInt32Array(88, 85, 91), PackedInt32Array(91, 85, 81), PackedInt32Array(81, 85, 86), PackedInt32Array(81, 86, 83)]
 cell_height = 0.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4877"]
@@ -90,6 +90,34 @@ use_collision = true
 collision_layer = 65
 size = Vector3(6.11121, 15.1023, 1)
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2336, -1.79991, 13.3802)
+layers = 65
+use_collision = true
+collision_layer = 65
+size = Vector3(44.8098, 4.60388, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Environment/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2336, -1.79991, -21.13)
+layers = 65
+use_collision = true
+collision_layer = 65
+size = Vector3(44.8098, 4.60388, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.31591, -1.79991, -3.28476)
+layers = 65
+use_collision = true
+collision_layer = 65
+size = Vector3(38.2105, 4.60388, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Environment/NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -32.3419, -1.79991, -3.28476)
+layers = 65
+use_collision = true
+collision_layer = 65
+size = Vector3(38.2105, 4.60388, 1)
+
 [node name="Box" type="CSGBox3D" parent="Environment/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.51678, 0)
 use_collision = true
@@ -99,20 +127,22 @@ size = Vector3(300, 1, 300)
 material = SubResource("StandardMaterial3D_y4877")
 
 [node name="BuilderController" parent="." instance=ExtResource("5_njel3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1058, -1.16681, -0.994766)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.68429, 1.7326, -0.994766)
 set_free = false
 
 [node name="Cherub" type="CharacterBody3D" parent="."]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
-speed = 0.5
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
 shape = SubResource("CapsuleShape3D_yglu3")
 
 [node name="cherub" parent="Cherub" instance=ExtResource("6_x033f")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub"]
 avoidance_enabled = true
@@ -120,6 +150,132 @@ use_3d_avoidance = true
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="Cherub"]
+
+[node name="Cherub2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.847317)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub2" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub2"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub2"]
+
+[node name="Cherub3" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.628908)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub3" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub3"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub3"]
+
+[node name="Cherub4" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.411938)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub4" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub4"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub4"]
+
+[node name="Cherub5" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -0.172083)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub5" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub5"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub5"]
+
+[node name="Cherub6" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, 0.0969144)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub6" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub6"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub6"]
+
+[node name="Cherub7" type="CharacterBody3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, 0.385148)
+script = ExtResource("8_d3awe")
+speed = 1.0
+run_away_speed = 4.0
+player_detection_radius = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
+shape = SubResource("CapsuleShape3D_yglu3")
+
+[node name="cherub" parent="Cherub7" instance=ExtResource("6_x033f")]
+transform = Transform3D(3.28416e-08, 0, 0.435, 0, 0.435, 0, -0.435, 0, 3.28416e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub7"]
+avoidance_enabled = true
+use_3d_avoidance = true
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Cherub7"]
 
 [connection signal="body_entered" from="Environment/Area3D" to="Environment/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Environment/Area3D" to="Environment/Area3D" method="_on_body_exited"]

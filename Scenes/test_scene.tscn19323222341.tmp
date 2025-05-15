@@ -47,8 +47,9 @@ texture_filter = 2
 radius = 0.194317
 height = 0.501879
 
-[node name="BuildScene" type="Node3D"]
+[node name="BuildScene" type="Node3D" node_paths=PackedStringArray("target_parent")]
 script = ExtResource("1_2nij2")
+target_parent = NodePath("")
 load_build = ExtResource("2_fbuy2")
 current_build = ExtResource("2_fbuy2")
 inventory_name = "Basic"
@@ -98,21 +99,23 @@ collision_mask = 0
 size = Vector3(300, 1, 300)
 material = SubResource("StandardMaterial3D_y4877")
 
-[node name="BuilderController" parent="." instance=ExtResource("5_njel3")]
+[node name="BuilderController" parent="." node_paths=PackedStringArray("target_parent") instance=ExtResource("5_njel3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.1058, -1.16681, -0.994766)
+target_parent = NodePath("")
 set_free = false
 
 [node name="Cherub" type="CharacterBody3D" parent="."]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4.98164, -2.01678, -1.07551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98164, -2.01678, -1.07551)
 script = ExtResource("8_d3awe")
-speed = 0.5
+wander_area = null
+speed = null
+wait_time_range = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cherub"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.255816, 0)
 shape = SubResource("CapsuleShape3D_yglu3")
 
 [node name="cherub" parent="Cherub" instance=ExtResource("6_x033f")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0, 0, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Cherub"]
 avoidance_enabled = true

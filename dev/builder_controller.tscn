@@ -26,6 +26,7 @@ debug_fill = false
 
 [node name="hands" parent="CameraPivot" instance=ExtResource("5_7qjh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.277143, -0.171615)
+visible = false
 
 [node name="CameraRotation" type="Node3D" parent="CameraPivot"]
 

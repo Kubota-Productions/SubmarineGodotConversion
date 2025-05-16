@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_2rqda"]
 [ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="4_wj1ym"]
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="5_0bk1h"]
-[ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://Submarine prefabs/Submarine2.tscn" id="6_2qmje"]
+[ext_resource type="PackedScene" uid="uid://j60r80hv5k0e" path="res://prefabs/Submarine2.tscn" id="6_2qmje"]
 [ext_resource type="PackedScene" uid="uid://c8kq6q8qmhdpk" path="res://lightanimatedprefab.tscn" id="7_2b066"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]

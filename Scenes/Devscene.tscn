@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c27aiw16v2f3p" path="res://builder/textures/prototype/black_check.png" id="2_iidbe"]
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_14855"]
 [ext_resource type="PackedScene" uid="uid://l4sgq0mqqxpn" path="res://models/rocks/rocks3.glb" id="4_hc8cq"]
-[ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://Submarine prefabs/Submarine1.tscn" id="5_52jgo"]
+[ext_resource type="PackedScene" uid="uid://h060i4n0djgw" path="res://prefabs/Submarine1.tscn" id="5_52jgo"]
 [ext_resource type="PackedScene" uid="uid://c8kq6q8qmhdpk" path="res://lightanimatedprefab.tscn" id="7_yfpqj"]
 [ext_resource type="Texture2D" uid="uid://dmfirawv4iru" path="res://models/rocks/rocks3_sculptedrock2_Base_color.png" id="8_iidbe"]
 [ext_resource type="PackedScene" uid="uid://gr6jeqpl2crg" path="res://models/chains.glb" id="9_2ux57"]

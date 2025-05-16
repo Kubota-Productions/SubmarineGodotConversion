@@ -6,17 +6,20 @@ extends CharacterBody3D
 @export var wait_time_range: Vector2 = Vector2(1, 5)
 @export var player_detection_radius: float = 10.0
 @export var flee_distance: float = 10.0
-@export var boid_detection_radius: float = 5.0 : set = _set_boid_detection_radius
-@export var cohesion_weight: float = 1.0
-@export var alignment_weight: float = 1.0
-@export var separation_weight: float = 1.5
-@export var separation_distance: float = 2.0
-@export var boid_target_distance: float = 5.0
 @export var obstacle_avoidance_distance: float = 3.0
-@export var speed_variation: float = 0.2  # ±20% speed variation
+@export var speed_variation: float = 0.2  # Â±20% speed variation
 @export var personality_cohesion: float = 1.0  # Multiplier for cohesion weight
 @export var personality_separation: float = 1.0  # Multiplier for separation weight
 @export var flee_update_interval: float = 0.5  # Time between flee target updates
+@export var wait_probability: float = 0.001  # Probability per frame to start waiting
+@export var max_angle_change: float = deg_to_rad(30)  # Max degrees per second for meandering
+
+# Animation related variables
+@export var animation_player_path: NodePath
+@export var jump_probability: float = 0.01  # 1% chance per frame to jump while waiting
+var animation_player: AnimationPlayer
+var current_animation_state: String = "Idle"
+var is_jumping: bool = false
 
 var target_position: Vector3
 var waiting: bool = false
@@ -27,6 +30,7 @@ var current_alignment_weight: float
 var current_separation_weight: float
 var smoothed_velocity: Vector3 = Vector3.ZERO
 var flee_timer: float = 0.0
+var wander_direction: Vector3 = Vector3(randf_range(-1,1), 0, randf_range(-1,1)).normalized()
 
 @onready var wait_timer: Timer = $Timer
 @onready var player: Node3D = $"../BuilderController"
@@ -38,24 +42,34 @@ func _ready():
 	nav_agent.path_desired_distance = 0.5
 	nav_agent.target_desired_distance = 0.5
 	set_random_target_position()
-	_validate_boid_detection_radius()
-	# Apply personality and speed variation
 	current_speed = speed * (1.0 + randf_range(-speed_variation, speed_variation))
-	current_cohesion_weight = cohesion_weight * personality_cohesion
-	current_alignment_weight = alignment_weight
-	current_separation_weight = separation_weight * personality_separation
 
-func _set_boid_detection_radius(value: float) -> void:
-	if value <= 0:
-		push_warning("boid_detection_radius must be greater than 0. Setting to default value 5.0.")
-		boid_detection_radius = 5.0
-	else:
-		boid_detection_radius = value
+	
+	# Initialize animation player
+	if animation_player_path:
+		animation_player = get_node(animation_player_path)
+		play_animation("Idle")
 
-func _validate_boid_detection_radius() -> void:
-	if boid_detection_radius <= 0:
-		push_warning("boid_detection_radius is invalid (<= 0). Setting to default value 5.0.")
-		boid_detection_radius = 5.0
+func play_animation(animation_name: String) -> void:
+	if animation_player and current_animation_state != animation_name:
+		if animation_player.has_animation(animation_name):
+			animation_player.play(animation_name)
+			current_animation_state = animation_name
+			if animation_name == "Jump":
+				is_jumping = true
+				# Connect to animation finished signal if not already connected
+				if not animation_player.animation_finished.is_connected(_on_jump_animation_finished):
+					animation_player.animation_finished.connect(_on_jump_animation_finished)
+		else:
+			push_warning("Animation '%s' not found in AnimationPlayer" % animation_name)
+
+func _on_jump_animation_finished(anim_name: String):
+	if anim_name == "Jump":
+		is_jumping = false
+		# Return to idle after jump finishes
+		if waiting:
+			play_animation("Idle")
+
 
 func _physics_process(delta: float) -> void:
 	if not player:
@@ -69,25 +83,38 @@ func _physics_process(delta: float) -> void:
 			waiting = false
 			flee_timer = 0.0
 			set_flee_target()
+			play_animation("Run")  # Play run animation when fleeing
 	else:
 		if fleeing:
 			fleeing = false
 			set_random_target_position()
 
-	if waiting and not fleeing:
-		self.velocity = Vector3.ZERO
-	else:
-		var move_speed = run_away_speed if fleeing else current_speed
-		if not fleeing:
-			set_boid_target()
+	if not fleeing:
+		if randf() < wait_probability and not waiting:
+			waiting = true
+			var wait_time = randf_range(wait_time_range.x, wait_time_range.y)
+			wait_timer.start(wait_time)
+			play_animation("Idle")  # Play idle animation when waiting
+		if waiting:
+			self.velocity = Vector3.ZERO
+			# Random chance to jump while waiting
+			if not is_jumping and randf() < jump_probability:
+				play_animation("Jump")
 		else:
-			flee_timer += delta
-			if flee_timer >= flee_update_interval:
-				flee_timer = 0.0
-				set_flee_target()
-		move_toward_path(move_speed, delta)
+			set_boid_target()
+			move_toward_path(current_speed, delta)
+	else:
+		flee_timer += delta
+		if flee_timer >= flee_update_interval:
+			flee_timer = 0.0
+			set_flee_target()
+		move_toward_path(run_away_speed, delta)
 
 	move_and_slide()
+	
+	# Handle animation transitions based on movement
+	if not waiting and not fleeing and velocity.length() > 0.1 and not is_jumping:
+		play_animation("Walk")  # Play walk animation when moving normally
 
 func set_flee_target() -> void:
 	var flee_direction = (global_position - player.global_position).normalized()
@@ -125,23 +152,20 @@ func set_boid_target() -> void:
 	var dynamic_weights = adjust_boid_weights(nearby_bodies)
 	var cohesion = get_cohesion_vector(nearby_bodies) * dynamic_weights.cohesion
 	var alignment = get_alignment_vector(nearby_bodies) * dynamic_weights.alignment
-	var separation = get_separation_vector(nearby_bodies) * dynamic_weights.separation
+	#var separation = get_separation_vector(nearby_bodies) * dynamic_weights.separation
 	var wander = get_wander_vector()
 	var avoidance = get_obstacle_avoidance_vector()
 
 	var direction = (
-		cohesion +
-		alignment +
-		separation +
 		wander +
 		avoidance * 2.0  # Stronger weight for avoidance
 	).normalized()
 
 	if direction.length_squared() > 0.01:
-		var target = global_position + direction * boid_target_distance
+		#var target = global_position + direction * boid_target_distance
 		var map = nav_region.get_navigation_map()
-		var closest_point = NavigationServer3D.map_get_closest_point(map, target)
-		nav_agent.set_target_position(closest_point)
+		#var closest_point = NavigationServer3D.map_get_closest_point(map, target)
+		#nav_agent.set_target_position(closest_point)
 	else:
 		nav_agent.set_target_position(global_position)
 
@@ -153,7 +177,7 @@ func adjust_boid_weights(bodies: Array) -> Dictionary:
 	# Increase separation if too many NPCs are too close
 	var close_count = 0
 	for body in bodies:
-		if global_position.distance_to(body.global_position) < separation_distance * 0.5:
+		#if global_position.distance_to(body.global_position) < separation_distance * 0.5:
 			close_count += 1
 	if close_count > 2:
 		dynamic_separation *= 1.5
@@ -172,13 +196,13 @@ func adjust_boid_weights(bodies: Array) -> Dictionary:
 
 func get_nearby_character_bodies() -> Array:
 	var bodies = []
-	if boid_detection_radius <= 0.5:
-		return bodies
+	#if boid_detection_radius <= 0.5:
+		#return bodies
 
 	var space := get_world_3d().direct_space_state
 	var query := PhysicsShapeQueryParameters3D.new()
 	var shape := SphereShape3D.new()
-	shape.radius = boid_detection_radius
+	#shape.radius = boid_detection_radius
 	query.shape = shape
 	query.transform = Transform3D(Basis(), global_position)
 	query.collision_mask = 0xFFFFFFFF  # Adjust collision mask if needed
@@ -189,7 +213,6 @@ func get_nearby_character_bodies() -> Array:
 		if collider is CharacterBody3D and collider != self:
 			bodies.append(collider)
 	return bodies
-	
 
 func get_obstacle_avoidance_vector() -> Vector3:
 	var avoidance = Vector3.ZERO
@@ -228,22 +251,19 @@ func get_alignment_vector(bodies: Array) -> Vector3:
 	average_velocity /= bodies.size()
 	return average_velocity.normalized()
 
-func get_separation_vector(bodies: Array) -> Vector3:
-	var separation = Vector3.ZERO
-	for body in bodies:
-		var distance = global_position.distance_to(body.global_position)
-		if distance < separation_distance and distance > 0:
-			var push = (global_position - body.global_position).normalized()
-			separation += push / max(distance, 0.1)
-	return separation.normalized() if separation.length_squared() > 0 else Vector3.ZERO
+#func get_separation_vector(bodies: Array) -> Vector3:
+	#var separation = Vector3.ZERO
+	#for body in bodies:
+		#var distance = global_position.distance_to(body.global_position)
+		##if distance < separation_distance and distance > 0:
+			##var push = (global_position - body.global_position).normalized()
+			#separation += push / max(distance, 0.1)
+	#return separation.normalized() if separation.length_squared() > 0 else Vector3.ZERO
 
 func get_wander_vector() -> Vector3:
-	if randf() < 0.1:  # Occasionally update wander target
-		set_random_target_position()
-	if nav_agent.is_navigation_finished():
-		return Vector3.ZERO
-	var next_pos = nav_agent.get_next_path_position()
-	return (next_pos - global_position).normalized()
+	var angle_change = randf_range(-max_angle_change, max_angle_change) * get_physics_process_delta_time()
+	wander_direction = wander_direction.rotated(Vector3.UP, angle_change).normalized()
+	return wander_direction
 
 func move_toward_path(move_speed: float, delta: float) -> void:
 	if nav_agent.is_navigation_finished() or nav_agent.get_current_navigation_path().size() == 0:
@@ -280,6 +300,7 @@ func wait_before_next_move() -> void:
 	waiting = true
 	var wait_time = randf_range(wait_time_range.x, wait_time_range.y)
 	wait_timer.start(wait_time)
+	play_animation("Idle")  # Play idle animation when waiting
 
 func _on_wait_timer_timeout() -> void:
 	waiting = false

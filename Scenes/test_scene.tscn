@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cna3exdlqjqe" path="res://Scripts/cherub.gd" id="8_d3awe"]
 [ext_resource type="PackedScene" uid="uid://b67n7nwr2o6nv" path="res://models/submarine1.glb" id="8_oho3u"]
 [ext_resource type="Texture2D" uid="uid://bcp8gqrkpiohs" path="res://models/npc/cherub_cherubbase_Base_color.png" id="9_bwjpn"]
-[ext_resource type="Script" uid="uid://b22qaadlna68x" path="res://Scenes/enter_water.gd" id="9_d3awe"]
+[ext_resource type="Script" uid="uid://b22qaadlna68x" path="res://Scripts/enter_water.gd" id="9_d3awe"]
 [ext_resource type="Texture2D" uid="uid://djfqtxaajfx34" path="res://models/npc/cherub_cherubbase_Metallic.png" id="10_ibmi3"]
 [ext_resource type="Texture2D" uid="uid://iyfdvwg6tcrd" path="res://models/npc/cherub_cherubbase_Normal.png" id="11_4blnk"]
 

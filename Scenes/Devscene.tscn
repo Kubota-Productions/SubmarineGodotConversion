@@ -235,4 +235,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.827, 0, 2.26175)
 script = ExtResource("11_hc8cq")
 boid_scene = ExtResource("12_hc8cq")
 boid_count = 100
+boundary_size = Vector3(40, 40, 40)
 avoidance_weight = 5.0

@@ -20,3 +20,4 @@ func _backtomainmenu():
 		remove_child(child)
 		child.queue_free()
 	main_menu.show()
+		

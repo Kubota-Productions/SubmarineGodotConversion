@@ -241,6 +241,19 @@ texture = ExtResource("9_qkl3c")
 expand_mode = 3
 stretch_mode = 4
 
+[node name="Fuelbar" type="ProgressBar" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -712.0
+offset_top = -150.0
+offset_bottom = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+
 [node name="SubmarineBubbles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.298196, -0.865833)
 material_override = SubResource("StandardMaterial3D_oqc2a")

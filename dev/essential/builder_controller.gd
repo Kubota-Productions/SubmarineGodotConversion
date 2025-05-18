@@ -11,6 +11,8 @@ extends CharacterBody3D
 
 var mouse_input: Vector2
 var speed: float = 10.0
+# Gravity value synced with project settings
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const builder_inventory: String = 'res://sanctum/builder/inventories/'
 
@@ -39,15 +41,26 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
 	var direction := (global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var vertical_direction:= 0.0
+	var vertical_direction := 0.0
 
-	if Input.is_action_pressed('Jump'):
+	# Apply gravity when not on floor
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		# Reset vertical velocity when on floor, unless jumping or slamming
+		if not Input.is_action_pressed('Jump') and not Input.is_action_pressed('Slam'):
+			velocity.y = 0.0
+
+	# Handle jump and slam inputs
+	if Input.is_action_pressed('Jump') and is_on_floor():
 		vertical_direction = speed
 	elif Input.is_action_pressed('Slam'):
 		vertical_direction = -speed
-	velocity.x = lerp(velocity.x,direction.x * speed,5*delta)
-	velocity.y = lerp(velocity.y,vertical_direction,5*delta)
-	velocity.z = lerp(velocity.z,direction.z * speed,5*delta)
+
+	# Smoothly interpolate velocities
+	velocity.x = lerp(velocity.x, direction.x * speed, 5 * delta)
+	velocity.y = lerp(velocity.y, vertical_direction, 5 * delta) if vertical_direction != 0.0 else velocity.y
+	velocity.z = lerp(velocity.z, direction.z * speed, 5 * delta)
 
 	move_and_slide()
 
@@ -66,7 +79,6 @@ func grab_inventory() -> void:
 				set_inventory(resource_packet)
 			file_name = dir.get_next()
 	builder_point._ready()
-
 
 func set_inventory(new_inventory: LevelBuildInventory) -> void:
 	for i in new_inventory.build_data:

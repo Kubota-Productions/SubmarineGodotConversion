@@ -4,7 +4,7 @@ class_name Levelloader
 static var level : Node
 @export var Levelattachment: Node3D = null
 @onready var main_menu: Control = $"../MainMenu"
-@onready var submarinecamerarig: MouseFlightController = $Submarinecamerarig
+#@onready var submarinecamerarig: MouseFlightController = $Submarinecamerarig
 
 func _loadlevel(scenepath):
 	var scene = load(scenepath)

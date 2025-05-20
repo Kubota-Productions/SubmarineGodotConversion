@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8qbffiv5bmvg"
+uid="uid://bbkcco2aiyfkq"
 path.s3tc="res://.godot/imported/rocks4_rockring_Metallic-rockring_Roughness.png-829ede86e154d85fa986234929d2e16b.s3tc.ctex"
 path.etc2="res://.godot/imported/rocks4_rockring_Metallic-rockring_Roughness.png-829ede86e154d85fa986234929d2e16b.etc2.ctex"
 metadata={
@@ -10,7 +10,7 @@ metadata={
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b223303bfae2d7df7acb92515e1b55d7"
+"md5": "085284cf444e84308f75907fc762b7d3"
 }
 
 [deps]

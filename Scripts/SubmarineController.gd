@@ -27,7 +27,8 @@ var fuel_empty_triggered := false
 ## Fuel System
 @export var max_fuel: float = 100.0
 @export var fuel: float = 100.0
-@export var fuel_depletion_rate: float = 5.0  # Units per second when moving
+@export var thrust_fuel_depletion_rate: float = 5.0  # Units per second when using thrust
+@export var movement_fuel_depletion_rate: float = 1.0  # Slower rate for UI movement
 @onready var fuelbar: ProgressBar = $Hud/Fuelbar
 
 ## Runtime
@@ -50,6 +51,7 @@ func _ready():
 func _process(delta):
 	var vertical_movement = Input.get_axis("ui_down", "ui_up")
 	var horizontal_movement = Input.get_axis("ui_right", "ui_left")
+	
 	if is_instance_valid(fuelbar):
 		fuelbar.max_value = max_fuel
 		fuelbar.value = fuel
@@ -65,9 +67,17 @@ func _process(delta):
 		else:
 			change_speed(thrust, delta)
 
-		# Deplete fuel if thrust or movement input is active
-		if abs(current_thrust) > 0.01 or vertical_movement != 0 or horizontal_movement != 0:
-			fuel = max(fuel - fuel_depletion_rate * delta, 0.0)
+	# Fuel depletion logic
+	if fuel > 0.0:
+		var is_using_thrust = abs(current_thrust) > 0.01
+		var is_using_ui_movement = vertical_movement != 0 or horizontal_movement != 0
+		
+		if is_using_thrust:
+			# Using thrust - deplete at higher rate
+			fuel = max(fuel - thrust_fuel_depletion_rate * delta, 0.0)
+		elif is_using_ui_movement:
+			# Only using UI movement - deplete at slower rate
+			fuel = max(fuel - movement_fuel_depletion_rate * delta, 0.0)
 
 	if controller:
 		run_autopilot(controller.get_mouse_aim_pos(), delta)

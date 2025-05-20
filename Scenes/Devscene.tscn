@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=21 format=4 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_v7hko"]
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_14855"]
@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dd4euxuqbmj6a" path="res://models/rocks/rocks3_sculptedrock2_Metallic-sculptedrock2_Roughness.png" id="9_14855"]
 [ext_resource type="Texture2D" uid="uid://3ejq05wdaa4p" path="res://models/rocks/rocks3_sculptedrock2_Normal_OpenGL.png" id="10_hc8cq"]
 [ext_resource type="Script" uid="uid://bp06ghl6vakwb" path="res://Scripts/FishBoids.gd" id="11_hc8cq"]
+[ext_resource type="PackedScene" uid="uid://dii8fis4q42p1" path="res://models/Information.glb" id="12_52jgo"]
 [ext_resource type="PackedScene" uid="uid://clu2p4xf48qu2" path="res://prefabs/Fishboid.tscn" id="12_hc8cq"]
-[ext_resource type="PackedScene" uid="uid://yxo4ynvtvwir" path="res://models/rocks/rocks4.glb" id="13_52jgo"]
+[ext_resource type="PackedScene" uid="uid://14dm2c37j2tv" path="res://models/rocks/rocks4.glb" id="13_52jgo"]
+[ext_resource type="PackedScene" uid="uid://h0qnbb6k3afc" path="res://models/rocks/rocks5.glb" id="13_nh6if"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -197,7 +199,16 @@ avoidance_weight = 5.0
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -12.0375, -63.4038, 9.80095)
 
 [node name="rocks6" parent="." instance=ExtResource("13_52jgo")]
-transform = Transform3D(1.53, 0, -2.65004, 0, 3.06, 0, 2.65004, 0, 1.53, -14.304, 37.3127, 4.73199)
+transform = Transform3D(1.77127, 0, 0.896012, 0, 1.985, 0, -0.896012, 0, 1.77127, -14.9645, 37.3127, -10.8644)
 
 [node name="rocks7" parent="." instance=ExtResource("13_52jgo")]
 transform = Transform3D(0.537482, 0.626411, -1.7169, 1.39753, 1.01237, 0.806866, 1.17773, -1.48719, -0.17391, -14.9432, -42.9639, -85.381)
+
+[node name="Information" parent="." instance=ExtResource("12_52jgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80353, 0.949293, 16.1666)
+
+[node name="rocks8" parent="." instance=ExtResource("13_nh6if")]
+transform = Transform3D(0.365625, -0.425099, 0.828015, 0.930547, 0.186082, -0.315367, -0.0200164, 0.885813, 0.463611, -64.6519, 9.53674e-07, -40.8546)
+
+[node name="rocks9" parent="." instance=ExtResource("13_nh6if")]
+transform = Transform3D(-0.898446, -0.970508, 1.22103, 1.54982, -0.396767, 0.82501, -0.175675, 1.46311, 1.03366, -64.6519, -87.0645, -52.852)

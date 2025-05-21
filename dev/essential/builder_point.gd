@@ -20,6 +20,7 @@ var apply_alignment: bool = false
 var can_place: bool = true
 var scaling: bool = false
 var can_transform: bool = true
+var has_selected_object: bool = false  # Track if an object has been selected
 
 @onready var slot_container: GridContainer = $VBoxContainer/MarginContainer/Panel/ScrollContainer/SlotContainer
 
@@ -29,24 +30,15 @@ const BUILD_SLOT = preload("res://dev/essential/components/build_slot.tscn")
 func _ready() -> void:
 	if owner:
 		await owner.ready
-	build_component = BUILD_COMPONENT.instantiate()
-	build_component.top_level = true
-	add_child(build_component)
-	build_component.global_rotation = Vector3.ZERO
-	if current_build_data:
-		build_component.set_data(current_build_data)
-	if free_place:
-		build_component.set_free_place()
-		max_scale = 20.0
-
-
+	
+	# Don't instantiate build_component here - wait for first selection
 	for data in build_data:
 		var build_slot = BUILD_SLOT.instantiate()
 		build_slot.build_data = data
 		slot_container.add_child(build_slot)
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed('Primary') and can_place:
+	if Input.is_action_just_pressed('Primary') and can_place and has_selected_object:
 		if is_colliding() and build_component:
 			can_place = false
 			if target_parent:
@@ -55,6 +47,7 @@ func _input(event: InputEvent) -> void:
 				build_component.place_down(get_collider())
 			build_component = null
 
+			# Create new ghost preview after placement
 			build_component = BUILD_COMPONENT.instantiate()
 			build_component.top_level = true
 			add_child(build_component)
@@ -63,7 +56,8 @@ func _input(event: InputEvent) -> void:
 			build_component.global_rotation = Vector3.ZERO
 			build_component.build_mesh.rotation.y = target_rot
 			build_component.scale = Vector3.ONE * target_scale
-			build_component.set_free_place()
+			if free_place:
+				build_component.set_free_place()
 			await get_tree().create_timer(0.15).timeout
 			can_place = true
 
@@ -76,7 +70,7 @@ func _input(event: InputEvent) -> void:
 				var build: Node3D = get_collider().get_meta('BuildComponent')
 				build.queue_free()
 
-	if build_component and can_transform:
+	if build_component and can_transform and has_selected_object:
 		if Input.is_action_just_pressed('SwapUp'):
 			if scaling:
 				target_scale += 0.1
@@ -101,7 +95,7 @@ func _input(event: InputEvent) -> void:
 				build_component.global_rotation.z = 0.0
 
 func _process(delta: float) -> void:
-	if build_component:
+	if build_component and has_selected_object:  # Only show if we have a selected object
 		if is_colliding():
 			position_point = lerp(position_point,get_collision_point(),20.0 * delta)
 			build_component.global_position.x = position_point.x
@@ -134,6 +128,16 @@ func _on_panel_inventory_opened(is_open: bool) -> void:
 
 
 func _on_panel_new_build_data(new_build_data: BuildComponentData) -> void:
+	if not has_selected_object:
+		# First time selecting an object - create the ghost preview
+		has_selected_object = true
+		build_component = BUILD_COMPONENT.instantiate()
+		build_component.top_level = true
+		add_child(build_component)
+		if free_place:
+			build_component.set_free_place()
+			max_scale = 20.0
+	
+	current_build_data = new_build_data
 	if build_component:
-		current_build_data = new_build_data
 		build_component.set_data(current_build_data)

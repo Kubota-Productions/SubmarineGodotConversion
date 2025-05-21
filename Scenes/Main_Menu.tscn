@@ -30,15 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c4tk2")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.151889, 0.223793, 0.426973, 1)
-
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8

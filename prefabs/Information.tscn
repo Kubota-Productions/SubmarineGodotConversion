@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://8gk0u60wvi6l"]
+
+[ext_resource type="Script" uid="uid://b01fpgvfwhwhh" path="res://Scripts/increasefuel.gd" id="1_8xdhg"]
+[ext_resource type="ArrayMesh" uid="uid://dh1fe34u32ftm" path="res://models/interactive/Information.obj" id="2_eg4a6"]
+[ext_resource type="Material" uid="uid://b7b5isj0ww77b" path="res://material/redwglow.tres" id="2_ppk1t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tnimv"]
+radius = 0.399823
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_8xdhg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_tnimv")
+debug_color = Color(1, 1, 1, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("2_ppk1t")
+mesh = ExtResource("2_eg4a6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

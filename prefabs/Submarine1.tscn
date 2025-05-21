@@ -118,6 +118,7 @@ aggressive_turn_angle = 90.0
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.345, 0, 6.03218e-08, 0, 0.345, 0, -6.03218e-08, 0, 0.345, 2.98488e-09, 0, 0.154705)
 shape = SubResource("ConvexPolygonShape3D_ugqrj")
+debug_color = Color(1, 1, 1, 1)
 
 [node name="submarine1" parent="CollisionShape3D2" instance=ExtResource("2_2hrpu")]
 transform = Transform3D(2.89855, 0, 5.068e-07, 0, 2.89855, 0, -5.068e-07, 0, 2.89855, 7.10543e-15, 0, -0.0989652)

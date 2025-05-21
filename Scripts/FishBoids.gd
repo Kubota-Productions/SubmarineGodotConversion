@@ -36,7 +36,10 @@ func _ready() -> void:
 		
 		boid.name = "Boid_" + str(i)
 		
-		# Set random initial position
+		# Add the boid to the scene first
+		add_child(boid)
+		
+		# Now set its position (after it's in the tree)
 		var random_pos = Vector3(
 			randf_range(-spawn_radius, spawn_radius),
 			randf_range(-spawn_radius, spawn_radius),
@@ -51,7 +54,6 @@ func _ready() -> void:
 			randf_range(-1, 1)
 		).normalized() * max_speed
 		
-		add_child(boid)
 		boids.append(boid)
 
 func _physics_process(delta: float) -> void:

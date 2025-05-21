@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://crkjpacfx7i28"]
+[gd_scene load_steps=22 format=4 uid="uid://crkjpacfx7i28"]
 
 [ext_resource type="Script" uid="uid://cwo0383i7lp5t" path="res://Scripts/GameManager.gd" id="1_v7hko"]
 [ext_resource type="PackedScene" uid="uid://dwwnpf2jjxxhi" path="res://models/rocks/rocks2.glb" id="3_14855"]
@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dd4euxuqbmj6a" path="res://models/rocks/rocks3_sculptedrock2_Metallic-sculptedrock2_Roughness.png" id="9_14855"]
 [ext_resource type="Texture2D" uid="uid://3ejq05wdaa4p" path="res://models/rocks/rocks3_sculptedrock2_Normal_OpenGL.png" id="10_hc8cq"]
 [ext_resource type="Script" uid="uid://bp06ghl6vakwb" path="res://Scripts/FishBoids.gd" id="11_hc8cq"]
-[ext_resource type="PackedScene" uid="uid://dii8fis4q42p1" path="res://models/Information.glb" id="12_52jgo"]
 [ext_resource type="PackedScene" uid="uid://clu2p4xf48qu2" path="res://prefabs/Fishboid.tscn" id="12_hc8cq"]
 [ext_resource type="PackedScene" uid="uid://14dm2c37j2tv" path="res://models/rocks/rocks4.glb" id="13_52jgo"]
 [ext_resource type="PackedScene" uid="uid://h0qnbb6k3afc" path="res://models/rocks/rocks5.glb" id="13_nh6if"]
+[ext_resource type="PackedScene" uid="uid://8gk0u60wvi6l" path="res://prefabs/Information.tscn" id="13_v5wdh"]
+[ext_resource type="PackedScene" uid="uid://bsd7suk0afb6y" path="res://models/statue.glb" id="14_nh6if"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ie6cn"]
 sky_top_color = Color(5.29438e-07, 0.249179, 0.199138, 1)
@@ -23,13 +24,13 @@ ground_bottom_color = Color(3.00817e-07, 0.207784, 0.183232, 1)
 ground_horizon_color = Color(0, 0.312827, 0.241092, 1)
 sun_angle_max = 0.0
 
-[sub_resource type="Sky" id="Sky_0b6a0"]
+[sub_resource type="Sky" id="Sky_52jgo"]
 sky_material = SubResource("ProceduralSkyMaterial_ie6cn")
 
 [sub_resource type="Environment" id="Environment_r0w22"]
 background_mode = 2
 background_energy_multiplier = 0.0
-sky = SubResource("Sky_0b6a0")
+sky = SubResource("Sky_52jgo")
 ambient_light_source = 3
 ambient_light_energy = 16.0
 tonemap_mode = 3
@@ -192,6 +193,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.827, 0, 2.26175)
 script = ExtResource("11_hc8cq")
 boid_scene = ExtResource("12_hc8cq")
 boid_count = 100
+separation_radius = 3.0
 boundary_size = Vector3(40, 40, 40)
 avoidance_weight = 5.0
 
@@ -204,11 +206,29 @@ transform = Transform3D(1.77127, 0, 0.896012, 0, 1.985, 0, -0.896012, 0, 1.77127
 [node name="rocks7" parent="." instance=ExtResource("13_52jgo")]
 transform = Transform3D(0.537482, 0.626411, -1.7169, 1.39753, 1.01237, 0.806866, 1.17773, -1.48719, -0.17391, -14.9432, -42.9639, -85.381)
 
-[node name="Information" parent="." instance=ExtResource("12_52jgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80353, 0.949293, 16.1666)
-
 [node name="rocks8" parent="." instance=ExtResource("13_nh6if")]
 transform = Transform3D(0.365625, -0.425099, 0.828015, 0.930547, 0.186082, -0.315367, -0.0200164, 0.885813, 0.463611, -64.6519, 9.53674e-07, -40.8546)
 
 [node name="rocks9" parent="." instance=ExtResource("13_nh6if")]
 transform = Transform3D(-0.898446, -0.970508, 1.22103, 1.54982, -0.396767, 0.82501, -0.175675, 1.46311, 1.03366, -64.6519, -87.0645, -52.852)
+
+[node name="Information" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.34789, 1.67791, 14.6799)
+
+[node name="Information2" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73651, -15.0947, -14.959)
+
+[node name="Information3" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5666, -87.1296, -47.9632)
+
+[node name="Area3D" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7793, -57.8704, 102.673)
+
+[node name="Area3D2" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.26, -35.595, -27.7385)
+
+[node name="Area3D3" parent="." instance=ExtResource("13_v5wdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17575, -141.015, 13.7958)
+
+[node name="statue2" parent="." instance=ExtResource("14_nh6if")]
+transform = Transform3D(-22.9015, -13.9798, 46.0772, 11.127, 48.1058, 20.1257, -46.848, 18.2597, -17.7446, -11.4178, -16.5646, -27.2633)
